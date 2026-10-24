@@ -1,0 +1,45 @@
+{
+  "protocol_version": 1,
+  "session_id": "demo-session",
+  "revision": 1,
+  "goal_id": "all",
+  "account": {
+    "members": false,
+    "quest_points": 0,
+    "skill_levels": {
+      "defence": 1,
+      "thieving": 1,
+      "attack": 1,
+      "magic": 1,
+      "prayer": 1,
+      "fishing": 1,
+      "cooking": 1,
+      "mining": 1
+    },
+    "quest_progress": {
+      "dragon_slayer_i": "not_started",
+      "prince_ali_rescue": "not_started",
+      "plague_city": "not_started",
+      "biohazard": "not_started",
+      "rune_mysteries": "not_started",
+      "cooks_assistant": "not_started",
+      "the_restless_ghost": "not_started"
+    },
+    "ardougne_easy_tasks": {
+      "essence_mine": false,
+      "cake": false,
+      "silk": false,
+      "altar": false,
+      "trawler": false,
+      "training_camp": false,
+      "rusty_sword": false,
+      "wilderness_lever": false,
+      "hunter_shop": false,
+      "pet_check": false
+    },
+    "milestones": {
+      "rune_platebody_equipped": false,
+      "ardougne_cloak_1_claimed": false
+    }
+  }
+}

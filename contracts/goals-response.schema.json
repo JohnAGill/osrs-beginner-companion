@@ -1,0 +1,368 @@
+{
+  "$defs": {
+    "GoalDescription": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "summary": {
+          "title": "Summary",
+          "type": "string"
+        },
+        "members_only": {
+          "title": "Members Only",
+          "type": "boolean"
+        },
+        "benefits": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Benefits",
+          "type": "array"
+        },
+        "investment": {
+          "title": "Investment",
+          "type": "string"
+        },
+        "preparation": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Preparation",
+          "type": "array"
+        },
+        "sources": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Sources",
+          "type": "array"
+        },
+        "reviewed": {
+          "title": "Reviewed",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "summary",
+        "members_only",
+        "benefits",
+        "investment",
+        "preparation",
+        "sources",
+        "reviewed"
+      ],
+      "title": "GoalDescription",
+      "type": "object"
+    },
+    "GoalProgress": {
+      "additionalProperties": false,
+      "properties": {
+        "satisfied": {
+          "title": "Satisfied",
+          "type": "integer"
+        },
+        "missing": {
+          "title": "Missing",
+          "type": "integer"
+        },
+        "unknown": {
+          "title": "Unknown",
+          "type": "integer"
+        },
+        "total": {
+          "title": "Total",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "satisfied",
+        "missing",
+        "unknown",
+        "total"
+      ],
+      "title": "GoalProgress",
+      "type": "object"
+    },
+    "GoalRequirement": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "satisfied",
+            "missing",
+            "unknown"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "observed": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Observed"
+        },
+        "required": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Required"
+        },
+        "note": {
+          "title": "Note",
+          "type": "string"
+        },
+        "category": {
+          "enum": [
+            "milestone",
+            "eligibility",
+            "context"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "children": {
+          "items": {
+            "$ref": "#/$defs/GoalRequirement"
+          },
+          "title": "Children",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "status",
+        "observed",
+        "required",
+        "note",
+        "category",
+        "children"
+      ],
+      "title": "GoalRequirement",
+      "type": "object"
+    },
+    "GoalResult": {
+      "additionalProperties": false,
+      "properties": {
+        "goal": {
+          "$ref": "#/$defs/GoalDescription"
+        },
+        "status": {
+          "enum": [
+            "completed",
+            "incomplete",
+            "unknown"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "progress": {
+          "$ref": "#/$defs/GoalProgress"
+        },
+        "requirements": {
+          "items": {
+            "$ref": "#/$defs/GoalRequirement"
+          },
+          "title": "Requirements",
+          "type": "array"
+        },
+        "recommendation": {
+          "$ref": "#/$defs/Recommendation"
+        },
+        "next_steps": {
+          "items": {
+            "$ref": "#/$defs/NextStep"
+          },
+          "title": "Next Steps",
+          "type": "array"
+        }
+      },
+      "required": [
+        "goal",
+        "status",
+        "progress",
+        "requirements",
+        "recommendation",
+        "next_steps"
+      ],
+      "title": "GoalResult",
+      "type": "object"
+    },
+    "NextStep": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "activity",
+            "check"
+          ],
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "reason",
+        "kind"
+      ],
+      "title": "NextStep",
+      "type": "object"
+    },
+    "Recommendation": {
+      "additionalProperties": false,
+      "properties": {
+        "rank": {
+          "title": "Rank",
+          "type": "integer"
+        },
+        "recommended": {
+          "title": "Recommended",
+          "type": "boolean"
+        },
+        "availability": {
+          "enum": [
+            "available",
+            "members_required",
+            "membership_unknown",
+            "completed"
+          ],
+          "title": "Availability",
+          "type": "string"
+        },
+        "reasons": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reasons",
+          "type": "array"
+        },
+        "considerations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Considerations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "rank",
+        "recommended",
+        "availability",
+        "reasons",
+        "considerations"
+      ],
+      "title": "Recommendation",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "protocol_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Protocol Version",
+      "type": "integer"
+    },
+    "dataset_version": {
+      "title": "Dataset Version",
+      "type": "string"
+    },
+    "session_id": {
+      "title": "Session Id",
+      "type": "string"
+    },
+    "revision": {
+      "title": "Revision",
+      "type": "integer"
+    },
+    "goals": {
+      "items": {
+        "$ref": "#/$defs/GoalResult"
+      },
+      "title": "Goals",
+      "type": "array"
+    },
+    "notes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
+    },
+    "recommended_goal_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Recommended Goal Id"
+    },
+    "recommendation_summary": {
+      "title": "Recommendation Summary",
+      "type": "string"
+    }
+  },
+  "required": [
+    "dataset_version",
+    "session_id",
+    "revision",
+    "goals",
+    "notes",
+    "recommended_goal_id",
+    "recommendation_summary"
+  ],
+  "title": "GoalsResponse",
+  "type": "object"
+}

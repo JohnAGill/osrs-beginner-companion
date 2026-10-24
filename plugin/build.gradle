@@ -1,0 +1,34 @@
+plugins { id 'java' }
+
+repositories {
+    maven { url = 'https://repo.runelite.net'; content { includeGroupByRegex('net\\.runelite.*') } }
+    mavenCentral()
+}
+
+def runeLiteVersion = '1.13.3'
+dependencies {
+    compileOnly "net.runelite:client:${runeLiteVersion}"
+    implementation 'com.google.code.gson:gson:2.11.0'
+    testImplementation "net.runelite:client:${runeLiteVersion}"
+    testImplementation "net.runelite:jshell:${runeLiteVersion}"
+    testImplementation 'junit:junit:4.13.2'
+}
+sourceSets {
+    main {
+        java { srcDir '../bridge-java/src'; exclude 'CompanionCaller.java' }
+        resources { srcDir '../contracts'; include 'fixtures/*.request.json' }
+    }
+    test { resources { srcDir '../contracts'; include 'fixtures/*.response.json' } }
+}
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release.set(11)
+}
+test { systemProperty 'java.awt.headless', 'true' }
+tasks.register('run', JavaExec) {
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.beginnercompanion.CompanionLauncher'
+    args '--developer-mode', '--debug'
+    jvmArgs '-ea', '--add-opens=java.base/java.lang.reflect=ALL-UNNAMED'
+    systemProperty 'companion.stateFile', file('../data/private/companion-demo-goals.json').absolutePath
+}

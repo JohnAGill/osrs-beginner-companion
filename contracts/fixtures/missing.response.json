@@ -1,0 +1,27 @@
+{
+  "protocol_version": 1,
+  "dataset_version": "bridge-demo-1",
+  "session_id": "demo-session",
+  "revision": 1,
+  "goal_id": "wear_rune_platebody",
+  "scope": "equipment_requirements_only",
+  "requirements": [
+    {
+      "id": "defence_40",
+      "label": "Reach 40 Defence",
+      "status": "missing",
+      "observed": 32,
+      "required": 40
+    },
+    {
+      "id": "dragon_slayer_i",
+      "label": "Complete Dragon Slayer I",
+      "status": "missing",
+      "observed": "not_started",
+      "required": "completed"
+    }
+  ],
+  "notes": [
+    "Equipment requirements only. Item ownership, equipment state and quest preparation are not checked."
+  ]
+}

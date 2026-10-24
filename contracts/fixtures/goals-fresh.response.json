@@ -1,0 +1,1060 @@
+{
+  "protocol_version": 1,
+  "dataset_version": "beginner-goals-3",
+  "session_id": "demo-session",
+  "revision": 1,
+  "goals": [
+    {
+      "goal": {
+        "id": "wear_rune_platebody",
+        "title": "Wear a rune platebody",
+        "summary": "A longer combat and questing ambition for a free-to-play account.",
+        "members_only": false,
+        "benefits": [
+          "Equip the strongest standard free-to-play platebody for melee defence.",
+          "Work towards a memorable quest encounter with Elvarg."
+        ],
+        "investment": "Longer ambition from a new account: quest points, combat preparation, Defence training and obtaining the armour. No fixed time estimate.",
+        "preparation": [
+          "Dragon Slayer I requires 32 quest points to start. Choose quests you enjoy; there is no mandatory list of earlier quests.",
+          "Prepare for a level 83 dragon and other combat. Suggested combat levels are advice, not hard skill requirements.",
+          "Obtain the platebody after unlocking it. Buying it does not bypass the quest or Defence requirement.",
+          "Dragon Slayer I grants Defence XP, so its reward can contribute towards level 40."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Rune_platebody",
+          "https://oldschool.runescape.wiki/w/Dragon_Slayer_I"
+        ],
+        "reviewed": "2026-10-24"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 3,
+        "unknown": 0,
+        "total": 3
+      },
+      "requirements": [
+        {
+          "id": "defence_40",
+          "label": "Reach 40 Defence",
+          "status": "missing",
+          "observed": 1,
+          "required": 40,
+          "note": "",
+          "category": "milestone",
+          "children": []
+        },
+        {
+          "id": "dragon_slayer_i",
+          "label": "Complete Dragon Slayer I",
+          "status": "missing",
+          "observed": "not_started",
+          "required": "completed",
+          "note": "",
+          "category": "milestone",
+          "children": []
+        },
+        {
+          "id": "quest_points_32",
+          "label": "32 quest points to start Dragon Slayer I",
+          "status": "missing",
+          "observed": 0,
+          "required": 32,
+          "note": "Quest entry context, not a specific quest route. Completing Dragon Slayer I is the unlock milestone above.",
+          "category": "context",
+          "children": []
+        },
+        {
+          "id": "equip_platebody",
+          "label": "Equip a rune platebody",
+          "status": "missing",
+          "observed": false,
+          "required": true,
+          "note": "This is a separate observed milestone: meeting requirements or buying the item does not mean it has been worn.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "rank": 1,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [],
+        "considerations": []
+      },
+      "next_steps": [
+        {
+          "id": "defence_40",
+          "title": "Work towards 40 Defence",
+          "reason": "Recorded Defence: 1/40. Train when you feel like combat; Dragon Slayer I also rewards Defence XP.",
+          "kind": "activity"
+        },
+        {
+          "id": "quest_points_32",
+          "title": "Choose quests towards 32 quest points",
+          "reason": "Recorded quest points: 0/32. Pick quests you enjoy; no fixed quest order is needed.",
+          "kind": "activity"
+        }
+      ]
+    },
+    {
+      "goal": {
+        "id": "prince_ali_rescue",
+        "title": "Complete Prince Ali Rescue",
+        "summary": "A standalone quest with a small everyday travel benefit.",
+        "members_only": false,
+        "benefits": [
+          "Pass the Lumbridge–Al Kharid toll gate without paying its 10-coin fee.",
+          "Earn 3 quest points and 700 coins."
+        ],
+        "investment": "Short quest, with item gathering and travel between Al Kharid and Draynor. Gathering everything yourself takes longer than buying supplies.",
+        "preparation": [
+          "No prior quests or minimum skill levels are required. You must be able to get past aggressive level 26 jail guards; fighting them is optional.",
+          "Supplies include soft clay, three balls of wool, yellow dye (or onions and coins), redberries, ashes, water, flour, a bronze bar, a pink skirt, three beers and rope.",
+          "Start by speaking to Hassan in Al Kharid palace. Gather supplies to learn basic activities, or buy them if you prefer to focus on the quest.",
+          "This removes a gate toll; it does not unlock Al Kharid, which is already accessible."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Prince_Ali_Rescue"
+        ],
+        "reviewed": "2026-10-24"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "prince_ali_rescue",
+          "label": "Complete Prince Ali Rescue",
+          "status": "missing",
+          "observed": "not_started",
+          "required": "completed",
+          "note": "",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "rank": 2,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [],
+        "considerations": []
+      },
+      "next_steps": [
+        {
+          "id": "prince_ali_rescue",
+          "title": "Try Prince Ali Rescue",
+          "reason": "No prior quests or minimum skill levels are required. Speak to Hassan in Al Kharid palace; review supplies and guard preparation first.",
+          "kind": "activity"
+        }
+      ]
+    },
+    {
+      "goal": {
+        "id": "cooks_assistant",
+        "title": "Complete Cook's Assistant",
+        "summary": "A first taste of questing and gathering around Lumbridge.",
+        "members_only": false,
+        "benefits": [
+          "Earn 1 quest point and 300 Cooking XP.",
+          "Gain permission to use the Lumbridge castle kitchen range."
+        ],
+        "investment": "Short gathering quest. Collecting ingredients yourself introduces nearby activities; buying them reduces the gathering effort.",
+        "preparation": [
+          "Speak to the Cook in Lumbridge castle kitchen. No prior quests or skill levels are required.",
+          "Bring an egg, a bucket of milk and a pot of flour. You can gather these locally or buy them. No combat is required."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Cook%27s_Assistant"
+        ],
+        "reviewed": "2026-10-24"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "cooks_assistant",
+          "label": "Complete Cook's Assistant",
+          "status": "missing",
+          "observed": "not_started",
+          "required": "completed",
+          "note": "Speak to the Cook in Lumbridge castle kitchen. No prior quests or skill levels are required.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "rank": 3,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [],
+        "considerations": []
+      },
+      "next_steps": [
+        {
+          "id": "cooks_assistant",
+          "title": "Complete Cook's Assistant",
+          "reason": "Speak to the Cook in Lumbridge castle kitchen. No prior quests or skill levels are required.",
+          "kind": "activity"
+        }
+      ]
+    },
+    {
+      "goal": {
+        "id": "the_restless_ghost",
+        "title": "Complete The Restless Ghost",
+        "summary": "Explore Lumbridge and take a first step into Prayer progression.",
+        "members_only": false,
+        "benefits": [
+          "Earn 1 quest point and 1,125 Prayer XP.",
+          "Receive a ghostspeak amulet used in other adventures."
+        ],
+        "investment": "Short quest with travel around Lumbridge, the swamp and the Wizards' Tower. Allow for navigating and avoiding a skeleton.",
+        "preparation": [
+          "Speak to Father Aereck in Lumbridge church. No prior quests or minimum skill levels are required.",
+          "Be prepared to avoid or fight a level 13 skeleton. Killing it is optional; bring food if needed."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/The_Restless_Ghost"
+        ],
+        "reviewed": "2026-10-24"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "the_restless_ghost",
+          "label": "Complete The Restless Ghost",
+          "status": "missing",
+          "observed": "not_started",
+          "required": "completed",
+          "note": "Speak to Father Aereck in Lumbridge church. No prior quests or minimum skill levels are required.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "rank": 4,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [],
+        "considerations": []
+      },
+      "next_steps": [
+        {
+          "id": "the_restless_ghost",
+          "title": "Complete The Restless Ghost",
+          "reason": "Speak to Father Aereck in Lumbridge church. No prior quests or minimum skill levels are required.",
+          "kind": "activity"
+        }
+      ]
+    },
+    {
+      "goal": {
+        "id": "rune_mysteries",
+        "title": "Complete Rune Mysteries",
+        "summary": "Learn about rune essence and visit several early-game locations.",
+        "members_only": false,
+        "benefits": [
+          "Unlock mining rune essence.",
+          "Earn 1 quest point and prepare a prerequisite used by several diaries."
+        ],
+        "investment": "Short dialogue and travel quest between Lumbridge, the Wizards' Tower and Varrock. No combat is required.",
+        "preparation": [
+          "Speak to Duke Horacio upstairs in Lumbridge castle. No prior quests or skill levels are required.",
+          "Follow the research deliveries using the quest journal. This unlocks rune essence mining; it is not a requirement for all Runecraft training."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Rune_Mysteries"
+        ],
+        "reviewed": "2026-10-24"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "rune_mysteries",
+          "label": "Complete Rune Mysteries",
+          "status": "missing",
+          "observed": "not_started",
+          "required": "completed",
+          "note": "Speak to Duke Horacio upstairs in Lumbridge castle. No prior quests or skill levels are required.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "rank": 5,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [],
+        "considerations": []
+      },
+      "next_steps": [
+        {
+          "id": "rune_mysteries",
+          "title": "Complete Rune Mysteries",
+          "reason": "Speak to Duke Horacio upstairs in Lumbridge castle. No prior quests or skill levels are required.",
+          "kind": "activity"
+        }
+      ]
+    },
+    {
+      "goal": {
+        "id": "attack_20",
+        "title": "Reach 20 Attack for mithril weapons",
+        "summary": "An early melee equipment milestone.",
+        "members_only": false,
+        "benefits": [
+          "Meet the Attack requirement for mithril melee weapons."
+        ],
+        "investment": "An early training project. Combat choices, equipment and quest rewards affect the effort.",
+        "preparation": [
+          "Choose manageable fights and an attack style that awards Attack XP. Check the combat style panel before training.",
+          "Obtaining a weapon is separate from meeting its level requirement. Bring food and choose enemies you can handle.",
+          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Mithril_equipment"
+        ],
+        "reviewed": "2026-10-24"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "attack_20",
+          "label": "Reach 20 Attack",
+          "status": "missing",
+          "observed": 1,
+          "required": 20,
+          "note": "Choose manageable fights and an attack style that awards Attack XP. Check the combat style panel before training.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "rank": 6,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [],
+        "considerations": []
+      },
+      "next_steps": [
+        {
+          "id": "attack_20",
+          "title": "Reach 20 Attack",
+          "reason": "Recorded level: 1/20. Choose manageable fights and an attack style that awards Attack XP. Check the combat style panel before training.",
+          "kind": "activity"
+        }
+      ]
+    },
+    {
+      "goal": {
+        "id": "attack_40",
+        "title": "Reach 40 Attack for rune weapons",
+        "summary": "A larger free-to-play melee ambition.",
+        "members_only": false,
+        "benefits": [
+          "Meet the Attack requirement for a rune scimitar."
+        ],
+        "investment": "A longer melee milestone from level 1. You can mix training with quests that reward Attack XP.",
+        "preparation": [
+          "Train Attack through manageable combat or suitable quest rewards; there is no mandatory training spot.",
+          "Choose an Attack XP combat style. Buying or equipping a rune weapon is not tracked by this goal.",
+          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Rune_scimitar"
+        ],
+        "reviewed": "2026-10-24"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "attack_40",
+          "label": "Reach 40 Attack",
+          "status": "missing",
+          "observed": 1,
+          "required": 40,
+          "note": "Train Attack through manageable combat or suitable quest rewards; there is no mandatory training spot.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "rank": 7,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [],
+        "considerations": []
+      },
+      "next_steps": [
+        {
+          "id": "attack_40",
+          "title": "Reach 40 Attack",
+          "reason": "Recorded level: 1/40. Train Attack through manageable combat or suitable quest rewards; there is no mandatory training spot.",
+          "kind": "activity"
+        }
+      ]
+    },
+    {
+      "goal": {
+        "id": "magic_25",
+        "title": "Reach 25 Magic for Varrock Teleport",
+        "summary": "A useful first teleport milestone.",
+        "members_only": false,
+        "benefits": [
+          "Meet the Magic level requirement for the standard Varrock Teleport spell."
+        ],
+        "investment": "An early Magic project with rune or training-supply costs. Your method and starting level determine the effort.",
+        "preparation": [
+          "Choose a Magic training method you can afford and check the spell requirements before buying supplies.",
+          "Casting Varrock Teleport needs the standard spellbook and the appropriate runes. Reaching the level alone does not cast it.",
+          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Varrock_Teleport"
+        ],
+        "reviewed": "2026-10-24"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "magic_25",
+          "label": "Reach 25 Magic",
+          "status": "missing",
+          "observed": 1,
+          "required": 25,
+          "note": "Choose a Magic training method you can afford and check the spell requirements before buying supplies.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "rank": 8,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [],
+        "considerations": []
+      },
+      "next_steps": [
+        {
+          "id": "magic_25",
+          "title": "Reach 25 Magic",
+          "reason": "Recorded level: 1/25. Choose a Magic training method you can afford and check the spell requirements before buying supplies.",
+          "kind": "activity"
+        }
+      ]
+    },
+    {
+      "goal": {
+        "id": "magic_37",
+        "title": "Reach 37 Magic for Falador Teleport",
+        "summary": "Build a wider set of standard spellbook travel options.",
+        "members_only": false,
+        "benefits": [
+          "Meet the Magic level requirement for Falador Teleport."
+        ],
+        "investment": "A broader Magic project than your first teleport. Allow for rune costs and your preferred training method.",
+        "preparation": [
+          "Continue Magic training using a method that fits your supplies and budget.",
+          "The standard Falador Teleport spell still requires its runes. This goal tracks the base level, not a teleport cast.",
+          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Teleportation_spells"
+        ],
+        "reviewed": "2026-10-24"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "magic_37",
+          "label": "Reach 37 Magic",
+          "status": "missing",
+          "observed": 1,
+          "required": 37,
+          "note": "Continue Magic training using a method that fits your supplies and budget.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "rank": 9,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [],
+        "considerations": []
+      },
+      "next_steps": [
+        {
+          "id": "magic_37",
+          "title": "Reach 37 Magic",
+          "reason": "Recorded level: 1/37. Continue Magic training using a method that fits your supplies and budget.",
+          "kind": "activity"
+        }
+      ]
+    },
+    {
+      "goal": {
+        "id": "prayer_43",
+        "title": "Reach 43 Prayer for Protect from Melee",
+        "summary": "A major early combat utility milestone.",
+        "members_only": false,
+        "benefits": [
+          "Unlock the Protect from Melee prayer."
+        ],
+        "investment": "A longer early-account project. Prayer training methods and supply costs vary substantially; no fixed time or price is assumed.",
+        "preparation": [
+          "Choose Prayer training that suits your budget and account restrictions. Prayer XP from quests can contribute too.",
+          "Protection prayers consume Prayer points. Protect from Melee does not guarantee safety against every enemy or attack.",
+          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Protect_from_Melee"
+        ],
+        "reviewed": "2026-10-24"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "prayer_43",
+          "label": "Reach 43 Prayer",
+          "status": "missing",
+          "observed": 1,
+          "required": 43,
+          "note": "Choose Prayer training that suits your budget and account restrictions. Prayer XP from quests can contribute too.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "rank": 10,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [],
+        "considerations": []
+      },
+      "next_steps": [
+        {
+          "id": "prayer_43",
+          "title": "Reach 43 Prayer",
+          "reason": "Recorded level: 1/43. Choose Prayer training that suits your budget and account restrictions. Prayer XP from quests can contribute too.",
+          "kind": "activity"
+        }
+      ]
+    },
+    {
+      "goal": {
+        "id": "fishing_30",
+        "title": "Reach 30 Fishing for salmon",
+        "summary": "A gathering goal that pairs naturally with cooking.",
+        "members_only": false,
+        "benefits": [
+          "Meet the Fishing requirement for salmon, alongside trout at level 20."
+        ],
+        "investment": "An early gathering project. Getting tools and travelling to fishing spots adds some preparation.",
+        "preparation": [
+          "Use fishing methods available at your current level. Fly fishing becomes an option at 20 Fishing.",
+          "Fly fishing for trout and salmon uses a fly fishing rod and feathers. Reaching 30 Fishing does not prove you have caught either fish.",
+          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Free-to-play_Fishing_training"
+        ],
+        "reviewed": "2026-10-24"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "fishing_30",
+          "label": "Reach 30 Fishing",
+          "status": "missing",
+          "observed": 1,
+          "required": 30,
+          "note": "Use fishing methods available at your current level. Fly fishing becomes an option at 20 Fishing.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "rank": 11,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [],
+        "considerations": []
+      },
+      "next_steps": [
+        {
+          "id": "fishing_30",
+          "title": "Reach 30 Fishing",
+          "reason": "Recorded level: 1/30. Use fishing methods available at your current level. Fly fishing becomes an option at 20 Fishing.",
+          "kind": "activity"
+        }
+      ]
+    },
+    {
+      "goal": {
+        "id": "cooking_25",
+        "title": "Reach 25 Cooking for salmon",
+        "summary": "An early food preparation milestone.",
+        "members_only": false,
+        "benefits": [
+          "Meet the Cooking level requirement for salmon."
+        ],
+        "investment": "An early production project. Gathering your own fish trades extra time for less reliance on buying supplies.",
+        "preparation": [
+          "Cook food available at your current level. You can gather raw food yourself or buy it.",
+          "Food can still burn after you reach its minimum Cooking level. This goal does not track a successful cook or food in your bank.",
+          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Free-to-play_Fishing_training"
+        ],
+        "reviewed": "2026-10-24"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "cooking_25",
+          "label": "Reach 25 Cooking",
+          "status": "missing",
+          "observed": 1,
+          "required": 25,
+          "note": "Cook food available at your current level. You can gather raw food yourself or buy it.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "rank": 12,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [],
+        "considerations": []
+      },
+      "next_steps": [
+        {
+          "id": "cooking_25",
+          "title": "Reach 25 Cooking",
+          "reason": "Recorded level: 1/25. Cook food available at your current level. You can gather raw food yourself or buy it.",
+          "kind": "activity"
+        }
+      ]
+    },
+    {
+      "goal": {
+        "id": "mining_30",
+        "title": "Reach 30 Mining for coal",
+        "summary": "Explore gathering resources used in Smithing.",
+        "members_only": false,
+        "benefits": [
+          "Meet the Mining requirement for coal rocks."
+        ],
+        "investment": "An early gathering project. Ore choice, travel and whether you bank resources affect the effort.",
+        "preparation": [
+          "Bring a pickaxe and mine resources available at your current level. Choose between banking resources and focusing on training.",
+          "The level unlocks coal mining; it does not grant access to every coal location or certify that a location is safe.",
+          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Coal"
+        ],
+        "reviewed": "2026-10-24"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "mining_30",
+          "label": "Reach 30 Mining",
+          "status": "missing",
+          "observed": 1,
+          "required": 30,
+          "note": "Bring a pickaxe and mine resources available at your current level. Choose between banking resources and focusing on training.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "rank": 13,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [],
+        "considerations": []
+      },
+      "next_steps": [
+        {
+          "id": "mining_30",
+          "title": "Reach 30 Mining",
+          "reason": "Recorded level: 1/30. Bring a pickaxe and mine resources available at your current level. Choose between banking resources and focusing on training.",
+          "kind": "activity"
+        }
+      ]
+    },
+    {
+      "goal": {
+        "id": "ardougne_cloak_1",
+        "title": "Unlock Ardougne cloak 1",
+        "summary": "An exploration and utility goal for members.",
+        "members_only": true,
+        "benefits": [
+          "Unlimited teleports to the Ardougne Monastery, near an altar.",
+          "Learn how regional achievement diaries combine different activities."
+        ],
+        "investment": "A regional project: several quests, level 5 Thieving, ten diary tasks and claiming the reward. Travel and gathering supplies add effort.",
+        "preparation": [
+          "An achievement diary is a regional checklist. Its easy tasks may be completed in any order.",
+          "Bring silk, a rusty sword and coins; review the task descriptions before travelling.",
+          "The lever task enters the Wilderness, where other players can attack you. Bank valuables first and understand the risk before attempting it.",
+          "The cake task needs 5 Thieving; temporary boosts can satisfy diary skill requirements. Demo progress uses the recorded base level only.",
+          "Claim the reward from Two-pints at the Flying Horse Inn after completing the easy tasks."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Ardougne_Diary",
+          "https://oldschool.runescape.wiki/w/Ardougne_cloak_1"
+        ],
+        "reviewed": "2026-10-24"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 6,
+        "unknown": 0,
+        "total": 6
+      },
+      "requirements": [
+        {
+          "id": "membership",
+          "label": "Membership for these activities",
+          "status": "missing",
+          "observed": false,
+          "required": true,
+          "note": "",
+          "category": "eligibility",
+          "children": []
+        },
+        {
+          "id": "thieving_5",
+          "label": "Reach 5 Thieving (or use a suitable boost)",
+          "status": "missing",
+          "observed": 1,
+          "required": 5,
+          "note": "",
+          "category": "milestone",
+          "children": []
+        },
+        {
+          "id": "plague_city",
+          "label": "Complete Plague City",
+          "status": "missing",
+          "observed": "not_started",
+          "required": "completed",
+          "note": "",
+          "category": "milestone",
+          "children": []
+        },
+        {
+          "id": "biohazard",
+          "label": "Complete Biohazard",
+          "status": "missing",
+          "observed": "not_started",
+          "required": "completed",
+          "note": "",
+          "category": "milestone",
+          "children": []
+        },
+        {
+          "id": "rune_mysteries",
+          "label": "Complete Rune Mysteries",
+          "status": "missing",
+          "observed": "not_started",
+          "required": "completed",
+          "note": "",
+          "category": "milestone",
+          "children": []
+        },
+        {
+          "id": "easy_tasks",
+          "label": "Complete all ten easy Ardougne Diary tasks",
+          "status": "missing",
+          "observed": "0 / 10 tasks done",
+          "required": "all tasks",
+          "note": "",
+          "category": "milestone",
+          "children": [
+            {
+              "id": "essence_mine",
+              "label": "Teleport to the essence mine with Wizard Cromperty",
+              "status": "missing",
+              "observed": false,
+              "required": true,
+              "note": "",
+              "category": "milestone",
+              "children": []
+            },
+            {
+              "id": "cake",
+              "label": "Steal a cake from an Ardougne market stall",
+              "status": "missing",
+              "observed": false,
+              "required": true,
+              "note": "",
+              "category": "milestone",
+              "children": []
+            },
+            {
+              "id": "silk",
+              "label": "Sell silk to the Ardougne silk trader for 60 coins",
+              "status": "missing",
+              "observed": false,
+              "required": true,
+              "note": "",
+              "category": "milestone",
+              "children": []
+            },
+            {
+              "id": "altar",
+              "label": "Use the East Ardougne church altar with missing Prayer points",
+              "status": "missing",
+              "observed": false,
+              "required": true,
+              "note": "",
+              "category": "milestone",
+              "children": []
+            },
+            {
+              "id": "trawler",
+              "label": "Start a Fishing Trawler trip",
+              "status": "missing",
+              "observed": false,
+              "required": true,
+              "note": "",
+              "category": "milestone",
+              "children": []
+            },
+            {
+              "id": "training_camp",
+              "label": "Enter the Combat Training Camp",
+              "status": "missing",
+              "observed": false,
+              "required": true,
+              "note": "",
+              "category": "milestone",
+              "children": []
+            },
+            {
+              "id": "rusty_sword",
+              "label": "Have Tindel Marchant identify a rusty sword",
+              "status": "missing",
+              "observed": false,
+              "required": true,
+              "note": "",
+              "category": "milestone",
+              "children": []
+            },
+            {
+              "id": "wilderness_lever",
+              "label": "Use the Ardougne lever to enter the Wilderness",
+              "status": "missing",
+              "observed": false,
+              "required": true,
+              "note": "Enters the Wilderness. Bank valuables and understand PvP risk first.",
+              "category": "milestone",
+              "children": []
+            },
+            {
+              "id": "hunter_shop",
+              "label": "View Aleck's Hunter Emporium in Yanille",
+              "status": "missing",
+              "observed": false,
+              "required": true,
+              "note": "",
+              "category": "milestone",
+              "children": []
+            },
+            {
+              "id": "pet_check",
+              "label": "Check insured pets with Probita",
+              "status": "missing",
+              "observed": false,
+              "required": true,
+              "note": "",
+              "category": "milestone",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "claim_cloak",
+          "label": "Claim Ardougne cloak 1 from Two-pints",
+          "status": "missing",
+          "observed": false,
+          "required": true,
+          "note": "Diary tasks done and reward claimed are separate observations.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "rank": 14,
+        "recommended": false,
+        "availability": "members_required",
+        "reasons": [],
+        "considerations": [
+          "Requires membership. Kept visible as a future option."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "membership",
+          "title": "Keep this as a future members goal",
+          "reason": "These activities require membership. You can keep the goal saved and choose a free-to-play focus for now.",
+          "kind": "activity"
+        }
+      ]
+    },
+    {
+      "goal": {
+        "id": "plague_city",
+        "title": "Complete Plague City",
+        "summary": "Begin the Ardougne quest story and build towards diary prerequisites.",
+        "members_only": true,
+        "benefits": [
+          "Earn 1 quest point and 2,425 Mining XP.",
+          "Unlock the next quest in the story, Biohazard."
+        ],
+        "investment": "Short members quest with gathering, dialogue and travel in Ardougne. Gathering supplies yourself adds effort.",
+        "preparation": [
+          "Speak to Edmond in East Ardougne. Review the quest journal and supply list before travelling.",
+          "This quest contributes towards Ardougne cloak 1. Its teleport reward does not remove the Magic level or rune costs of casting Ardougne Teleport."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Plague_City"
+        ],
+        "reviewed": "2026-10-24"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "membership",
+          "label": "Membership for these activities",
+          "status": "missing",
+          "observed": false,
+          "required": true,
+          "note": "",
+          "category": "eligibility",
+          "children": []
+        },
+        {
+          "id": "plague_city",
+          "label": "Complete Plague City",
+          "status": "missing",
+          "observed": "not_started",
+          "required": "completed",
+          "note": "Speak to Edmond in East Ardougne. Review the quest journal and supply list before travelling.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "rank": 15,
+        "recommended": false,
+        "availability": "members_required",
+        "reasons": [],
+        "considerations": [
+          "Requires membership. Kept visible as a future option."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "membership",
+          "title": "Keep this as a future members goal",
+          "reason": "These activities require membership. Keep this saved and choose a free-to-play focus for now.",
+          "kind": "activity"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Fictional demo account; no live account observations.",
+    "Milestone counts describe tracked checks, not time or effort.",
+    "Missing observations stay unknown. Preparation is not automatically verified."
+  ],
+  "recommended_goal_id": null,
+  "recommendation_summary": "A mix to explore. Answer the optional questions for a personalised suggestion."
+}

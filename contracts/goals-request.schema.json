@@ -1,0 +1,681 @@
+{
+  "$defs": {
+    "CompletionEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "goal_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[a-z0-9_]+$",
+          "title": "Goal Id",
+          "type": "string"
+        },
+        "completed_at": {
+          "maximum": 253402300799,
+          "minimum": 0,
+          "title": "Completed At",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "goal_id",
+        "completed_at"
+      ],
+      "title": "CompletionEvent",
+      "type": "object"
+    },
+    "GoalAccount": {
+      "additionalProperties": false,
+      "properties": {
+        "skill_xp": {
+          "additionalProperties": {
+            "maximum": 200000000,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "propertyNames": {
+            "enum": [
+              "attack",
+              "defence",
+              "strength",
+              "hitpoints",
+              "ranged",
+              "prayer",
+              "magic",
+              "cooking",
+              "woodcutting",
+              "fletching",
+              "fishing",
+              "firemaking",
+              "crafting",
+              "smithing",
+              "mining",
+              "herblore",
+              "agility",
+              "thieving",
+              "slayer",
+              "farming",
+              "runecraft",
+              "hunter",
+              "construction",
+              "sailing"
+            ]
+          },
+          "title": "Skill Xp",
+          "type": "object"
+        },
+        "skill_levels": {
+          "$ref": "#/$defs/GoalSkills"
+        },
+        "quest_progress": {
+          "$ref": "#/$defs/GoalQuests"
+        },
+        "members": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Members"
+        },
+        "quest_points": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Quest Points"
+        },
+        "ardougne_easy_tasks": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "propertyNames": {
+            "enum": [
+              "essence_mine",
+              "cake",
+              "silk",
+              "altar",
+              "trawler",
+              "training_camp",
+              "rusty_sword",
+              "wilderness_lever",
+              "hunter_shop",
+              "pet_check"
+            ]
+          },
+          "title": "Ardougne Easy Tasks",
+          "type": "object"
+        },
+        "milestones": {
+          "$ref": "#/$defs/GoalFlags"
+        }
+      },
+      "title": "GoalAccount",
+      "type": "object"
+    },
+    "GoalFlags": {
+      "additionalProperties": false,
+      "properties": {
+        "rune_platebody_equipped": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rune Platebody Equipped"
+        },
+        "ardougne_cloak_1_claimed": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ardougne Cloak 1 Claimed"
+        }
+      },
+      "title": "GoalFlags",
+      "type": "object"
+    },
+    "GoalQuests": {
+      "additionalProperties": false,
+      "properties": {
+        "dragon_slayer_i": {
+          "default": "unknown",
+          "enum": [
+            "not_started",
+            "in_progress",
+            "completed",
+            "unknown"
+          ],
+          "title": "Dragon Slayer I",
+          "type": "string"
+        },
+        "prince_ali_rescue": {
+          "default": "unknown",
+          "enum": [
+            "not_started",
+            "in_progress",
+            "completed",
+            "unknown"
+          ],
+          "title": "Prince Ali Rescue",
+          "type": "string"
+        },
+        "plague_city": {
+          "default": "unknown",
+          "enum": [
+            "not_started",
+            "in_progress",
+            "completed",
+            "unknown"
+          ],
+          "title": "Plague City",
+          "type": "string"
+        },
+        "biohazard": {
+          "default": "unknown",
+          "enum": [
+            "not_started",
+            "in_progress",
+            "completed",
+            "unknown"
+          ],
+          "title": "Biohazard",
+          "type": "string"
+        },
+        "rune_mysteries": {
+          "default": "unknown",
+          "enum": [
+            "not_started",
+            "in_progress",
+            "completed",
+            "unknown"
+          ],
+          "title": "Rune Mysteries",
+          "type": "string"
+        },
+        "cooks_assistant": {
+          "default": "unknown",
+          "enum": [
+            "not_started",
+            "in_progress",
+            "completed",
+            "unknown"
+          ],
+          "title": "Cooks Assistant",
+          "type": "string"
+        },
+        "the_restless_ghost": {
+          "default": "unknown",
+          "enum": [
+            "not_started",
+            "in_progress",
+            "completed",
+            "unknown"
+          ],
+          "title": "The Restless Ghost",
+          "type": "string"
+        }
+      },
+      "title": "GoalQuests",
+      "type": "object"
+    },
+    "GoalSkills": {
+      "additionalProperties": false,
+      "properties": {
+        "attack": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Attack"
+        },
+        "defence": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Defence"
+        },
+        "strength": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Strength"
+        },
+        "hitpoints": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Hitpoints"
+        },
+        "ranged": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ranged"
+        },
+        "prayer": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Prayer"
+        },
+        "magic": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Magic"
+        },
+        "cooking": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cooking"
+        },
+        "woodcutting": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Woodcutting"
+        },
+        "fletching": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fletching"
+        },
+        "fishing": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fishing"
+        },
+        "firemaking": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Firemaking"
+        },
+        "crafting": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Crafting"
+        },
+        "smithing": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Smithing"
+        },
+        "mining": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Mining"
+        },
+        "herblore": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Herblore"
+        },
+        "agility": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Agility"
+        },
+        "thieving": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Thieving"
+        },
+        "slayer": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Slayer"
+        },
+        "farming": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Farming"
+        },
+        "runecraft": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Runecraft"
+        },
+        "hunter": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Hunter"
+        },
+        "construction": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Construction"
+        },
+        "sailing": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sailing"
+        }
+      },
+      "title": "GoalSkills",
+      "type": "object"
+    },
+    "Preferences": {
+      "additionalProperties": false,
+      "properties": {
+        "interests": {
+          "items": {
+            "enum": [
+              "combat",
+              "quests",
+              "exploration",
+              "utility"
+            ],
+            "type": "string"
+          },
+          "maxItems": 4,
+          "title": "Interests",
+          "type": "array"
+        },
+        "commitment": {
+          "default": "any",
+          "enum": [
+            "any",
+            "short",
+            "few_sessions",
+            "long"
+          ],
+          "title": "Commitment",
+          "type": "string"
+        }
+      },
+      "title": "Preferences",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "protocol_version": {
+      "title": "Protocol Version",
+      "type": "integer"
+    },
+    "session_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_-]+$",
+      "title": "Session Id",
+      "type": "string"
+    },
+    "revision": {
+      "maximum": 2147483647,
+      "minimum": 0,
+      "title": "Revision",
+      "type": "integer"
+    },
+    "goal_id": {
+      "const": "all",
+      "default": "all",
+      "title": "Goal Id",
+      "type": "string"
+    },
+    "account": {
+      "$ref": "#/$defs/GoalAccount"
+    },
+    "preferences": {
+      "$ref": "#/$defs/Preferences"
+    },
+    "source": {
+      "default": "demo",
+      "enum": [
+        "demo",
+        "live"
+      ],
+      "title": "Source",
+      "type": "string"
+    },
+    "completion_history": {
+      "items": {
+        "$ref": "#/$defs/CompletionEvent"
+      },
+      "maxItems": 50,
+      "title": "Completion History",
+      "type": "array"
+    }
+  },
+  "required": [
+    "protocol_version",
+    "session_id",
+    "revision",
+    "account"
+  ],
+  "title": "GoalsRequest",
+  "type": "object"
+}

@@ -1,0 +1,94 @@
+{
+  "$defs": {
+    "Account": {
+      "additionalProperties": false,
+      "properties": {
+        "skill_levels": {
+          "$ref": "#/$defs/SkillLevels"
+        },
+        "quest_progress": {
+          "$ref": "#/$defs/QuestProgress"
+        }
+      },
+      "title": "Account",
+      "type": "object"
+    },
+    "QuestProgress": {
+      "additionalProperties": false,
+      "properties": {
+        "dragon_slayer_i": {
+          "default": "unknown",
+          "enum": [
+            "not_started",
+            "in_progress",
+            "completed",
+            "unknown"
+          ],
+          "title": "Dragon Slayer I",
+          "type": "string"
+        }
+      },
+      "title": "QuestProgress",
+      "type": "object"
+    },
+    "SkillLevels": {
+      "additionalProperties": false,
+      "properties": {
+        "defence": {
+          "anyOf": [
+            {
+              "maximum": 99,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Defence"
+        }
+      },
+      "title": "SkillLevels",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "protocol_version": {
+      "title": "Protocol Version",
+      "type": "integer"
+    },
+    "session_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_-]+$",
+      "title": "Session Id",
+      "type": "string"
+    },
+    "revision": {
+      "maximum": 2147483647,
+      "minimum": 0,
+      "title": "Revision",
+      "type": "integer"
+    },
+    "goal_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "title": "Goal Id",
+      "type": "string"
+    },
+    "account": {
+      "$ref": "#/$defs/Account"
+    }
+  },
+  "required": [
+    "protocol_version",
+    "session_id",
+    "revision",
+    "goal_id",
+    "account"
+  ],
+  "title": "EvaluationRequest",
+  "type": "object"
+}

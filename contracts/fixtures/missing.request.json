@@ -1,0 +1,14 @@
+{
+  "protocol_version": 1,
+  "session_id": "demo-session",
+  "revision": 1,
+  "goal_id": "wear_rune_platebody",
+  "account": {
+    "skill_levels": {
+      "defence": 32
+    },
+    "quest_progress": {
+      "dragon_slayer_i": "not_started"
+    }
+  }
+}

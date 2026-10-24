@@ -1,0 +1,93 @@
+{
+  "$defs": {
+    "GoalDescription": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "summary": {
+          "title": "Summary",
+          "type": "string"
+        },
+        "members_only": {
+          "title": "Members Only",
+          "type": "boolean"
+        },
+        "benefits": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Benefits",
+          "type": "array"
+        },
+        "investment": {
+          "title": "Investment",
+          "type": "string"
+        },
+        "preparation": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Preparation",
+          "type": "array"
+        },
+        "sources": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Sources",
+          "type": "array"
+        },
+        "reviewed": {
+          "title": "Reviewed",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "summary",
+        "members_only",
+        "benefits",
+        "investment",
+        "preparation",
+        "sources",
+        "reviewed"
+      ],
+      "title": "GoalDescription",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "protocol_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Protocol Version",
+      "type": "integer"
+    },
+    "dataset_version": {
+      "title": "Dataset Version",
+      "type": "string"
+    },
+    "goals": {
+      "items": {
+        "$ref": "#/$defs/GoalDescription"
+      },
+      "title": "Goals",
+      "type": "array"
+    }
+  },
+  "required": [
+    "dataset_version",
+    "goals"
+  ],
+  "title": "CatalogResponse",
+  "type": "object"
+}
