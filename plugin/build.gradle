@@ -25,6 +25,12 @@ tasks.withType(JavaCompile).configureEach {
     options.release.set(11)
 }
 test { systemProperty 'java.awt.headless', 'true' }
+tasks.register('portfolioScreenshots', JavaExec) {
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'dev.beginnercompanion.PortfolioScreenshots'
+    systemProperty 'java.awt.headless', 'true'
+    args file('../docs/images').absolutePath
+}
 tasks.register('run', JavaExec) {
     classpath = sourceSets.test.runtimeClasspath
     mainClass = 'dev.beginnercompanion.CompanionLauncher'

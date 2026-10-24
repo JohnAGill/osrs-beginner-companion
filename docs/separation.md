@@ -15,7 +15,7 @@ quest_planner namespace. All imports, service launch commands, package-data decl
 tests and end-to-end launch references have been updated. Java sources/build paths are
 relative only to this project. No source file is loaded from the parent workspace.
 
-This folder is its own Git repository, published privately as
+This folder is its own Git repository, published as
 JohnAGill/osrs-beginner-companion. It can be moved out of the parent workspace independently.
 The parent .gitignore excludes it to prevent accidentally committing a nested project.
 Work on the companion here from now on. The original tree remains a preserved prototype;

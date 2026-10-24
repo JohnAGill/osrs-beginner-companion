@@ -6,8 +6,13 @@ build-backend = "setuptools.build_meta"
 name = "beginner-companion"
 version = "0.1.0"
 description = "Explainable beginner OSRS goal recommendations with a RuneLite sidebar"
+readme = "README.md"
+license = {text = "MIT (original code); CC BY-NC-SA 3.0 (catalogue and generated response fixtures); see THIRD_PARTY_NOTICES.md"}
 requires-python = ">=3.10"
 dependencies = []
+
+[project.urls]
+Repository = "https://github.com/JohnAGill/osrs-beginner-companion"
 
 [project.optional-dependencies]
 api = ["fastapi==0.162.0", "pydantic==2.14.1", "uvicorn==0.54.0"]
