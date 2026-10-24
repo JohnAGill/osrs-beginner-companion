@@ -85,7 +85,17 @@
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -300,7 +310,17 @@
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -352,7 +372,17 @@
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -402,7 +432,17 @@
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -452,7 +492,17 @@
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -502,7 +552,17 @@
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -562,7 +622,17 @@
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -612,7 +682,17 @@
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -662,7 +742,17 @@
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -712,7 +802,17 @@
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -762,7 +862,17 @@
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -812,7 +922,17 @@
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -862,7 +982,17 @@
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -912,7 +1042,17 @@
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -962,7 +1102,17 @@
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     }
   ],
   "notes": [

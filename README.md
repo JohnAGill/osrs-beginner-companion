@@ -33,6 +33,8 @@ See [screenshot generation](docs/screenshots.md).
   or summary and filter by free-to-play/member access.
 - **Understand:** inspect benefits, investment guidance, requirements and source links.
   Missing observations stay unknown; milestone counts are not time estimates.
+  “Work remaining” adapts to current levels/XP, quest states, diary observations and final
+  unlock steps. It separates known work from unverified progress without predicting hours.
 - **Focus:** save goals, pin one, and select an optional next step as your current task.
   The movable overlay keeps it visible while the sidebar is closed.
 - **Adapt:** suggestions combine interest/commitment answers with curated follow-ups to
@@ -77,6 +79,13 @@ shared fixtures keep the Java/Python boundary explicit. It uses no machine learn
 
 Recent follow-ups get +3 within seven days and +1 up to thirty days, then no bonus.
 Dates represent when completion was observed, not necessarily when it happened in game.
+
+Commitment matching uses remaining work: confirmed final steps can fit a short activity,
+while unverified progress receives no commitment-fit bonus or penalty. Pure training uses
+consistent remaining XP to reduce the band (10% or less of target XP: short; 50% or less:
+few sessions). These are qualitative rules for this early-game catalogue, not measured
+XP/hour or session forecasts. Quest progress is never treated as a known completion fraction.
+The full investment from a new account remains available separately in goal details.
 Unconfirmed, unknown-ID and future-dated events do not influence ranking.
 
 ## Run locally
@@ -121,7 +130,7 @@ For a console-only example of the Java/Python boundary:
 .\.venv\Scripts\python scripts/verify_bridge.py
 ```
 
-Current coverage: **34 Python tests and 20 Java tests**, plus a real Java → HTTP → Python
+Current coverage: **45 Python tests and 20 Java tests**, plus a real Java → HTTP → Python
 → Java verification script. Tests cover threshold boundaries, unknown progress, matching,
 recency, persistence, character isolation, stale responses, task selection, overlay guards
 and scroll preservation. The bridge script starts/stops its own loopback service.

@@ -134,6 +134,15 @@ class NextStep(WireModel):
     kind: Literal['activity', 'check']
 
 
+class RemainingInvestment(WireModel):
+    commitment_band: Literal['short', 'few_sessions', 'long', 'unknown', 'completed', 'blocked']
+    commitment_reason: str
+    state: Literal['completed', 'access_blocked', 'unknown', 'final_step', 'prerequisites', 'training', 'quest', 'diary']
+    summary: str
+    details: list[str]
+    caveat: str
+
+
 class GoalResult(WireModel):
     goal: GoalDescription
     status: Literal['completed', 'incomplete', 'unknown']
@@ -141,6 +150,7 @@ class GoalResult(WireModel):
     requirements: list[GoalRequirement]
     recommendation: Recommendation
     next_steps: list[NextStep]
+    remaining_investment: RemainingInvestment
 
 
 class GoalsResponse(WireModel):

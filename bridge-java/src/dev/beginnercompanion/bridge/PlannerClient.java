@@ -50,6 +50,12 @@ public final class PlannerClient {
         public GoalRequirement[] requirements;
         public Recommendation recommendation;
         public NextStep[] next_steps;
+        public RemainingInvestment remaining_investment;
+    }
+
+    public static final class RemainingInvestment {
+        public String state, summary, caveat, commitment_band, commitment_reason;
+        public String[] details;
     }
 
     public static final class NextStep {
@@ -90,6 +96,13 @@ public final class PlannerClient {
                     || row.goal.title == null || row.goal.summary == null || row.goal.investment == null
                     || row.goal.benefits == null || row.goal.preparation == null || row.goal.sources == null
                     || row.progress == null || row.requirements == null || row.recommendation == null || row.next_steps == null
+                    || row.remaining_investment == null || row.remaining_investment.summary == null
+                    || row.remaining_investment.caveat == null || row.remaining_investment.details == null
+                    || row.remaining_investment.commitment_reason == null
+                    || !java.util.Arrays.asList("short", "few_sessions", "long", "unknown", "completed", "blocked")
+                        .contains(row.remaining_investment.commitment_band)
+                    || !java.util.Arrays.asList("completed", "access_blocked", "unknown", "final_step", "prerequisites", "training", "quest", "diary")
+                        .contains(row.remaining_investment.state)
                     || row.recommendation.reasons == null || row.recommendation.considerations == null
                     || !java.util.Arrays.asList("available", "members_required", "membership_unknown", "completed")
                         .contains(row.recommendation.availability)
@@ -97,6 +110,9 @@ public final class PlannerClient {
                     throw new IllegalStateException("Invalid goal entry from Python.");
                 }
                 for (GoalRequirement requirement : row.requirements) validateRequirement(requirement);
+                for (String detail : row.remaining_investment.details) {
+                    if (detail == null) throw new IllegalStateException("Invalid remaining investment detail from Python.");
+                }
                 for (NextStep step : row.next_steps) {
                     if (step == null || step.id == null || step.title == null || step.reason == null
                         || !java.util.Arrays.asList("activity", "check").contains(step.kind)) {

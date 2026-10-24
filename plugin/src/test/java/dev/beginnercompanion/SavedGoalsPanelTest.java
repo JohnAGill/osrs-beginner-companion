@@ -64,6 +64,7 @@ public class SavedGoalsPanelTest {
             connected(ref.get());
             edt(() -> {
                 assertTrue(ref.get().selectionText().contains("Suggested next steps"));
+                assertTrue(ref.get().selectionText().contains("Work remaining: Training and quest work remain"));
                 assertTrue(ref.get().selectionText().contains("Work towards 40 Defence"));
                 assertTrue(ref.get().selectionText().contains("Choose quests towards 32 quest points"));
                 ref.get().showFocus();

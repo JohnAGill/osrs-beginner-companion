@@ -1,6 +1,7 @@
 """Load and evaluate the small curated catalogue without HTTP or game dependencies."""
 import json
 from .next_steps import suggest_steps
+from .investment import remaining_investment, commitment_fit
 from importlib.resources import files
 
 
@@ -79,6 +80,9 @@ def evaluate_goals(catalog, account):
                 'total': len(milestones),
             },
         ))
-    for result in results:
+    for goal, result in zip(catalog['goals'], results):
         result['next_steps'] = suggest_steps(result)
+        result['remaining_investment'] = remaining_investment(goal, result, account)
+        band, reason = commitment_fit(goal, result, account)
+        result['remaining_investment'].update(commitment_band=band, commitment_reason=reason)
     return results

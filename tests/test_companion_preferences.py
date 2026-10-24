@@ -67,7 +67,8 @@ class PreferenceMatchingTests(unittest.TestCase):
         evaluated = evaluate_goals(self.catalog, account)
         before = copy.deepcopy(evaluated)
         first = recommend(self.catalog, evaluated, dict(interests=['combat'], commitment='short'), account)
-        self.assertIn('longer', ' '.join(first['goals'][0]['recommendation']['considerations']))
+        rune = next(row for row in first['goals'] if row['goal']['id'] == 'wear_rune_platebody')
+        self.assertIn('larger commitment', ' '.join(rune['recommendation']['considerations']))
         self.assertEqual(evaluated, before)
         self.assertEqual(first, recommend(self.catalog, evaluated, dict(interests=['combat'], commitment='short'), account))
         # Available goals already done; only a membership-blocked match remains.

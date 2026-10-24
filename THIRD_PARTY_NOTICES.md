@@ -12,6 +12,8 @@ Goal descriptions and requirements were curated and paraphrased from the **OSRS 
 contributors**. Their source pages are linked in each goal's `sources` field in
 [goals.json](beginner_companion/domain/goals.json), and displayed in goal details.
 Page histories identify the contributors: append `?action=history` to a source page URL.
+XP thresholds used by remaining-investment guidance follow the standard formula described
+by the OSRS Wiki contributors on the [Experience page](https://oldschool.runescape.wiki/w/Experience).
 The `reviewed` field records when the project reviewed the content; it is not a pinned
 revision or a claim that future game updates have been incorporated.
 

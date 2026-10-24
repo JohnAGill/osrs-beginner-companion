@@ -63,6 +63,9 @@ public class CompanionPanelTest {
                 assertTrue(ref.get().visibleText().contains("No matching goals"));
                 ref.get().searchGoals("", 0);
                 ref.get().selectGoal("prince_ali_rescue");
+                assertTrue(ref.get().visibleText().contains("Work remaining: Quest work remains"));
+                assertTrue(click(ref.get(), "▸ Work remaining details"));
+                assertTrue(ref.get().visibleText().contains("not started; quest preparation and completion remain"));
                 assertFalse(ref.get().visibleText().contains("10-coin fee"));
                 assertTrue(click(ref.get(), "▸ Benefits and investment"));
                 assertTrue(ref.get().visibleText().contains("10-coin fee"));

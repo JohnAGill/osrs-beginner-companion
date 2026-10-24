@@ -96,7 +96,20 @@
           "reason": "Recorded quest points: 24/32. Pick quests you enjoy; no fixed quest order is needed.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "long",
+        "commitment_reason": "Multiple kinds of work still remain, including tracked prerequisites. The goal has not reduced to a final activity.",
+        "state": "prerequisites",
+        "summary": "Training and quest work remain",
+        "details": [
+          "Defence: base level 32 toward 40. Exact XP remaining is not available from level alone.",
+          "Complete Dragon Slayer I: not started; quest preparation and completion remain.",
+          "Quest points: 24 / 32 for quest entry. Choose quests in any order.",
+          "Equip a rune platebody: recorded unfinished."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -322,7 +335,19 @@
           "reason": "This diary task is recorded as unfinished. Review supplies and travel before attempting it.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "few_sessions",
+        "commitment_reason": "Quest completion still remains. Being in progress does not establish how many stages are left.",
+        "state": "quest",
+        "summary": "Quest underway; stages remain",
+        "details": [
+          "Complete Biohazard: in progress; remaining quest stages are not tracked.",
+          "Diary tasks: 6 recorded unfinished; 0 unverified. Unverified tasks may already be done.",
+          "Claim Ardougne cloak 1 from Two-pints: recorded unfinished."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -377,7 +402,17 @@
           "reason": "Speak to Father Aereck in Lumbridge church. No prior quests or minimum skill levels are required.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "short",
+        "commitment_reason": "Quest completion still remains. Being in progress does not establish how many stages are left.",
+        "state": "quest",
+        "summary": "Quest underway; stages remain",
+        "details": [
+          "Complete The Restless Ghost: in progress; remaining quest stages are not tracked."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -432,7 +467,17 @@
           "reason": "Recorded level: 25/40. Train Attack through manageable combat or suitable quest rewards; there is no mandatory training spot.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Attack: base level 25 toward 40. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -487,7 +532,17 @@
           "reason": "Recorded level: 25/37. Continue Magic training using a method that fits your supplies and budget.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Magic: base level 25 toward 37. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -542,7 +597,17 @@
           "reason": "Recorded level: 15/43. Choose Prayer training that suits your budget and account restrictions. Prayer XP from quests can contribute too.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Prayer: base level 15 toward 43. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -597,7 +662,17 @@
           "reason": "Recorded level: 20/30. Use fishing methods available at your current level. Fly fishing becomes an option at 20 Fishing.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Fishing: base level 20 toward 30. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -652,7 +727,17 @@
           "reason": "Recorded level: 20/25. Cook food available at your current level. You can gather raw food yourself or buy it.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Cooking: base level 20 toward 25. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -707,7 +792,17 @@
           "reason": "Recorded level: 15/30. Bring a pickaxe and mine resources available at your current level. Choose between banking resources and focusing on training.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Mining: base level 15 toward 30. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -759,7 +854,17 @@
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -809,7 +914,17 @@
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -859,7 +974,17 @@
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -919,7 +1044,17 @@
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -969,7 +1104,17 @@
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -1019,7 +1164,17 @@
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     }
   ],
   "notes": [

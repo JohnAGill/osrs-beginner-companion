@@ -51,10 +51,10 @@
         "availability": "available",
         "reasons": [
           "Matches your interest in quests and stories and useful unlocks.",
-          "Its overall journey fits your preference for a short activity."
+          "Its remaining work fits your preference for a short activity. Quest completion still remains. Being in progress does not establish how many stages are left."
         ],
         "considerations": [
-          "Commitment describes the full journey from a new account; your remaining effort may differ."
+          "Remaining commitment is qualitative, not a promised number of sessions or hours."
         ]
       },
       "next_steps": [
@@ -64,7 +64,17 @@
           "reason": "No prior quests or minimum skill levels are required. Speak to Hassan in Al Kharid palace; review supplies and guard preparation first.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "short",
+        "commitment_reason": "Quest completion still remains. Being in progress does not establish how many stages are left.",
+        "state": "quest",
+        "summary": "Quest work remains",
+        "details": [
+          "Complete Prince Ali Rescue: not started; quest preparation and completion remain."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -111,10 +121,10 @@
         "availability": "available",
         "reasons": [
           "Matches your interest in quests and stories and useful unlocks.",
-          "Its overall journey fits your preference for a short activity."
+          "Its remaining work fits your preference for a short activity. Quest completion still remains. Being in progress does not establish how many stages are left."
         ],
         "considerations": [
-          "Commitment describes the full journey from a new account; your remaining effort may differ."
+          "Remaining commitment is qualitative, not a promised number of sessions or hours."
         ]
       },
       "next_steps": [
@@ -124,7 +134,17 @@
           "reason": "Speak to the Cook in Lumbridge castle kitchen. No prior quests or skill levels are required.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "short",
+        "commitment_reason": "Quest completion still remains. Being in progress does not establish how many stages are left.",
+        "state": "quest",
+        "summary": "Quest work remains",
+        "details": [
+          "Complete Cook's Assistant: not started; quest preparation and completion remain."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -171,10 +191,10 @@
         "availability": "available",
         "reasons": [
           "Matches your interest in quests and stories.",
-          "Its overall journey fits your preference for a short activity."
+          "Its remaining work fits your preference for a short activity. Quest completion still remains. Being in progress does not establish how many stages are left."
         ],
         "considerations": [
-          "Commitment describes the full journey from a new account; your remaining effort may differ."
+          "Remaining commitment is qualitative, not a promised number of sessions or hours."
         ]
       },
       "next_steps": [
@@ -184,7 +204,17 @@
           "reason": "Speak to Father Aereck in Lumbridge church. No prior quests or minimum skill levels are required.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "short",
+        "commitment_reason": "Quest completion still remains. Being in progress does not establish how many stages are left.",
+        "state": "quest",
+        "summary": "Quest work remains",
+        "details": [
+          "Complete The Restless Ghost: not started; quest preparation and completion remain."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -231,10 +261,10 @@
         "availability": "available",
         "reasons": [
           "Matches your interest in quests and stories.",
-          "Its overall journey fits your preference for a short activity."
+          "Its remaining work fits your preference for a short activity. Quest completion still remains. Being in progress does not establish how many stages are left."
         ],
         "considerations": [
-          "Commitment describes the full journey from a new account; your remaining effort may differ."
+          "Remaining commitment is qualitative, not a promised number of sessions or hours."
         ]
       },
       "next_steps": [
@@ -244,7 +274,17 @@
           "reason": "Speak to Duke Horacio upstairs in Lumbridge castle. No prior quests or skill levels are required.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "short",
+        "commitment_reason": "Quest completion still remains. Being in progress does not establish how many stages are left.",
+        "state": "quest",
+        "summary": "Quest work remains",
+        "details": [
+          "Complete Rune Mysteries: not started; quest preparation and completion remain."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -293,8 +333,7 @@
           "Matches your interest in useful unlocks."
         ],
         "considerations": [
-          "Its overall journey is longer than the commitment you selected.",
-          "Commitment describes the full journey from a new account; your remaining effort may differ."
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
         ]
       },
       "next_steps": [
@@ -304,7 +343,17 @@
           "reason": "Recorded level: 1/25. Choose a Magic training method you can afford and check the spell requirements before buying supplies.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Magic: base level 1 toward 25. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -353,8 +402,7 @@
           "Matches your interest in useful unlocks."
         ],
         "considerations": [
-          "Its overall journey is longer than the commitment you selected.",
-          "Commitment describes the full journey from a new account; your remaining effort may differ."
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
         ]
       },
       "next_steps": [
@@ -364,7 +412,86 @@
           "reason": "Recorded level: 1/37. Continue Magic training using a method that fits your supplies and budget.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Magic: base level 1 toward 37. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
+    },
+    {
+      "goal": {
+        "id": "prayer_43",
+        "title": "Reach 43 Prayer for Protect from Melee",
+        "summary": "A major early combat utility milestone.",
+        "members_only": false,
+        "benefits": [
+          "Unlock the Protect from Melee prayer."
+        ],
+        "investment": "A longer early-account project. Prayer training methods and supply costs vary substantially; no fixed time or price is assumed.",
+        "preparation": [
+          "Choose Prayer training that suits your budget and account restrictions. Prayer XP from quests can contribute too.",
+          "Protection prayers consume Prayer points. Protect from Melee does not guarantee safety against every enemy or attack.",
+          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Protect_from_Melee"
+        ],
+        "reviewed": "2026-10-24"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "prayer_43",
+          "label": "Reach 43 Prayer",
+          "status": "missing",
+          "observed": 1,
+          "required": 43,
+          "note": "Choose Prayer training that suits your budget and account restrictions. Prayer XP from quests can contribute too.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "rank": 7,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [
+          "Matches your interest in useful unlocks."
+        ],
+        "considerations": [
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "prayer_43",
+          "title": "Reach 43 Prayer",
+          "reason": "Recorded level: 1/43. Choose Prayer training that suits your budget and account restrictions. Prayer XP from quests can contribute too.",
+          "kind": "activity"
+        }
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Prayer: base level 1 toward 43. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -406,15 +533,14 @@
         }
       ],
       "recommendation": {
-        "rank": 7,
+        "rank": 8,
         "recommended": false,
         "availability": "available",
         "reasons": [
           "Matches your interest in useful unlocks."
         ],
         "considerations": [
-          "Its overall journey is longer than the commitment you selected.",
-          "Commitment describes the full journey from a new account; your remaining effort may differ."
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
         ]
       },
       "next_steps": [
@@ -424,7 +550,17 @@
           "reason": "Recorded level: 1/30. Use fishing methods available at your current level. Fly fishing becomes an option at 20 Fishing.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Fishing: base level 1 toward 30. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -466,15 +602,14 @@
         }
       ],
       "recommendation": {
-        "rank": 8,
+        "rank": 9,
         "recommended": false,
         "availability": "available",
         "reasons": [
           "Matches your interest in useful unlocks."
         ],
         "considerations": [
-          "Its overall journey is longer than the commitment you selected.",
-          "Commitment describes the full journey from a new account; your remaining effort may differ."
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
         ]
       },
       "next_steps": [
@@ -484,7 +619,17 @@
           "reason": "Recorded level: 1/25. Cook food available at your current level. You can gather raw food yourself or buy it.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Cooking: base level 1 toward 25. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -526,15 +671,14 @@
         }
       ],
       "recommendation": {
-        "rank": 9,
+        "rank": 10,
         "recommended": false,
         "availability": "available",
         "reasons": [
           "Matches your interest in useful unlocks."
         ],
         "considerations": [
-          "Its overall journey is longer than the commitment you selected.",
-          "Commitment describes the full journey from a new account; your remaining effort may differ."
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
         ]
       },
       "next_steps": [
@@ -544,7 +688,17 @@
           "reason": "Recorded level: 1/30. Bring a pickaxe and mine resources available at your current level. Choose between banking resources and focusing on training.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Mining: base level 1 toward 30. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -619,15 +773,15 @@
         }
       ],
       "recommendation": {
-        "rank": 10,
+        "rank": 11,
         "recommended": false,
         "availability": "available",
         "reasons": [
           "Matches your interest in quests and stories."
         ],
         "considerations": [
-          "Its overall journey is longer than the commitment you selected.",
-          "Commitment describes the full journey from a new account; your remaining effort may differ."
+          "Its remaining work is a larger commitment than you selected. Multiple kinds of work still remain, including tracked prerequisites. The goal has not reduced to a final activity.",
+          "Remaining commitment is qualitative, not a promised number of sessions or hours."
         ]
       },
       "next_steps": [
@@ -643,67 +797,20 @@
           "reason": "Recorded quest points: 0/32. Pick quests you enjoy; no fixed quest order is needed.",
           "kind": "activity"
         }
-      ]
-    },
-    {
-      "goal": {
-        "id": "prayer_43",
-        "title": "Reach 43 Prayer for Protect from Melee",
-        "summary": "A major early combat utility milestone.",
-        "members_only": false,
-        "benefits": [
-          "Unlock the Protect from Melee prayer."
-        ],
-        "investment": "A longer early-account project. Prayer training methods and supply costs vary substantially; no fixed time or price is assumed.",
-        "preparation": [
-          "Choose Prayer training that suits your budget and account restrictions. Prayer XP from quests can contribute too.",
-          "Protection prayers consume Prayer points. Protect from Melee does not guarantee safety against every enemy or attack.",
-          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
-        ],
-        "sources": [
-          "https://oldschool.runescape.wiki/w/Protect_from_Melee"
-        ],
-        "reviewed": "2026-10-24"
-      },
-      "status": "incomplete",
-      "progress": {
-        "satisfied": 0,
-        "missing": 1,
-        "unknown": 0,
-        "total": 1
-      },
-      "requirements": [
-        {
-          "id": "prayer_43",
-          "label": "Reach 43 Prayer",
-          "status": "missing",
-          "observed": 1,
-          "required": 43,
-          "note": "Choose Prayer training that suits your budget and account restrictions. Prayer XP from quests can contribute too.",
-          "category": "milestone",
-          "children": []
-        }
       ],
-      "recommendation": {
-        "rank": 11,
-        "recommended": false,
-        "availability": "available",
-        "reasons": [
-          "Matches your interest in useful unlocks."
+      "remaining_investment": {
+        "commitment_band": "long",
+        "commitment_reason": "Multiple kinds of work still remain, including tracked prerequisites. The goal has not reduced to a final activity.",
+        "state": "prerequisites",
+        "summary": "Training and quest work remain",
+        "details": [
+          "Defence: base level 1 toward 40. Exact XP remaining is not available from level alone.",
+          "Complete Dragon Slayer I: not started; quest preparation and completion remain.",
+          "Quest points: 0 / 32 for quest entry. Choose quests in any order.",
+          "Equip a rune platebody: recorded unfinished."
         ],
-        "considerations": [
-          "Its overall journey is longer than the commitment you selected.",
-          "Commitment describes the full journey from a new account; your remaining effort may differ."
-        ]
-      },
-      "next_steps": [
-        {
-          "id": "prayer_43",
-          "title": "Reach 43 Prayer",
-          "reason": "Recorded level: 1/43. Choose Prayer training that suits your budget and account restrictions. Prayer XP from quests can contribute too.",
-          "kind": "activity"
-        }
-      ]
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -753,8 +860,7 @@
         ],
         "considerations": [
           "Its main activities do not directly match your selected interests.",
-          "Its overall journey is longer than the commitment you selected.",
-          "Commitment describes the full journey from a new account; your remaining effort may differ."
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
         ]
       },
       "next_steps": [
@@ -764,7 +870,17 @@
           "reason": "Recorded level: 1/20. Choose manageable fights and an attack style that awards Attack XP. Check the combat style panel before training.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Attack: base level 1 toward 20. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -814,8 +930,7 @@
         ],
         "considerations": [
           "Its main activities do not directly match your selected interests.",
-          "Its overall journey is longer than the commitment you selected.",
-          "Commitment describes the full journey from a new account; your remaining effort may differ."
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
         ]
       },
       "next_steps": [
@@ -825,78 +940,17 @@
           "reason": "Recorded level: 1/40. Train Attack through manageable combat or suitable quest rewards; there is no mandatory training spot.",
           "kind": "activity"
         }
-      ]
-    },
-    {
-      "goal": {
-        "id": "plague_city",
-        "title": "Complete Plague City",
-        "summary": "Begin the Ardougne quest story and build towards diary prerequisites.",
-        "members_only": true,
-        "benefits": [
-          "Earn 1 quest point and 2,425 Mining XP.",
-          "Unlock the next quest in the story, Biohazard."
-        ],
-        "investment": "Short members quest with gathering, dialogue and travel in Ardougne. Gathering supplies yourself adds effort.",
-        "preparation": [
-          "Speak to Edmond in East Ardougne. Review the quest journal and supply list before travelling.",
-          "This quest contributes towards Ardougne cloak 1. Its teleport reward does not remove the Magic level or rune costs of casting Ardougne Teleport."
-        ],
-        "sources": [
-          "https://oldschool.runescape.wiki/w/Plague_City"
-        ],
-        "reviewed": "2026-10-24"
-      },
-      "status": "incomplete",
-      "progress": {
-        "satisfied": 0,
-        "missing": 1,
-        "unknown": 0,
-        "total": 1
-      },
-      "requirements": [
-        {
-          "id": "membership",
-          "label": "Membership for these activities",
-          "status": "missing",
-          "observed": false,
-          "required": true,
-          "note": "",
-          "category": "eligibility",
-          "children": []
-        },
-        {
-          "id": "plague_city",
-          "label": "Complete Plague City",
-          "status": "missing",
-          "observed": "not_started",
-          "required": "completed",
-          "note": "Speak to Edmond in East Ardougne. Review the quest journal and supply list before travelling.",
-          "category": "milestone",
-          "children": []
-        }
       ],
-      "recommendation": {
-        "rank": 14,
-        "recommended": false,
-        "availability": "members_required",
-        "reasons": [
-          "Matches your interest in quests and stories.",
-          "Its overall journey fits your preference for a short activity."
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Attack: base level 1 toward 40. Exact XP remaining is not available from level alone."
         ],
-        "considerations": [
-          "Commitment describes the full journey from a new account; your remaining effort may differ.",
-          "Requires membership. Kept visible as a future option."
-        ]
-      },
-      "next_steps": [
-        {
-          "id": "membership",
-          "title": "Keep this as a future members goal",
-          "reason": "These activities require membership. Keep this saved and choose a free-to-play focus for now.",
-          "kind": "activity"
-        }
-      ]
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -1103,15 +1157,14 @@
         }
       ],
       "recommendation": {
-        "rank": 15,
+        "rank": 14,
         "recommended": false,
         "availability": "members_required",
         "reasons": [
           "Matches your interest in useful unlocks."
         ],
         "considerations": [
-          "Its overall journey is longer than the commitment you selected.",
-          "Commitment describes the full journey from a new account; your remaining effort may differ.",
+          "Access is blocked; remaining commitment is not rated.",
           "Requires membership. Kept visible as a future option."
         ]
       },
@@ -1122,7 +1175,104 @@
           "reason": "These activities require membership. You can keep the goal saved and choose a free-to-play focus for now.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "blocked",
+        "commitment_reason": "Access is blocked; remaining commitment is not rated.",
+        "state": "access_blocked",
+        "summary": "Membership needed",
+        "details": [
+          "Membership for these activities: required before these activities.",
+          "Thieving: base level 1 toward 5. Exact XP remaining is not available from level alone. A suitable boost can also satisfy the diary skill requirement; this reading tracks base level only.",
+          "Complete Plague City: not started; quest preparation and completion remain.",
+          "Complete Biohazard: not started; quest preparation and completion remain.",
+          "Complete Rune Mysteries: not started; quest preparation and completion remain.",
+          "Diary tasks: 10 recorded unfinished; 0 unverified. Unverified tasks may already be done.",
+          "Claim Ardougne cloak 1 from Two-pints: recorded unfinished."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
+    },
+    {
+      "goal": {
+        "id": "plague_city",
+        "title": "Complete Plague City",
+        "summary": "Begin the Ardougne quest story and build towards diary prerequisites.",
+        "members_only": true,
+        "benefits": [
+          "Earn 1 quest point and 2,425 Mining XP.",
+          "Unlock the next quest in the story, Biohazard."
+        ],
+        "investment": "Short members quest with gathering, dialogue and travel in Ardougne. Gathering supplies yourself adds effort.",
+        "preparation": [
+          "Speak to Edmond in East Ardougne. Review the quest journal and supply list before travelling.",
+          "This quest contributes towards Ardougne cloak 1. Its teleport reward does not remove the Magic level or rune costs of casting Ardougne Teleport."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Plague_City"
+        ],
+        "reviewed": "2026-10-24"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "membership",
+          "label": "Membership for these activities",
+          "status": "missing",
+          "observed": false,
+          "required": true,
+          "note": "",
+          "category": "eligibility",
+          "children": []
+        },
+        {
+          "id": "plague_city",
+          "label": "Complete Plague City",
+          "status": "missing",
+          "observed": "not_started",
+          "required": "completed",
+          "note": "Speak to Edmond in East Ardougne. Review the quest journal and supply list before travelling.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "rank": 15,
+        "recommended": false,
+        "availability": "members_required",
+        "reasons": [
+          "Matches your interest in quests and stories."
+        ],
+        "considerations": [
+          "Access is blocked; remaining commitment is not rated.",
+          "Requires membership. Kept visible as a future option."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "membership",
+          "title": "Keep this as a future members goal",
+          "reason": "These activities require membership. Keep this saved and choose a free-to-play focus for now.",
+          "kind": "activity"
+        }
+      ],
+      "remaining_investment": {
+        "commitment_band": "blocked",
+        "commitment_reason": "Access is blocked; remaining commitment is not rated.",
+        "state": "access_blocked",
+        "summary": "Membership needed",
+        "details": [
+          "Membership for these activities: required before these activities.",
+          "Complete Plague City: not started; quest preparation and completion remain."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     }
   ],
   "notes": [

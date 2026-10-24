@@ -98,7 +98,20 @@
           "reason": "Progress is unknown; check in game before repeating this activity.",
           "kind": "check"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Unverified progress prevents a reliable remaining-commitment fit.",
+        "state": "unknown",
+        "summary": "Remaining work needs checking",
+        "details": [
+          "Reach 40 Defence: progress unverified; check in game before repeating work.",
+          "Complete Dragon Slayer I: progress unverified; check in game before repeating work.",
+          "32 quest points to start Dragon Slayer I: progress unverified; check in game before repeating work.",
+          "Equip a rune platebody: progress unverified; check in game before repeating work."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -157,7 +170,17 @@
           "reason": "Progress is unknown; check in game before repeating this activity.",
           "kind": "check"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Unverified progress prevents a reliable remaining-commitment fit.",
+        "state": "unknown",
+        "summary": "Remaining work needs checking",
+        "details": [
+          "Complete Prince Ali Rescue: progress unverified; check in game before repeating work."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -214,7 +237,17 @@
           "reason": "Progress is unknown; check in game before repeating this activity.",
           "kind": "check"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Unverified progress prevents a reliable remaining-commitment fit.",
+        "state": "unknown",
+        "summary": "Remaining work needs checking",
+        "details": [
+          "Complete Cook's Assistant: progress unverified; check in game before repeating work."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -271,7 +304,17 @@
           "reason": "Progress is unknown; check in game before repeating this activity.",
           "kind": "check"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Unverified progress prevents a reliable remaining-commitment fit.",
+        "state": "unknown",
+        "summary": "Remaining work needs checking",
+        "details": [
+          "Complete The Restless Ghost: progress unverified; check in game before repeating work."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -328,7 +371,17 @@
           "reason": "Progress is unknown; check in game before repeating this activity.",
           "kind": "check"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Unverified progress prevents a reliable remaining-commitment fit.",
+        "state": "unknown",
+        "summary": "Remaining work needs checking",
+        "details": [
+          "Complete Rune Mysteries: progress unverified; check in game before repeating work."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -385,7 +438,17 @@
           "reason": "Progress is unknown; check in game before repeating this activity.",
           "kind": "check"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Unverified progress prevents a reliable remaining-commitment fit.",
+        "state": "unknown",
+        "summary": "Remaining work needs checking",
+        "details": [
+          "Reach 20 Attack: progress unverified; check in game before repeating work."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -442,7 +505,17 @@
           "reason": "Progress is unknown; check in game before repeating this activity.",
           "kind": "check"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Unverified progress prevents a reliable remaining-commitment fit.",
+        "state": "unknown",
+        "summary": "Remaining work needs checking",
+        "details": [
+          "Reach 40 Attack: progress unverified; check in game before repeating work."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -499,7 +572,17 @@
           "reason": "Progress is unknown; check in game before repeating this activity.",
           "kind": "check"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Unverified progress prevents a reliable remaining-commitment fit.",
+        "state": "unknown",
+        "summary": "Remaining work needs checking",
+        "details": [
+          "Reach 25 Magic: progress unverified; check in game before repeating work."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -556,7 +639,17 @@
           "reason": "Progress is unknown; check in game before repeating this activity.",
           "kind": "check"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Unverified progress prevents a reliable remaining-commitment fit.",
+        "state": "unknown",
+        "summary": "Remaining work needs checking",
+        "details": [
+          "Reach 37 Magic: progress unverified; check in game before repeating work."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -613,7 +706,17 @@
           "reason": "Progress is unknown; check in game before repeating this activity.",
           "kind": "check"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Unverified progress prevents a reliable remaining-commitment fit.",
+        "state": "unknown",
+        "summary": "Remaining work needs checking",
+        "details": [
+          "Reach 43 Prayer: progress unverified; check in game before repeating work."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -670,7 +773,17 @@
           "reason": "Progress is unknown; check in game before repeating this activity.",
           "kind": "check"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Unverified progress prevents a reliable remaining-commitment fit.",
+        "state": "unknown",
+        "summary": "Remaining work needs checking",
+        "details": [
+          "Reach 30 Fishing: progress unverified; check in game before repeating work."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -727,7 +840,17 @@
           "reason": "Progress is unknown; check in game before repeating this activity.",
           "kind": "check"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Unverified progress prevents a reliable remaining-commitment fit.",
+        "state": "unknown",
+        "summary": "Remaining work needs checking",
+        "details": [
+          "Reach 25 Cooking: progress unverified; check in game before repeating work."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -784,7 +907,17 @@
           "reason": "Progress is unknown; check in game before repeating this activity.",
           "kind": "check"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Unverified progress prevents a reliable remaining-commitment fit.",
+        "state": "unknown",
+        "summary": "Remaining work needs checking",
+        "details": [
+          "Reach 30 Mining: progress unverified; check in game before repeating work."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -1007,7 +1140,23 @@
           "reason": "Progress is unknown; check in game before repeating this activity.",
           "kind": "check"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Unverified progress prevents a reliable remaining-commitment fit.",
+        "state": "unknown",
+        "summary": "Membership needs checking",
+        "details": [
+          "Membership for these activities: progress unverified; check in game before repeating work.",
+          "Reach 5 Thieving (or use a suitable boost): progress unverified; check in game before repeating work.",
+          "Complete Plague City: progress unverified; check in game before repeating work.",
+          "Complete Biohazard: progress unverified; check in game before repeating work.",
+          "Complete Rune Mysteries: progress unverified; check in game before repeating work.",
+          "Diary tasks: 0 recorded unfinished; 10 unverified. Unverified tasks may already be done.",
+          "Claim Ardougne cloak 1 from Two-pints: progress unverified; check in game before repeating work."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -1075,7 +1224,18 @@
           "reason": "Progress is unknown; check in game before repeating this activity.",
           "kind": "check"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Unverified progress prevents a reliable remaining-commitment fit.",
+        "state": "unknown",
+        "summary": "Membership needs checking",
+        "details": [
+          "Membership for these activities: progress unverified; check in game before repeating work.",
+          "Complete Plague City: progress unverified; check in game before repeating work."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     }
   ],
   "notes": [

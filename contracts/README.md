@@ -144,8 +144,9 @@ or unknown membership requirement. Unknown completion is explicitly qualified. W
 answers, no available positive match, or all goals complete, the summary explains why
 there is no personalised best match. All three goals remain visible.
 
-Commitment bands describe the overall journey from a new account; current milestone counts
-are never converted to time estimates. Mismatched commitment and membership limitations
+Commitment matching uses the derived remaining-work band, not the fresh-account band.
+Unknown progress gets no commitment bonus or penalty; milestone counts are never converted
+to time estimates. Mismatched commitment and membership limitations
 appear in considerations alongside positive reasons. No player behaviour is inferred.
 The server is stateless; the sidebar keeps editable answers in memory for its session.
 
@@ -166,10 +167,36 @@ The goals request accepts source=live (default remains demo), all 24 optional sk
 fields, and skill_xp keyed by those skill IDs (strict integers, 0..200000000). Live requests
 use the same evaluation/recommendation logic. The response note identifies live observations
 instead of calling them fictional. Invalid/missing observations remain unknown.
-Only the five quests relevant to the current catalogue are transmitted. Character names,
+Only the seven quests relevant to the current catalogue are transmitted. Character names,
 account hashes, local storage keys and authentication data are not protocol fields.
 
 The Java plugin reads on RuneLite's client thread, refreshes from game events and coalesces
 pending changes. Session/revision checks reject results from earlier accounts or modes.
 Saved choices stay local under separate demo/live character keys; they do not affect the
 Python ranking. Diary history and unobserved equipment milestones are intentionally omitted.
+
+## Remaining investment
+
+Each evaluated goal includes `remaining_investment`: a `state`, short `summary`, explanatory
+`details` and a `caveat`. This is derived from current observations, not the recommendation
+score or a fraction of milestones. It does not change goal completion; its commitment band
+now influences recommendation order.
+
+States distinguish completed goals, access restrictions, unknown progress, training, quests,
+diary work, combined prerequisites and final steps. Skill XP gaps are shown only when the
+observed XP is consistent with the observed base level. Level-only observations are not
+treated as exact XP. In-progress quests do not imply a known stage count or completion fraction.
+Unknown diary tasks and unverified reward/equipment flags are not counted as unfinished work.
+
+`GoalDescription.investment` remains the qualitative investment from a fresh account.
+The derived guidance describes the current character's remaining tracked work, with no hours,
+rates, price predictions or combat-readiness claim. Supplies and travel remain unmeasured.
+
+`remaining_investment.commitment_band` is `short`, `few_sessions`, `long`, `unknown`,
+`completed` or `blocked`, with `commitment_reason` explaining the policy. A confirmed final
+tracked step fits `short`; an unverified final flag does not. For pure training in this
+early-game catalogue, consistent remaining XP of at most 10% of target XP fits `short`;
+at most 50% fits `few_sessions`; otherwise the full training band is retained. Missing or
+conflicting XP prevents a reduced training fit. These thresholds are explainable heuristics,
+not validated duration forecasts or a general XP-to-time model. Quest stages are never
+inferred from `in_progress`. Access restrictions and completed-goal exclusions remain first.

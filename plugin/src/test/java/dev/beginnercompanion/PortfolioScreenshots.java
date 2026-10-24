@@ -56,7 +56,7 @@ public final class PortfolioScreenshots {
             edt(() -> {
                 try {
                     CompanionPanel panel = ref.get();
-                    panel.showFocus(); capture(panel, output.resolve("focus.png"), 450);
+                    panel.showFocus(); capture(panel, output.resolve("focus.png"), 520);
                     panel.showBrowser(); panel.searchGoals("teleport", 1); capture(panel, output.resolve("explore.png"), 660);
                     panel.searchGoals("", 0); panel.selectGoal("wear_rune_platebody"); capture(panel, output.resolve("goal-detail.png"), 760);
                     captureOverlay(output.resolve("overlay.png"));

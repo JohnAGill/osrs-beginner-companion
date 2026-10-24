@@ -68,12 +68,24 @@ def run():
                 fixture = Path(temp) / 'request.json'
                 history_request = json.loads((ROOT / 'contracts/fixtures/preferences-combat.request.json').read_text())
                 history_request['completion_history'] = [{'goal_id': 'attack_20', 'completed_at': int(time.time())}]
+                history_request['account']['skill_xp'] = {'attack': 8000}
                 fixture.write_text(json.dumps(history_request), encoding='utf-8')
                 result = subprocess.run(command + [str(fixture), url], capture_output=True, text=True, timeout=15)
                 assert result.returncode == 0, result.stderr
                 assert 'Recommendation: attack_40' in result.stdout, result.stdout
                 assert 'recently completing' in result.stdout, result.stdout
                 print('PASS Java completion-history recommendation')
+                history_request['completion_history'] = []
+                history_request['account']['skill_levels']['attack'] = 39
+                history_request['account']['skill_xp']['attack'] = 37000
+                for commitment, expected in [('short', 'attack_40'), ('long', 'wear_rune_platebody')]:
+                    history_request['preferences']['commitment'] = commitment
+                    fixture.write_text(json.dumps(history_request), encoding='utf-8')
+                    result = subprocess.run(command + [str(fixture), url], capture_output=True, text=True, timeout=15)
+                    assert result.returncode == 0, result.stderr
+                    assert 'Recommendation: ' + expected in result.stdout, result.stdout
+                    assert 'remaining work fits your preference' in result.stdout, result.stdout
+                print('PASS Java remaining-work commitment recommendations')
                 request = json.loads((ROOT / 'contracts/fixtures/missing.request.json').read_text())
                 for changes, expected in [({'protocol_version': 2}, 'version_mismatch'),
                                           ({'goal_id': 'other'}, 'unknown_goal'),

@@ -26,8 +26,8 @@ def recommend(catalog, evaluated, preferences, account, completion_history=(), *
     """Return a new ordered result; membership/completion take priority over fit.
 
     Six points per selected interest match; exact commitment +3, otherwise minus the
-    distance between curated bands. Bands describe the overall journey from a new
-    account, not remaining time. No milestone-count-to-time conversion is performed.
+    distance between remaining-work bands. Unknown remaining work gets no commitment
+    bonus or penalty. No milestone-count-to-time conversion is performed.
     A curated follow-up gets +3 within seven days or +1 within thirty, once per goal.
     Explicit interests gate follow-up boosts. Ties retain catalogue order. With neither
     preferences nor recent history there is no single best match.
@@ -68,15 +68,22 @@ def recommend(catalog, evaluated, preferences, account, completion_history=(), *
             score += bonus  # One recency bonus, never a pile-up from related completions.
             reasons.append('An option after recently completing "' + titles[source] + '": ' + reason)
         if commitment != 'any':
-            distance = COMMITMENT[match['commitment']] - COMMITMENT[commitment]
-            if distance == 0:
-                score += 3
-                reasons.append('Its overall journey fits your preference for ' + COMMITMENT_LABELS[commitment] + '.')
-            else:
-                score -= abs(distance)
-                considerations.append('Its overall journey is ' + ('longer' if distance > 0 else 'shorter')
-                                      + ' than the commitment you selected.')
-            considerations.append('Commitment describes the full journey from a new account; your remaining effort may differ.')
+            remaining = row['remaining_investment']
+            band = remaining['commitment_band']
+            if band in COMMITMENT:
+                distance = COMMITMENT[band] - COMMITMENT[commitment]
+                if distance == 0:
+                    score += 3
+                    reasons.append('Its remaining work fits your preference for ' + COMMITMENT_LABELS[commitment] + '. ' + remaining['commitment_reason'])
+                else:
+                    score -= abs(distance)
+                    considerations.append('Its remaining work is a ' + ('larger' if distance > 0 else 'smaller')
+                                          + ' commitment than you selected. ' + remaining['commitment_reason'])
+                considerations.append('Remaining commitment is qualitative, not a promised number of sessions or hours.')
+            elif band == 'unknown':
+                considerations.append('Remaining commitment is not scored: ' + remaining['commitment_reason'])
+            elif band == 'blocked':
+                considerations.append(remaining['commitment_reason'])
         if personalised and not reasons:
             reasons.append('An alternative to explore outside your selected preferences.')
 

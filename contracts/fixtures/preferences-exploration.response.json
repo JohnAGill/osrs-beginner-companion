@@ -214,10 +214,10 @@
         "availability": "available",
         "reasons": [
           "Matches your interest in exploration.",
-          "Its overall journey fits your preference for a project over a few sessions."
+          "Its remaining work fits your preference for a project over a few sessions. Quest completion still remains. Being in progress does not establish how many stages are left."
         ],
         "considerations": [
-          "Commitment describes the full journey from a new account; your remaining effort may differ."
+          "Remaining commitment is qualitative, not a promised number of sessions or hours."
         ]
       },
       "next_steps": [
@@ -233,7 +233,19 @@
           "reason": "This diary task is recorded as unfinished. Review supplies and travel before attempting it.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "few_sessions",
+        "commitment_reason": "Quest completion still remains. Being in progress does not establish how many stages are left.",
+        "state": "quest",
+        "summary": "Quest underway; stages remain",
+        "details": [
+          "Complete Biohazard: in progress; remaining quest stages are not tracked.",
+          "Diary tasks: 6 recorded unfinished; 0 unverified. Unverified tasks may already be done.",
+          "Claim Ardougne cloak 1 from Two-pints: recorded unfinished."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -279,11 +291,10 @@
         "recommended": false,
         "availability": "available",
         "reasons": [
-          "Matches your interest in exploration.",
-          "Its overall journey fits your preference for a project over a few sessions."
+          "Matches your interest in exploration."
         ],
         "considerations": [
-          "Commitment describes the full journey from a new account; your remaining effort may differ."
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
         ]
       },
       "next_steps": [
@@ -293,7 +304,17 @@
           "reason": "Recorded level: 25/37. Continue Magic training using a method that fits your supplies and budget.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Magic: base level 25 toward 37. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -342,8 +363,8 @@
           "Matches your interest in exploration."
         ],
         "considerations": [
-          "Its overall journey is shorter than the commitment you selected.",
-          "Commitment describes the full journey from a new account; your remaining effort may differ."
+          "Its remaining work is a smaller commitment than you selected. Quest completion still remains. Being in progress does not establish how many stages are left.",
+          "Remaining commitment is qualitative, not a promised number of sessions or hours."
         ]
       },
       "next_steps": [
@@ -353,7 +374,157 @@
           "reason": "Speak to Father Aereck in Lumbridge church. No prior quests or minimum skill levels are required.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "short",
+        "commitment_reason": "Quest completion still remains. Being in progress does not establish how many stages are left.",
+        "state": "quest",
+        "summary": "Quest underway; stages remain",
+        "details": [
+          "Complete The Restless Ghost: in progress; remaining quest stages are not tracked."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
+    },
+    {
+      "goal": {
+        "id": "attack_40",
+        "title": "Reach 40 Attack for rune weapons",
+        "summary": "A larger free-to-play melee ambition.",
+        "members_only": false,
+        "benefits": [
+          "Meet the Attack requirement for a rune scimitar."
+        ],
+        "investment": "A longer melee milestone from level 1. You can mix training with quests that reward Attack XP.",
+        "preparation": [
+          "Train Attack through manageable combat or suitable quest rewards; there is no mandatory training spot.",
+          "Choose an Attack XP combat style. Buying or equipping a rune weapon is not tracked by this goal.",
+          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Rune_scimitar"
+        ],
+        "reviewed": "2026-10-24"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "attack_40",
+          "label": "Reach 40 Attack",
+          "status": "missing",
+          "observed": 25,
+          "required": 40,
+          "note": "Train Attack through manageable combat or suitable quest rewards; there is no mandatory training spot.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "rank": 4,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [
+          "An alternative to explore outside your selected preferences."
+        ],
+        "considerations": [
+          "Its main activities do not directly match your selected interests.",
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "attack_40",
+          "title": "Reach 40 Attack",
+          "reason": "Recorded level: 25/40. Train Attack through manageable combat or suitable quest rewards; there is no mandatory training spot.",
+          "kind": "activity"
+        }
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Attack: base level 25 toward 40. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
+    },
+    {
+      "goal": {
+        "id": "prayer_43",
+        "title": "Reach 43 Prayer for Protect from Melee",
+        "summary": "A major early combat utility milestone.",
+        "members_only": false,
+        "benefits": [
+          "Unlock the Protect from Melee prayer."
+        ],
+        "investment": "A longer early-account project. Prayer training methods and supply costs vary substantially; no fixed time or price is assumed.",
+        "preparation": [
+          "Choose Prayer training that suits your budget and account restrictions. Prayer XP from quests can contribute too.",
+          "Protection prayers consume Prayer points. Protect from Melee does not guarantee safety against every enemy or attack.",
+          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Protect_from_Melee"
+        ],
+        "reviewed": "2026-10-24"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "prayer_43",
+          "label": "Reach 43 Prayer",
+          "status": "missing",
+          "observed": 15,
+          "required": 43,
+          "note": "Choose Prayer training that suits your budget and account restrictions. Prayer XP from quests can contribute too.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "rank": 5,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [
+          "An alternative to explore outside your selected preferences."
+        ],
+        "considerations": [
+          "Its main activities do not directly match your selected interests.",
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "prayer_43",
+          "title": "Reach 43 Prayer",
+          "reason": "Recorded level: 15/43. Choose Prayer training that suits your budget and account restrictions. Prayer XP from quests can contribute too.",
+          "kind": "activity"
+        }
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Prayer: base level 15 toward 43. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -395,15 +566,15 @@
         }
       ],
       "recommendation": {
-        "rank": 4,
+        "rank": 6,
         "recommended": false,
         "availability": "available",
         "reasons": [
-          "Its overall journey fits your preference for a project over a few sessions."
+          "An alternative to explore outside your selected preferences."
         ],
         "considerations": [
           "Its main activities do not directly match your selected interests.",
-          "Commitment describes the full journey from a new account; your remaining effort may differ."
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
         ]
       },
       "next_steps": [
@@ -413,7 +584,17 @@
           "reason": "Recorded level: 20/30. Use fishing methods available at your current level. Fly fishing becomes an option at 20 Fishing.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Fishing: base level 20 toward 30. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -455,15 +636,15 @@
         }
       ],
       "recommendation": {
-        "rank": 5,
+        "rank": 7,
         "recommended": false,
         "availability": "available",
         "reasons": [
-          "Its overall journey fits your preference for a project over a few sessions."
+          "An alternative to explore outside your selected preferences."
         ],
         "considerations": [
           "Its main activities do not directly match your selected interests.",
-          "Commitment describes the full journey from a new account; your remaining effort may differ."
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
         ]
       },
       "next_steps": [
@@ -473,7 +654,17 @@
           "reason": "Recorded level: 20/25. Cook food available at your current level. You can gather raw food yourself or buy it.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Cooking: base level 20 toward 25. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -515,15 +706,15 @@
         }
       ],
       "recommendation": {
-        "rank": 6,
+        "rank": 8,
         "recommended": false,
         "availability": "available",
         "reasons": [
-          "Its overall journey fits your preference for a project over a few sessions."
+          "An alternative to explore outside your selected preferences."
         ],
         "considerations": [
           "Its main activities do not directly match your selected interests.",
-          "Commitment describes the full journey from a new account; your remaining effort may differ."
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
         ]
       },
       "next_steps": [
@@ -533,7 +724,17 @@
           "reason": "Recorded level: 15/30. Bring a pickaxe and mine resources available at your current level. Choose between banking resources and focusing on training.",
           "kind": "activity"
         }
-      ]
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Mining: base level 15 toward 30. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -608,7 +809,7 @@
         }
       ],
       "recommendation": {
-        "rank": 7,
+        "rank": 9,
         "recommended": false,
         "availability": "available",
         "reasons": [
@@ -616,8 +817,8 @@
         ],
         "considerations": [
           "Its main activities do not directly match your selected interests.",
-          "Its overall journey is longer than the commitment you selected.",
-          "Commitment describes the full journey from a new account; your remaining effort may differ."
+          "Its remaining work is a larger commitment than you selected. Multiple kinds of work still remain, including tracked prerequisites. The goal has not reduced to a final activity.",
+          "Remaining commitment is qualitative, not a promised number of sessions or hours."
         ]
       },
       "next_steps": [
@@ -633,183 +834,20 @@
           "reason": "Recorded quest points: 24/32. Pick quests you enjoy; no fixed quest order is needed.",
           "kind": "activity"
         }
-      ]
-    },
-    {
-      "goal": {
-        "id": "attack_40",
-        "title": "Reach 40 Attack for rune weapons",
-        "summary": "A larger free-to-play melee ambition.",
-        "members_only": false,
-        "benefits": [
-          "Meet the Attack requirement for a rune scimitar."
-        ],
-        "investment": "A longer melee milestone from level 1. You can mix training with quests that reward Attack XP.",
-        "preparation": [
-          "Train Attack through manageable combat or suitable quest rewards; there is no mandatory training spot.",
-          "Choose an Attack XP combat style. Buying or equipping a rune weapon is not tracked by this goal.",
-          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
-        ],
-        "sources": [
-          "https://oldschool.runescape.wiki/w/Rune_scimitar"
-        ],
-        "reviewed": "2026-10-24"
-      },
-      "status": "incomplete",
-      "progress": {
-        "satisfied": 0,
-        "missing": 1,
-        "unknown": 0,
-        "total": 1
-      },
-      "requirements": [
-        {
-          "id": "attack_40",
-          "label": "Reach 40 Attack",
-          "status": "missing",
-          "observed": 25,
-          "required": 40,
-          "note": "Train Attack through manageable combat or suitable quest rewards; there is no mandatory training spot.",
-          "category": "milestone",
-          "children": []
-        }
       ],
-      "recommendation": {
-        "rank": 8,
-        "recommended": false,
-        "availability": "available",
-        "reasons": [
-          "An alternative to explore outside your selected preferences."
+      "remaining_investment": {
+        "commitment_band": "long",
+        "commitment_reason": "Multiple kinds of work still remain, including tracked prerequisites. The goal has not reduced to a final activity.",
+        "state": "prerequisites",
+        "summary": "Training and quest work remain",
+        "details": [
+          "Defence: base level 32 toward 40. Exact XP remaining is not available from level alone.",
+          "Complete Dragon Slayer I: not started; quest preparation and completion remain.",
+          "Quest points: 24 / 32 for quest entry. Choose quests in any order.",
+          "Equip a rune platebody: recorded unfinished."
         ],
-        "considerations": [
-          "Its main activities do not directly match your selected interests.",
-          "Its overall journey is longer than the commitment you selected.",
-          "Commitment describes the full journey from a new account; your remaining effort may differ."
-        ]
-      },
-      "next_steps": [
-        {
-          "id": "attack_40",
-          "title": "Reach 40 Attack",
-          "reason": "Recorded level: 25/40. Train Attack through manageable combat or suitable quest rewards; there is no mandatory training spot.",
-          "kind": "activity"
-        }
-      ]
-    },
-    {
-      "goal": {
-        "id": "prayer_43",
-        "title": "Reach 43 Prayer for Protect from Melee",
-        "summary": "A major early combat utility milestone.",
-        "members_only": false,
-        "benefits": [
-          "Unlock the Protect from Melee prayer."
-        ],
-        "investment": "A longer early-account project. Prayer training methods and supply costs vary substantially; no fixed time or price is assumed.",
-        "preparation": [
-          "Choose Prayer training that suits your budget and account restrictions. Prayer XP from quests can contribute too.",
-          "Protection prayers consume Prayer points. Protect from Melee does not guarantee safety against every enemy or attack.",
-          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
-        ],
-        "sources": [
-          "https://oldschool.runescape.wiki/w/Protect_from_Melee"
-        ],
-        "reviewed": "2026-10-24"
-      },
-      "status": "incomplete",
-      "progress": {
-        "satisfied": 0,
-        "missing": 1,
-        "unknown": 0,
-        "total": 1
-      },
-      "requirements": [
-        {
-          "id": "prayer_43",
-          "label": "Reach 43 Prayer",
-          "status": "missing",
-          "observed": 15,
-          "required": 43,
-          "note": "Choose Prayer training that suits your budget and account restrictions. Prayer XP from quests can contribute too.",
-          "category": "milestone",
-          "children": []
-        }
-      ],
-      "recommendation": {
-        "rank": 9,
-        "recommended": false,
-        "availability": "available",
-        "reasons": [
-          "An alternative to explore outside your selected preferences."
-        ],
-        "considerations": [
-          "Its main activities do not directly match your selected interests.",
-          "Its overall journey is longer than the commitment you selected.",
-          "Commitment describes the full journey from a new account; your remaining effort may differ."
-        ]
-      },
-      "next_steps": [
-        {
-          "id": "prayer_43",
-          "title": "Reach 43 Prayer",
-          "reason": "Recorded level: 15/43. Choose Prayer training that suits your budget and account restrictions. Prayer XP from quests can contribute too.",
-          "kind": "activity"
-        }
-      ]
-    },
-    {
-      "goal": {
-        "id": "magic_25",
-        "title": "Reach 25 Magic for Varrock Teleport",
-        "summary": "A useful first teleport milestone.",
-        "members_only": false,
-        "benefits": [
-          "Meet the Magic level requirement for the standard Varrock Teleport spell."
-        ],
-        "investment": "An early Magic project with rune or training-supply costs. Your method and starting level determine the effort.",
-        "preparation": [
-          "Choose a Magic training method you can afford and check the spell requirements before buying supplies.",
-          "Casting Varrock Teleport needs the standard spellbook and the appropriate runes. Reaching the level alone does not cast it.",
-          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
-        ],
-        "sources": [
-          "https://oldschool.runescape.wiki/w/Varrock_Teleport"
-        ],
-        "reviewed": "2026-10-24"
-      },
-      "status": "completed",
-      "progress": {
-        "satisfied": 1,
-        "missing": 0,
-        "unknown": 0,
-        "total": 1
-      },
-      "requirements": [
-        {
-          "id": "magic_25",
-          "label": "Reach 25 Magic",
-          "status": "satisfied",
-          "observed": 25,
-          "required": 25,
-          "note": "Choose a Magic training method you can afford and check the spell requirements before buying supplies.",
-          "category": "milestone",
-          "children": []
-        }
-      ],
-      "recommendation": {
-        "rank": 10,
-        "recommended": false,
-        "availability": "completed",
-        "reasons": [
-          "Matches your interest in exploration.",
-          "Its overall journey fits your preference for a project over a few sessions."
-        ],
-        "considerations": [
-          "Commitment describes the full journey from a new account; your remaining effort may differ.",
-          "This character has already completed this goal."
-        ]
-      },
-      "next_steps": []
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -851,19 +889,27 @@
         }
       ],
       "recommendation": {
-        "rank": 11,
+        "rank": 10,
         "recommended": false,
         "availability": "completed",
         "reasons": [
           "Matches your interest in exploration."
         ],
         "considerations": [
-          "Its overall journey is shorter than the commitment you selected.",
-          "Commitment describes the full journey from a new account; your remaining effort may differ.",
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -915,37 +961,45 @@
         }
       ],
       "recommendation": {
-        "rank": 12,
+        "rank": 11,
         "recommended": false,
         "availability": "completed",
         "reasons": [
           "Matches your interest in exploration."
         ],
         "considerations": [
-          "Its overall journey is shorter than the commitment you selected.",
-          "Commitment describes the full journey from a new account; your remaining effort may differ.",
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
-        "id": "attack_20",
-        "title": "Reach 20 Attack for mithril weapons",
-        "summary": "An early melee equipment milestone.",
+        "id": "magic_25",
+        "title": "Reach 25 Magic for Varrock Teleport",
+        "summary": "A useful first teleport milestone.",
         "members_only": false,
         "benefits": [
-          "Meet the Attack requirement for mithril melee weapons."
+          "Meet the Magic level requirement for the standard Varrock Teleport spell."
         ],
-        "investment": "An early training project. Combat choices, equipment and quest rewards affect the effort.",
+        "investment": "An early Magic project with rune or training-supply costs. Your method and starting level determine the effort.",
         "preparation": [
-          "Choose manageable fights and an attack style that awards Attack XP. Check the combat style panel before training.",
-          "Obtaining a weapon is separate from meeting its level requirement. Bring food and choose enemies you can handle.",
+          "Choose a Magic training method you can afford and check the spell requirements before buying supplies.",
+          "Casting Varrock Teleport needs the standard spellbook and the appropriate runes. Reaching the level alone does not cast it.",
           "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
         ],
         "sources": [
-          "https://oldschool.runescape.wiki/w/Mithril_equipment"
+          "https://oldschool.runescape.wiki/w/Varrock_Teleport"
         ],
         "reviewed": "2026-10-24"
       },
@@ -958,30 +1012,38 @@
       },
       "requirements": [
         {
-          "id": "attack_20",
-          "label": "Reach 20 Attack",
+          "id": "magic_25",
+          "label": "Reach 25 Magic",
           "status": "satisfied",
           "observed": 25,
-          "required": 20,
-          "note": "Choose manageable fights and an attack style that awards Attack XP. Check the combat style panel before training.",
+          "required": 25,
+          "note": "Choose a Magic training method you can afford and check the spell requirements before buying supplies.",
           "category": "milestone",
           "children": []
         }
       ],
       "recommendation": {
-        "rank": 13,
+        "rank": 12,
         "recommended": false,
         "availability": "completed",
         "reasons": [
-          "Its overall journey fits your preference for a project over a few sessions."
+          "Matches your interest in exploration."
         ],
         "considerations": [
-          "Its main activities do not directly match your selected interests.",
-          "Commitment describes the full journey from a new account; your remaining effort may differ.",
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -1025,7 +1087,7 @@
         }
       ],
       "recommendation": {
-        "rank": 14,
+        "rank": 13,
         "recommended": false,
         "availability": "completed",
         "reasons": [
@@ -1033,12 +1095,20 @@
         ],
         "considerations": [
           "Its main activities do not directly match your selected interests.",
-          "Its overall journey is shorter than the commitment you selected.",
-          "Commitment describes the full journey from a new account; your remaining effort may differ.",
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     },
     {
       "goal": {
@@ -1080,6 +1150,69 @@
         }
       ],
       "recommendation": {
+        "rank": 14,
+        "recommended": false,
+        "availability": "completed",
+        "reasons": [
+          "An alternative to explore outside your selected preferences."
+        ],
+        "considerations": [
+          "Its main activities do not directly match your selected interests.",
+          "This character has already completed this goal."
+        ]
+      },
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
+    },
+    {
+      "goal": {
+        "id": "attack_20",
+        "title": "Reach 20 Attack for mithril weapons",
+        "summary": "An early melee equipment milestone.",
+        "members_only": false,
+        "benefits": [
+          "Meet the Attack requirement for mithril melee weapons."
+        ],
+        "investment": "An early training project. Combat choices, equipment and quest rewards affect the effort.",
+        "preparation": [
+          "Choose manageable fights and an attack style that awards Attack XP. Check the combat style panel before training.",
+          "Obtaining a weapon is separate from meeting its level requirement. Bring food and choose enemies you can handle.",
+          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Mithril_equipment"
+        ],
+        "reviewed": "2026-10-24"
+      },
+      "status": "completed",
+      "progress": {
+        "satisfied": 1,
+        "missing": 0,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "attack_20",
+          "label": "Reach 20 Attack",
+          "status": "satisfied",
+          "observed": 25,
+          "required": 20,
+          "note": "Choose manageable fights and an attack style that awards Attack XP. Check the combat style panel before training.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
         "rank": 15,
         "recommended": false,
         "availability": "completed",
@@ -1088,12 +1221,20 @@
         ],
         "considerations": [
           "Its main activities do not directly match your selected interests.",
-          "Its overall journey is shorter than the commitment you selected.",
-          "Commitment describes the full journey from a new account; your remaining effort may differ.",
           "This character has already completed this goal."
         ]
       },
-      "next_steps": []
+      "next_steps": [],
+      "remaining_investment": {
+        "commitment_band": "completed",
+        "commitment_reason": "This goal is already complete.",
+        "state": "completed",
+        "summary": "Goal completed",
+        "details": [
+          "No tracked work remains."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
     }
   ],
   "notes": [

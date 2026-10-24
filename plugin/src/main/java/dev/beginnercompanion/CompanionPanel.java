@@ -126,10 +126,11 @@ public class CompanionPanel extends PluginPanel {
             questions.add(interest);
             interest.addActionListener(event -> preferencesChanged());
         }
-        questions.add(text("What commitment appeals?", false));
+        questions.add(text("How much remaining work appeals?", false));
         commitment.setAlignmentX(Component.LEFT_ALIGNMENT);
         commitment.setMaximumSize(new java.awt.Dimension(200, 28));
         questions.add(commitment);
+        questions.add(text("Matches the work left on your character, without predicting hours or a number of sessions.", false));
         commitment.addActionListener(event -> preferencesChanged());
         questions.add(button("Show a mixture", () -> setPreferences(new String[0], 0)));
         questions.add(text("Answers last for this session. Live suggestions update automatically.", false));
@@ -305,6 +306,7 @@ public class CompanionPanel extends PluginPanel {
                 selectionHeader.add(text(chosen.saved.get(chosen.focus), true));
                 PlannerClient.GoalResult focus = findGoal(chosen.focus);
                 selectionHeader.add(text(focus == null ? "Check demo account to refresh progress." : state(focus.status) + "\n" + progress(focus), false));
+                if (focus != null) addRemainingInvestment(selectionHeader, focus, false);
                 if (chosen.taskId != null) {
                     selectionHeader.add(text("Current task: " + chosen.taskTitle, true));
                     selectionHeader.add(text(CurrentTask.status(chosen, progressFresh ? focus : null), false));
@@ -360,6 +362,7 @@ public class CompanionPanel extends PluginPanel {
             PlannerClient.GoalResult goal = findGoal(entry.getKey());
             section(goal == null ? entry.getValue() : goal.goal.title);
             rows.add(text(goal == null ? (snapshot == null ? "Check demo account to refresh progress." : "This saved goal is not in the current catalogue.") : state(goal.status) + "\n" + progress(goal), false));
+            if (goal != null) addRemainingInvestment(rows, goal, false);
             JButton view = button("View goal", () -> selectGoal(entry.getKey()));
             view.setEnabled(goal != null); rows.add(view);
             addSelectionActions(entry.getKey(), goal == null ? entry.getValue() : goal.goal.title);
@@ -521,6 +524,7 @@ public class CompanionPanel extends PluginPanel {
                     rows.add(text(result.goal.members_only ? "Members" : "Free-to-play", false));
                     rows.add(text(result.goal.summary, false));
                     rows.add(text(state(result.status) + "\n" + progress(result), false));
+                    addRemainingInvestment(rows, result, false);
                     rows.add(button("View goal", () -> selectGoal(result.goal.id)));
 
                 }
@@ -538,12 +542,14 @@ public class CompanionPanel extends PluginPanel {
             rows.add(disclosure(detail.goal.id + ":match", "Why this goal fits", match, false));
             rows.add(text(detail.goal.members_only ? "Members" : "Free-to-play", false));
             rows.add(text(state(detail.status) + "\n" + progress(detail), false));
+            addRemainingInvestment(rows, detail, true);
             addSelectionActions(detail.goal.id, detail.goal.title);
             rows.add(text("Milestone counts are checks, not an estimate of effort.", false));
             addNextSteps(rows, detail);
             JPanel overview = column();
             for (String benefit : detail.goal.benefits) overview.add(text("• " + benefit, false));
             overview.add(Box.createVerticalStrut(8));
+            overview.add(text("Overall investment from a new account", true));
             overview.add(text(detail.goal.investment, false));
             rows.add(disclosure(detail.goal.id + ":overview", "Benefits and investment", overview, false));
             section("Requirements and progress");
@@ -562,6 +568,23 @@ public class CompanionPanel extends PluginPanel {
         for (String note : snapshot.notes) about.add(text(note, false));
         rows.add(disclosure("about", "About progress tracking", about, false));
         rows.revalidate(); rows.repaint();
+    }
+
+    private void addRemainingInvestment(JPanel target, PlannerClient.GoalResult result, boolean includeDetails) {
+        PlannerClient.RemainingInvestment remaining = result.remaining_investment;
+        if (remaining == null) return;
+        target.add(text("Work remaining: " + remaining.summary, false));
+        if (includeDetails) {
+            JPanel details = column();
+            for (String line : remaining.details) {
+                details.add(text(line, false)); details.add(Box.createVerticalStrut(6));
+            }
+            details.add(text(remaining.caveat, false));
+            details.add(Box.createVerticalStrut(6));
+            details.add(text("Commitment fit: " + remaining.commitment_band.replace('_', ' '), true));
+            details.add(text(remaining.commitment_reason, false));
+            target.add(disclosure(result.goal.id + ":remaining", "Work remaining details", details, false));
+        }
     }
 
     private void addNextSteps(JPanel target, PlannerClient.GoalResult result) {

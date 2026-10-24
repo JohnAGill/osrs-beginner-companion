@@ -211,6 +211,9 @@
           },
           "title": "Next Steps",
           "type": "array"
+        },
+        "remaining_investment": {
+          "$ref": "#/$defs/RemainingInvestment"
         }
       },
       "required": [
@@ -219,7 +222,8 @@
         "progress",
         "requirements",
         "recommendation",
-        "next_steps"
+        "next_steps",
+        "remaining_investment"
       ],
       "title": "GoalResult",
       "type": "object"
@@ -301,6 +305,66 @@
         "considerations"
       ],
       "title": "Recommendation",
+      "type": "object"
+    },
+    "RemainingInvestment": {
+      "additionalProperties": false,
+      "properties": {
+        "commitment_band": {
+          "enum": [
+            "short",
+            "few_sessions",
+            "long",
+            "unknown",
+            "completed",
+            "blocked"
+          ],
+          "title": "Commitment Band",
+          "type": "string"
+        },
+        "commitment_reason": {
+          "title": "Commitment Reason",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "completed",
+            "access_blocked",
+            "unknown",
+            "final_step",
+            "prerequisites",
+            "training",
+            "quest",
+            "diary"
+          ],
+          "title": "State",
+          "type": "string"
+        },
+        "summary": {
+          "title": "Summary",
+          "type": "string"
+        },
+        "details": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Details",
+          "type": "array"
+        },
+        "caveat": {
+          "title": "Caveat",
+          "type": "string"
+        }
+      },
+      "required": [
+        "commitment_band",
+        "commitment_reason",
+        "state",
+        "summary",
+        "details",
+        "caveat"
+      ],
+      "title": "RemainingInvestment",
       "type": "object"
     }
   },
