@@ -1,0 +1,14 @@
+*
+!Dockerfile
+!pyproject.toml
+!README.md
+!LICENSE
+!THIRD_PARTY_NOTICES.md
+!LICENSES/
+!LICENSES/**
+!deploy/
+!deploy/requirements.txt
+!beginner_companion/
+!beginner_companion/**
+**/__pycache__/
+**/*.pyc

@@ -28,7 +28,7 @@ public class CompletionPanelTest {
             }
             response.add("session_id", request.get("session_id")); response.add("revision", request.get("revision"));
             byte[] body = response.toString().getBytes(StandardCharsets.UTF_8);
-            try { exchange.sendResponseHeaders(200, body.length); exchange.getResponseBody().write(body); }
+            try { exchange.getResponseHeaders().set("Content-Type", "application/json"); exchange.sendResponseHeaders(200, body.length); exchange.getResponseBody().write(body); }
             finally { exchange.close(); }
         });
         server.start();
@@ -37,7 +37,7 @@ public class CompletionPanelTest {
         AtomicReference<CompanionPanel> panel = new AtomicReference<>();
         try {
             edt(() -> {
-                panel.set(new CompanionPanel(URI.create("http://127.0.0.1:" + server.getAddress().getPort() + "/v1/goals/evaluate"), new GoalSelectionStore(state)));
+                panel.set(TestPanels.create(URI.create("http://127.0.0.1:" + server.getAddress().getPort() + "/v1/goals/evaluate"), TestPanels.store(state)));
                 panel.get().enableLiveMode(); panel.get().setLiveSnapshot(snapshot("one", 1));
             });
             await(() -> panel.get().selectionsReady() && panel.get().selectedGoals().history.incomplete.contains("attack_20"));
@@ -45,15 +45,15 @@ public class CompletionPanelTest {
             edt(() -> panel.get().setLiveSnapshot(snapshot("one", 20)));
             await(() -> panel.get().selectionsReady() && panel.get().selectedGoals().history.events.containsKey("attack_20")
                 && sent.get().getAsJsonArray("completion_history").size() == 1);
-            long timestamp = new GoalSelectionStore(state).load().get("live:one").history.events.get("attack_20");
+            long timestamp = TestPanels.store(state).load().get("live:one").history.events.get("attack_20");
             assertEquals("attack_20", sent.get().getAsJsonArray("completion_history").get(0).getAsJsonObject().get("goal_id").getAsString());
             edt(() -> panel.get().setLiveSnapshot(snapshot("two", 20)));
             await(() -> panel.get().selectionsReady() && panel.get().selectedGoals().history.completed.contains("attack_20"));
             assertEquals(0, sent.get().getAsJsonArray("completion_history").size());
-            assertTrue(new GoalSelectionStore(state).load().get("live:two").history.events.isEmpty());
+            assertTrue(TestPanels.store(state).load().get("live:two").history.events.isEmpty());
             edt(() -> panel.get().setLiveSnapshot(snapshot("one", 20)));
             await(() -> panel.get().selectionsReady() && "Connected to Python".equals(panel.get().connectionText()));
-            assertEquals(Long.valueOf(timestamp), new GoalSelectionStore(state).load().get("live:one").history.events.get("attack_20"));
+            assertEquals(Long.valueOf(timestamp), TestPanels.store(state).load().get("live:one").history.events.get("attack_20"));
         } finally {
             if (panel.get() != null) edt(() -> panel.get().close());
             server.stop(0); Files.deleteIfExists(state); Files.deleteIfExists(folder);

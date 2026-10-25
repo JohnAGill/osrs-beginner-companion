@@ -3,6 +3,18 @@
 Local development plugin, pinned to RuneLite 1.13.3. Uses the shared PlannerClient from
 bridge-java/src. Supports live character observations and the existing synthetic fixtures.
 
+## Hosted configuration
+
+Normal plugin launches start with no endpoint and sharing disabled. Configure an HTTPS
+origin and explicitly enable **Share progress with planner** in RuneLite's plugin settings.
+The sidebar's **Settings → Planner connection & privacy** explains the payload and destination.
+Disabling sharing or changing the origin cancels pending requests. No public service has
+been deployed. See [deployment preparation](../docs/hosted-service.md).
+
+The Gradle `run` task explicitly opts into local development. To test hosted configuration
+instead, add `-PhostedPlanner` to that command; this removes the loopback override and uses
+the URL/consent settings above. It does not deploy or provision a service.
+
 ## Run (two terminals, repository root)
 
 Start Python:

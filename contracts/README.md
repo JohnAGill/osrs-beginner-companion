@@ -249,3 +249,17 @@ to start the quest. Training and starting/continuing the quest remain independen
 Completing Tree Gnome Village is not required for gliders; each quest has its own
 completion observation. Membership gates the members goals, and combat preparation is
 advice rather than an inferred readiness check.
+
+## Hosted transport
+
+The production plugin uses its injected OkHttp/Gson instances behind the shared transport
+interface; the standalone console supplies a separate local HTTP implementation. Hosted
+URLs require an HTTPS origin and explicit sharing consent. Redirects are not followed,
+responses must be HTTP 200 JSON, and response bodies are bounded at 2 MiB. Session/revision
+validation still applies and cancellation reaches the HTTP call.
+
+The API bounds actual request bodies at 128 KiB (including chunked bodies). Oversized
+requests return HTTP 413 with `request_too_large` in the existing error envelope, without
+echoing observations. Application responses carry `Cache-Control: no-store`. `/v1/health`
+now returns the active catalogue version. Production mode disables documentation routes.
+See [deployment status and operational limits](../docs/hosted-service.md).

@@ -17,6 +17,7 @@ Repository = "https://github.com/JohnAGill/osrs-beginner-companion"
 [project.optional-dependencies]
 api = ["fastapi==0.162.0", "pydantic==2.14.1", "uvicorn==0.54.0"]
 api-test = ["httpx==0.28.1"]
+lambda = ["fastapi==0.162.0", "pydantic==2.14.1", "mangum==0.22.0"]
 
 [tool.setuptools.packages.find]
 include = ["beginner_companion*"]

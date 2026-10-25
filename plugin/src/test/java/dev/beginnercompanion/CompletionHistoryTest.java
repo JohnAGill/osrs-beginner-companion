@@ -42,8 +42,8 @@ public class CompletionHistoryTest {
                 .task("some_task", "Some task").clearTask().save("other", "Other").remove("other").unpin();
             Map<String, GoalSelection> accounts = new LinkedHashMap<>();
             accounts.put("one", chosen); accounts.put("two", GoalSelection.empty());
-            new GoalSelectionStore(path).save(accounts);
-            Map<String, GoalSelection> restored = new GoalSelectionStore(path).load();
+            TestPanels.store(path).save(accounts);
+            Map<String, GoalSelection> restored = TestPanels.store(path).load();
             assertEquals(history.events, restored.get("one").history.events);
             assertEquals(history.completed, restored.get("one").history.completed);
             assertTrue(restored.get("two").history.events.isEmpty());

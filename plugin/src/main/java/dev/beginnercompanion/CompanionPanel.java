@@ -9,9 +9,8 @@ import java.awt.Component;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URI;
-import java.net.http.HttpClient;
+import com.google.gson.Gson;
 import java.nio.charset.StandardCharsets;
-import java.time.Duration;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
@@ -58,16 +57,16 @@ public class CompanionPanel extends PluginPanel {
     private boolean selectionsLoaded, loadingSelections, saving, savedOnly;
     private String selectionError;
     private String resultMessage = "Click Check demo account to load the goal browser from Python.";
-    private final ExecutorService executor = Executors.newFixedThreadPool(2, task -> {
-        Thread thread = new Thread(task, "companion-http"); thread.setDaemon(true); return thread;
-    });
-    private final HttpClient client = HttpClient.newBuilder().executor(executor)
-        .connectTimeout(Duration.ofSeconds(2)).build();
-    private final URI endpoint;
+    private final PlannerClient.Transport transport;
+    private final Gson gson;
+    private ServiceSettings service;
+    private final JTextArea serviceNotice = text("", false);
+    private final JTextArea serviceStatus = text("", false);
     private String session = UUID.randomUUID().toString();
     private LiveSnapshotReader.Snapshot liveAccount;
     private boolean liveRefreshQueued;
     private long retryAfter;
+    private long nextRefreshAt;
     private long feedbackCheckedAt;
     private final JTextArea sourceLabel = text("Demo mode: fictional accounts only.", false);
     private int revision;
@@ -96,17 +95,10 @@ public class CompanionPanel extends PluginPanel {
             progressFresh ? findGoal(chosen.focus) : null, unavailable, chosen));
     }
 
-    public CompanionPanel() {
-        this(URI.create("http://127.0.0.1:8765/v1/goals/evaluate"), new GoalSelectionStore(
-            java.nio.file.Path.of(System.getProperty("companion.stateFile", "../data/private/companion-demo-goals.json"))));
-    }
-
-    CompanionPanel(URI endpoint) {
-        this(endpoint, GoalSelectionStore.inMemory());
-    }
-
-    CompanionPanel(URI endpoint, GoalSelectionStore selectionStore) {
-        this.endpoint = endpoint;
+    CompanionPanel(PlannerClient.Transport transport, Gson gson, ServiceSettings service, GoalSelectionStore selectionStore) {
+        this.transport = transport;
+        this.gson = gson;
+        this.service = service;
         this.selectionStore = selectionStore;
         setLayout(new BorderLayout());
         JPanel content = column();
@@ -114,7 +106,11 @@ public class CompanionPanel extends PluginPanel {
         add(content, BorderLayout.NORTH);
         content.add(text("Beginner Companion", true));
         content.add(sourceLabel);
+        updateServiceNotice();
+        content.add(serviceStatus);
         JPanel setup = column();
+        JPanel privacy = column(); privacy.add(serviceNotice);
+        setup.add(disclosure("planner-privacy", "Planner connection & privacy", privacy, false));
         demo.setAlignmentX(Component.LEFT_ALIGNMENT);
         demo.setMaximumSize(new java.awt.Dimension(200, 28));
         check.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -225,7 +221,8 @@ public class CompanionPanel extends PluginPanel {
         if (changed) {
             if (pending != null) { liveRefreshQueued = true; progressFresh = false; publishFocus(); }
             else if (System.currentTimeMillis() >= retryAfter) evaluate();
-        } else if (pending == null && System.currentTimeMillis() >= retryAfter && (snapshot == null
+            else liveRefreshQueued = true;
+        } else if (pending == null && System.currentTimeMillis() >= retryAfter && (snapshot == null || liveRefreshQueued
             || currentSelection().feedback.values().stream().anyMatch(value -> value.expiresAt() > feedbackCheckedAt
                 && value.expiresAt() <= System.currentTimeMillis() / 1000))) evaluate();
     }
@@ -302,6 +299,8 @@ public class CompanionPanel extends PluginPanel {
 
     private void renderSelectionHeader() {
         selectionHeader.removeAll();
+        if (snapshot != null && !progressFresh && "Service unavailable".equals(connection.getText()))
+            selectionHeader.add(text("Last confirmed results are out of date. Refresh when the planner is available.", false));
         selectionHeader.add(Box.createVerticalStrut(10));
         if (!selectionsLoaded) {
             selectionHeader.add(text(selectionError == null ? "Loading saved goals..." : selectionError, false));
@@ -506,6 +505,8 @@ public class CompanionPanel extends PluginPanel {
         renderSelectionHeader();
         renderFeedbackManager();
         rows.removeAll();
+        if (snapshot != null && !progressFresh && "Service unavailable".equals(connection.getText()))
+            rows.add(text("Last confirmed results are out of date. Refresh when the planner is available.", false));
         if (tabs.getSelectedIndex() == 0) {
             if (snapshot == null) selectionHeader.add(text(resultMessage, false));
             return;
@@ -723,6 +724,15 @@ public class CompanionPanel extends PluginPanel {
 
     void evaluate() {
         if (closed || pending != null || (isLive() && liveAccount == null)) return;
+        if (!service.canSend()) {
+            progressFresh = false;
+            connection.setText("Planner disabled");
+            resultMessage = service.disclosure();
+            render(); return;
+        }
+        if (isLive() && System.currentTimeMillis() < nextRefreshAt) { liveRefreshQueued = true; return; }
+        liveRefreshQueued = false;
+        nextRefreshAt = System.currentTimeMillis() + ("https".equals(service.endpoint.getScheme()) ? 5000 : 0);
         int requestedRevision = ++revision;
         long requestedAt = System.currentTimeMillis() / 1000;
         try {
@@ -770,14 +780,14 @@ public class CompanionPanel extends PluginPanel {
             connection.setText("Checking Python...");
             if (snapshot == null) render();
             else publishFocus(); // Keep the last confirmed sidebar layout while refreshing.
-            pending = PlannerClient.evaluateGoals(client, endpoint, request.toString());
+            pending = PlannerClient.evaluateGoals(transport, gson, service.endpoint, request.toString());
             pending.whenComplete((result, failure) -> SwingUtilities.invokeLater(() -> {
                 if (closed || revision != requestedRevision) return;
                 pending = null; check.setEnabled(true);
-                if (liveRefreshQueued && isLive()) { liveRefreshQueued = false; evaluate(); return; }
+                if (liveRefreshQueued && isLive() && System.currentTimeMillis() >= nextRefreshAt) { liveRefreshQueued = false; evaluate(); return; }
                 if (failure != null) { showFailure(failure); return; }
-                snapshot = result; progressFresh = true; retryAfter = 0; feedbackCheckedAt = requestedAt;
-                connection.setText("Connected to Python"); render(); recordHistory();
+                snapshot = result; progressFresh = !liveRefreshQueued; retryAfter = 0; feedbackCheckedAt = requestedAt;
+                connection.setText(liveRefreshQueued ? "Checking Python..." : "Connected to Python"); render(); recordHistory();
             }));
         } catch (Exception failure) {
             pending = null; check.setEnabled(true); showFailure(failure);
@@ -785,17 +795,39 @@ public class CompanionPanel extends PluginPanel {
     }
 
     private void showFailure(Throwable failure) {
-        snapshot = null; progressFresh = false;
+        progressFresh = false;
         while (failure.getCause() != null) failure = failure.getCause();
         retryAfter = System.currentTimeMillis() + 5000;
         connection.setText("Service unavailable");
-        resultMessage = "Start or restart the updated Python service on port 8765, then click Check demo account to retry.\n"
+        resultMessage = "The planner could not refresh. Your saved choices are kept; displayed results may be out of date. Retry when the service is available.\n"
             + failure.getClass().getSimpleName() + ": " + (failure.getMessage() == null ? "Connection failed" : failure.getMessage());
         render();
     }
 
+    private void updateServiceNotice() {
+        serviceNotice.setText(service.disclosure());
+        serviceStatus.setText(service.canSend() ? ("https".equals(service.endpoint.getScheme())
+            ? "Hosted planner: " + service.endpoint.getHost() : "Local development planner")
+            : "Planner off. Configure the service and sharing in plugin settings.");
+        for (JTextArea label : new JTextArea[]{serviceNotice, serviceStatus}) {
+            label.setPreferredSize(null);
+            label.setSize(200, Short.MAX_VALUE);
+            int height = label.getPreferredSize().height;
+            label.setPreferredSize(new java.awt.Dimension(200, height));
+            label.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, height));
+        }
+    }
+
+    void configureService(ServiceSettings next) {
+        if (closed) return;
+        service = next; nextRefreshAt = 0;
+        invalidateRequest();
+        updateServiceNotice();
+        if (isLive() && liveAccount != null) evaluate();
+    }
+
     public void close() {
-        closed = true; invalidateRequest(); executor.shutdownNow();
+        closed = true; invalidateRequest();
         // Finish any already accepted atomic save; no new tasks are accepted after close.
         storageExecutor.shutdown();
     }

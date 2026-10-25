@@ -32,7 +32,7 @@ public class SavedGoalsPanelTest {
             response.add("session_id", request.get("session_id"));
             response.add("revision", request.get("revision"));
             byte[] body = response.toString().getBytes(StandardCharsets.UTF_8);
-            exchange.sendResponseHeaders(200, body.length);
+            exchange.getResponseHeaders().set("Content-Type", "application/json"); exchange.sendResponseHeaders(200, body.length);
             try { exchange.getResponseBody().write(body); } finally { exchange.close(); }
         });
         server.start();
@@ -40,7 +40,7 @@ public class SavedGoalsPanelTest {
         Path path = temp.getRoot().toPath().resolve("goals.json");
         AtomicReference<CompanionPanel> ref = new AtomicReference<>();
         try {
-            edt(() -> ref.set(new CompanionPanel(endpoint, new GoalSelectionStore(path))));
+            edt(() -> ref.set(TestPanels.create(endpoint, TestPanels.store(path))));
             ready(ref.get());
             edt(() -> { ref.get().showSaved(); assertTrue(ref.get().visibleText().contains("No saved goals yet")); ref.get().evaluate(); });
             connected(ref.get());
@@ -124,7 +124,7 @@ public class SavedGoalsPanelTest {
             });
             // A fresh panel restores without contacting Python at all.
             server.stop(0);
-            edt(() -> ref.set(new CompanionPanel(endpoint, new GoalSelectionStore(path))));
+            edt(() -> ref.set(TestPanels.create(endpoint, TestPanels.store(path))));
             ready(ref.get());
             edt(() -> {
                 assertEquals("wear_rune_platebody", ref.get().selectedGoals().focus);
@@ -138,7 +138,7 @@ public class SavedGoalsPanelTest {
                 assertTrue(click(ref.get(), "Unpin focus")); // Offline changes still persist.
             });
             ready(ref.get());
-            assertNull(new GoalSelectionStore(path).load().get("partial").focus);
+            assertNull(TestPanels.store(path).load().get("partial").focus);
         } finally {
             if (ref.get() != null) edt(() -> ref.get().close());
             server.stop(0);
@@ -149,13 +149,13 @@ public class SavedGoalsPanelTest {
         Path path = temp.getRoot().toPath().resolve("goals.json");
         Files.writeString(path, "{");
         AtomicReference<CompanionPanel> ref = new AtomicReference<>();
-        edt(() -> ref.set(new CompanionPanel(URI.create("http://127.0.0.1:1/v1/goals/evaluate"), new GoalSelectionStore(path))));
+        edt(() -> ref.set(TestPanels.create(URI.create("http://127.0.0.1:1/v1/goals/evaluate"), TestPanels.store(path))));
         try {
             await(() -> ref.get().selectionText().contains("Could not load saved goals"));
             assertEquals("{", Files.readString(path));
             java.util.Map<String, GoalSelection> state = new java.util.LinkedHashMap<>();
             state.put("fresh", GoalSelection.empty().pin("wear_rune_platebody", "Wear a rune platebody"));
-            new GoalSelectionStore(path).save(state);
+            TestPanels.store(path).save(state);
             edt(() -> assertTrue(click(ref.get(), "Retry loading saved goals")));
             ready(ref.get());
             // Make the write destination unusable after a successful read.
@@ -166,7 +166,7 @@ public class SavedGoalsPanelTest {
             Files.delete(path);
             edt(() -> assertTrue(click(ref.get(), "Unpin focus")));
             ready(ref.get());
-            assertNull(new GoalSelectionStore(path).load().get("fresh").focus);
+            assertNull(TestPanels.store(path).load().get("fresh").focus);
         } finally { edt(() -> ref.get().close()); }
     }
 

@@ -1,4 +1,5 @@
 """Run with: python -m uvicorn beginner_companion.api.app:app --host 127.0.0.1 --port 8765."""
+import os
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
@@ -9,7 +10,14 @@ from .goals import GoalsRequest, GoalsResponse, CatalogResponse
 from ..domain.catalog import load_catalog, evaluate_goals
 from ..domain.recommendations import recommend
 
-app = FastAPI(title="Beginner companion bridge", version="1.0.0")
+from .limits import RequestLimits
+
+production = os.environ.get('COMPANION_ENV') == 'production'
+app = FastAPI(title="Beginner Companion planner", version="1.0.0",
+              docs_url=None if production else '/docs',
+              redoc_url=None if production else '/redoc',
+              openapi_url=None if production else '/openapi.json')
+app.add_middleware(RequestLimits)
 catalog = load_catalog()
 
 
@@ -57,7 +65,7 @@ async def http_error(request: Request, exc: HTTPException):
 
 @app.get("/v1/health")
 def health():
-    return {"protocol_version": 1, "status": "ok", "dataset_version": "bridge-demo-1"}
+    return {"protocol_version": 1, "status": "ok", "dataset_version": catalog['version']}
 
 
 @app.post("/v1/evaluate", response_model=EvaluationResponse,

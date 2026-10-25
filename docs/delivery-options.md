@@ -1,20 +1,22 @@
 # Running without a separately managed Python service
 
-The prototype currently requires a Python process listening on 127.0.0.1:8765. Its JSON
-files alone cannot execute Python inside RuneLite's normal JVM. There are three practical
-delivery paths; none is implemented by this source separation.
+Updated 2026-10-25: the selected path is a **hosted Python API**. HTTPS configuration,
+explicit consent and deployment preparation are implemented; no public service is deployed.
+The selected deployment is [AWS Lambda with a Function URL](lambda-deployment.md).
+See [the shared hosted transport implementation](hosted-service.md). Local development retains
+127.0.0.1:8765. The comparison below records the alternatives.
 
 | Path | Player setup | Main work/tradeoff |
 | --- | --- | --- |
-| Bundled local helper | Install one companion application; it starts packaged Python | Per-OS executable packaging, updates, process lifecycle, local endpoint ownership; review whether any plugin-launched helper is acceptable |
+| Bundled local helper | Install one companion application; it starts packaged Python | Per-OS executable packaging, updates, process lifecycle, local endpoint ownership; not suitable for Plugin Hub: subprocess execution is forbidden |
 | Hosted Python API | Plugin connects to a service; no local Python installation | Hosting, HTTPS, availability, privacy, version compatibility, rate limiting and an offline experience |
 | Java evaluator | Install the plugin only | Port evaluation/matching rules to Java; Python can remain an authoring/validation tool |
 
 Bundling Python usually means a companion executable containing an interpreter and its
 dependencies. It is still a separate native process, even if the plugin starts it. Embedding
 a Python runtime inside a plugin JAR adds substantial dependency/platform complexity and
-is not the recommended first distribution experiment. Do not assume helper executables or
-launching subprocesses will pass Plugin Hub review.
+is not the recommended first distribution experiment. RuneLite explicitly forbids plugins from launching external programs; this excludes a
+plugin-launched helper from the planned Hub distribution.
 
 For this portfolio project, keeping the Java/Python boundary is useful: run locally during
 development and make a hosted API an optional later deployment. For the smoothest eventual

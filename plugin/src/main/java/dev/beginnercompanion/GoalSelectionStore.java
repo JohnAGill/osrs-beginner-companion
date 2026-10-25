@@ -1,6 +1,6 @@
 package dev.beginnercompanion;
 
-import com.google.gson.GsonBuilder;
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -15,11 +15,12 @@ import java.util.Map;
 /** Local character/demo state. The panel calls this on a dedicated, serial I/O worker. */
 final class GoalSelectionStore {
     private final Path path;
+    private final Gson gson;
 
-    private GoalSelectionStore() { this.path = null; }
+    private GoalSelectionStore() { this.path = null; this.gson = null; }
     static GoalSelectionStore inMemory() { return new GoalSelectionStore(); }
 
-    GoalSelectionStore(Path path) { this.path = path.toAbsolutePath().normalize(); }
+    GoalSelectionStore(Path path, Gson gson) { this.path = path.toAbsolutePath().normalize(); this.gson = gson.newBuilder().serializeNulls().setPrettyPrinting().create(); }
 
     Map<String, GoalSelection> load() throws IOException {
         if (path == null) return new LinkedHashMap<>();
@@ -88,14 +89,14 @@ final class GoalSelectionStore {
             account.addProperty("focus_goal_id", entry.getValue().focus);
             account.addProperty("current_task_id", entry.getValue().taskId);
             account.addProperty("current_task_title", entry.getValue().taskTitle);
-            account.add("completion_history", new GsonBuilder().create().toJsonTree(entry.getValue().history));
-            account.add("recommendation_feedback", new GsonBuilder().create().toJsonTree(entry.getValue().feedback));
+            account.add("completion_history", gson.toJsonTree(entry.getValue().history));
+            account.add("recommendation_feedback", gson.toJsonTree(entry.getValue().feedback));
             entries.add(entry.getKey(), account);
         }
         Files.createDirectories(path.getParent());
         Path temp = Files.createTempFile(path.getParent(), "companion-goals-", ".tmp");
         try {
-            Files.writeString(temp, new GsonBuilder().setPrettyPrinting().serializeNulls().create().toJson(root), StandardCharsets.UTF_8);
+            Files.writeString(temp, gson.toJson(root), StandardCharsets.UTF_8);
             Files.move(temp, path, StandardCopyOption.ATOMIC_MOVE, StandardCopyOption.REPLACE_EXISTING);
         } finally { Files.deleteIfExists(temp); }
     }

@@ -31,19 +31,19 @@ public class LivePanelTest {
                 getClass().getResourceAsStream("/fixtures/goals-fresh.response.json"), StandardCharsets.UTF_8)).getAsJsonObject();
             response.add("session_id", request.get("session_id")); response.add("revision", request.get("revision"));
             byte[] body = response.toString().getBytes(StandardCharsets.UTF_8);
-            try { exchange.sendResponseHeaders(200, body.length); exchange.getResponseBody().write(body); }
+            try { exchange.getResponseHeaders().set("Content-Type", "application/json"); exchange.sendResponseHeaders(200, body.length); exchange.getResponseBody().write(body); }
             finally { exchange.close(); }
         });
         server.start();
         AtomicReference<CompanionPanel> panel = new AtomicReference<>();
         AtomicReference<FocusOverlayState> focus = new AtomicReference<>(FocusOverlayState.HIDDEN);
-        GoalSelectionStore store = new GoalSelectionStore(temp.getRoot().toPath().resolve("goals.json"));
+        GoalSelectionStore store = TestPanels.store(temp.getRoot().toPath().resolve("goals.json"));
         java.util.Map<String, GoalSelection> choices = new java.util.LinkedHashMap<>();
         choices.put("live:first", GoalSelection.empty().pin("wear_rune_platebody", "Wear a rune platebody"));
         store.save(choices);
         try {
             edt(() -> {
-                panel.set(new CompanionPanel(URI.create("http://127.0.0.1:" + server.getAddress().getPort() + "/v1/goals/evaluate"), store));
+                panel.set(TestPanels.create(URI.create("http://127.0.0.1:" + server.getAddress().getPort() + "/v1/goals/evaluate"), store));
                 panel.get().setFocusListener(focus::set);
                 panel.get().enableLiveMode();
                 panel.get().setLiveSnapshot(snapshot("live:first", 0));

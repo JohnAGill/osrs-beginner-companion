@@ -37,4 +37,8 @@ tasks.register('run', JavaExec) {
     args '--developer-mode', '--debug'
     jvmArgs '-ea', '--add-opens=java.base/java.lang.reflect=ALL-UNNAMED'
     systemProperty 'companion.stateFile', file('../data/private/companion-demo-goals.json').absolutePath
+    // Explicit local-development opt-in; not present in the production plugin jar.
+    if (!project.hasProperty('hostedPlanner')) {
+        systemProperty 'companion.devServiceUrl', 'http://127.0.0.1:8765'
+    }
 }

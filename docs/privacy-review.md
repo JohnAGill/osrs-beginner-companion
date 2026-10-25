@@ -47,7 +47,12 @@ The key is a hash used for separation, not a guarantee of anonymisation. A chara
 can be displayed locally; neither that name nor the account hash/key is sent to Python.
 Requests do contain skill/quest observations, preferences and recent completion goal IDs
 with observation timestamps. Recommendation requests also include saved per-goal feedback
-kinds and timestamps, without character identity. The service currently listens on loopback only.
+kinds and timestamps, without character identity. The default development launch uses loopback. Hosted configuration now requires an HTTPS
+origin and explicit opt-in, with a destination/payload disclosure and cancellation when disabled.
+The hosting provider receives connection metadata including IP addresses. The proposed container
+disables access logs and the application does not log request bodies; provider log retention
+still needs verification before deployment. No public planner endpoint has been created. A verified artifact is stored privately in
+AWS S3; account identifiers and deployment metadata remain in ignored private files.
 
 Screenshots are real UI renders with fictional data. They include no game login, credentials,
 real character name, account export, gameplay capture or personal desktop background.

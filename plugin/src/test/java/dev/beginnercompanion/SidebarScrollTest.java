@@ -32,7 +32,7 @@ public class SidebarScrollTest {
                 getClass().getResourceAsStream("/fixtures/goals-partial.response.json"), StandardCharsets.UTF_8)).getAsJsonObject();
             response.add("session_id", request.get("session_id")); response.add("revision", request.get("revision"));
             byte[] body = response.toString().getBytes(StandardCharsets.UTF_8);
-            try { exchange.sendResponseHeaders(200, body.length); exchange.getResponseBody().write(body); }
+            try { exchange.getResponseHeaders().set("Content-Type", "application/json"); exchange.sendResponseHeaders(200, body.length); exchange.getResponseBody().write(body); }
             finally { exchange.close(); }
         });
         server.start();
@@ -86,7 +86,8 @@ public class SidebarScrollTest {
         return new LiveSnapshotReader.Snapshot("live:scroll-test", "Synthetic Player", account);
     }
     private static class Panel extends CompanionPanel {
-        Panel(URI endpoint) { super(endpoint); }
+        Panel(URI endpoint) { super(new PlannerTransport(new okhttp3.OkHttpClient()), new com.google.gson.Gson(),
+            ServiceSettings.development("http://" + endpoint.getRawAuthority()), GoalSelectionStore.inMemory()); }
         JScrollPane scroll() { return getScrollPane(); }
     }
     private static boolean click(Container parent, String title) {

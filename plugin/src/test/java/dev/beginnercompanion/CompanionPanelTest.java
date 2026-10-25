@@ -30,13 +30,13 @@ public class CompanionPanelTest {
             response.add("session_id", request.get("session_id"));
             response.add("revision", request.get("revision"));
             byte[] body = response.toString().getBytes(StandardCharsets.UTF_8);
-            try { exchange.sendResponseHeaders(200, body.length); exchange.getResponseBody().write(body); }
+            try { exchange.getResponseHeaders().set("Content-Type", "application/json"); exchange.sendResponseHeaders(200, body.length); exchange.getResponseBody().write(body); }
             finally { exchange.close(); }
         });
         server.start();
         AtomicReference<CompanionPanel> ref = new AtomicReference<>();
         try {
-            edt(() -> { ref.set(new CompanionPanel(URI.create("http://127.0.0.1:" + server.getAddress().getPort() + "/v1/goals/evaluate"))); ref.get().evaluate(); });
+            edt(() -> { ref.set(TestPanels.create(URI.create("http://127.0.0.1:" + server.getAddress().getPort() + "/v1/goals/evaluate"))); ref.get().evaluate(); });
             assertTrue(received.await(3, TimeUnit.SECONDS));
             edt(() -> assertEquals("Checking Python...", ref.get().connectionText()));
             // Changing the selection invalidates the outstanding snapshot immediately.
@@ -113,7 +113,7 @@ public class CompanionPanelTest {
         java.net.ServerSocket socket = new java.net.ServerSocket(0);
         int port = socket.getLocalPort(); socket.close();
         AtomicReference<CompanionPanel> ref = new AtomicReference<>();
-        edt(() -> { ref.set(new CompanionPanel(URI.create("http://127.0.0.1:" + port + "/v1/goals/evaluate"))); ref.get().evaluate(); });
+        edt(() -> { ref.set(TestPanels.create(URI.create("http://127.0.0.1:" + port + "/v1/goals/evaluate"))); ref.get().evaluate(); });
         try {
             awaitStatus(ref.get(), "Service unavailable");
             edt(() -> ref.get().evaluate());
@@ -139,14 +139,14 @@ public class CompanionPanelTest {
             response.add("session_id", request.get("session_id"));
             response.add("revision", request.get("revision"));
             byte[] body = response.toString().getBytes(StandardCharsets.UTF_8);
-            try { exchange.sendResponseHeaders(200, body.length); exchange.getResponseBody().write(body); }
+            try { exchange.getResponseHeaders().set("Content-Type", "application/json"); exchange.sendResponseHeaders(200, body.length); exchange.getResponseBody().write(body); }
             finally { exchange.close(); }
         });
         server.start();
         AtomicReference<CompanionPanel> ref = new AtomicReference<>();
         try {
             edt(() -> {
-                ref.set(new CompanionPanel(URI.create("http://127.0.0.1:" + server.getAddress().getPort() + "/v1/goals/evaluate")));
+                ref.set(TestPanels.create(URI.create("http://127.0.0.1:" + server.getAddress().getPort() + "/v1/goals/evaluate")));
                 ref.get().selectDemo(1);
                 ref.get().setPreferences(new String[]{"combat"}, 3);
                 ref.get().evaluate();

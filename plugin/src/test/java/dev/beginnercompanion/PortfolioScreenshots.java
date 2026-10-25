@@ -29,7 +29,7 @@ public final class PortfolioScreenshots {
             JsonObject response = fixture();
             response.add("session_id", request.get("session_id")); response.add("revision", request.get("revision"));
             byte[] body = response.toString().getBytes(StandardCharsets.UTF_8);
-            try { exchange.sendResponseHeaders(200, body.length); exchange.getResponseBody().write(body); }
+            try { exchange.getResponseHeaders().set("Content-Type", "application/json"); exchange.sendResponseHeaders(200, body.length); exchange.getResponseBody().write(body); }
             finally { exchange.close(); }
         });
         server.start();
@@ -38,11 +38,11 @@ public final class PortfolioScreenshots {
         Map<String, GoalSelection> choices = new LinkedHashMap<>();
         choices.put("partial", GoalSelection.empty().pin("wear_rune_platebody", "Wear a rune platebody")
             .task("defence_40", "Work towards 40 Defence"));
-        new GoalSelectionStore(state).save(choices);
+        TestPanels.store(state).save(choices);
         AtomicReference<CompanionPanel> ref = new AtomicReference<>();
         try {
             edt(() -> {
-                ref.set(new CompanionPanel(URI.create("http://127.0.0.1:" + server.getAddress().getPort() + "/v1/goals/evaluate"), new GoalSelectionStore(state)));
+                ref.set(TestPanels.create(URI.create("http://127.0.0.1:" + server.getAddress().getPort() + "/v1/goals/evaluate"), TestPanels.store(state)));
                 ref.get().selectDemo(1); ref.get().setPreferences(new String[]{"combat"}, 3); ref.get().evaluate();
             });
             boolean loaded = false;

@@ -1,0 +1,22 @@
+{
+  "serviceName": "beginner-companion",
+  "containers": {
+    "planner": {
+      "image": "REPLACE_WITH_PUSHED_LIGHTSAIL_IMAGE_ID",
+      "environment": {"COMPANION_ENV": "production"},
+      "ports": {"8000": "HTTP"}
+    }
+  },
+  "publicEndpoint": {
+    "containerName": "planner",
+    "containerPort": 8000,
+    "healthCheck": {
+      "path": "/v1/health",
+      "successCodes": "200",
+      "intervalSeconds": 30,
+      "timeoutSeconds": 3,
+      "healthyThreshold": 2,
+      "unhealthyThreshold": 3
+    }
+  }
+}

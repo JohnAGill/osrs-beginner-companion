@@ -4,16 +4,13 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.nio.charset.StandardCharsets;
-import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
 
 /** Shared asynchronous transport for the console and RuneLite panel. */
 public final class PlannerClient {
-    private static final Gson JSON = new Gson();
+    @FunctionalInterface public interface Transport {
+        CompletableFuture<String> post(URI endpoint, String body);
+    }
 
     public static final class Requirement {
         public String id, label, status;
@@ -78,10 +75,10 @@ public final class PlannerClient {
         public String[] notes;
     }
 
-    public static CompletableFuture<GoalsResult> evaluateGoals(HttpClient client, URI endpoint, String body) {
+    public static CompletableFuture<GoalsResult> evaluateGoals(Transport transport, Gson jsonCodec, URI endpoint, String body) {
         JsonObject sent = JsonParser.parseString(body).getAsJsonObject();
-        return exchange(client, endpoint, body).thenApply(json -> {
-            GoalsResult result = JSON.fromJson(json, GoalsResult.class);
+        return map(transport.post(endpoint, body), json -> {
+            GoalsResult result = jsonCodec.fromJson(json, GoalsResult.class);
             if (result == null || result.protocol_version != 1
                 || !sent.get("session_id").getAsString().equals(result.session_id)
                 || result.revision != sent.get("revision").getAsInt()) {
@@ -135,29 +132,16 @@ public final class PlannerClient {
         for (GoalRequirement child : row.children) validateRequirement(child);
     }
 
-    private static CompletableFuture<String> exchange(HttpClient client, URI endpoint, String body) {
-        HttpRequest request = HttpRequest.newBuilder(endpoint).timeout(Duration.ofSeconds(5))
-            .header("Content-Type", "application/json")
-            .POST(HttpRequest.BodyPublishers.ofString(body, StandardCharsets.UTF_8)).build();
-        return client.sendAsync(request, HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8))
-            .thenApply(response -> {
-                if (response.statusCode() != 200) {
-                    String message = "HTTP " + response.statusCode();
-                    try {
-                        JsonObject detail = JsonParser.parseString(response.body()).getAsJsonObject().getAsJsonObject("error");
-                        message += " [" + detail.get("code").getAsString() + "]: " + detail.get("message").getAsString();
-                    } catch (RuntimeException ignored) { message += ": response was not a recognised API error."; }
-                    throw new IllegalStateException(message);
-                }
-                return response.body();
-            });
+    private static <T> CompletableFuture<T> map(CompletableFuture<String> source, java.util.function.Function<String, T> parse) {
+        CompletableFuture<T> result = source.thenApply(parse);
+        result.whenComplete((value, failure) -> { if (result.isCancelled()) source.cancel(true); });
+        return result;
     }
 
-    public static CompletableFuture<Result> evaluate(HttpClient client, URI endpoint, String body) {
+    public static CompletableFuture<Result> evaluate(Transport transport, Gson jsonCodec, URI endpoint, String body) {
         JsonObject sent = JsonParser.parseString(body).getAsJsonObject();
-        return exchange(client, endpoint, body)
-            .thenApply(json -> {
-                Result result = JSON.fromJson(json, Result.class);
+        return map(transport.post(endpoint, body), json -> {
+                Result result = jsonCodec.fromJson(json, Result.class);
                 if (result.protocol_version != 1 || result.revision != sent.get("revision").getAsInt()
                     || !sent.get("session_id").getAsString().equals(result.session_id)
                     || !sent.get("goal_id").getAsString().equals(result.goal_id)) {

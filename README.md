@@ -101,6 +101,21 @@ XP/hour or session forecasts. Quest progress is never treated as a known complet
 The full investment from a new account remains available separately in goal details.
 Unconfirmed, unknown-ID and future-dated events do not influence ranking.
 
+## Hosted service preparation
+
+The production path is a Java plugin calling a hosted Python API over HTTPS. The plugin
+uses RuneLite's injected OkHttp and Gson, requires explicit sharing consent, validates
+responses and keeps confirmed results marked stale during an outage. No cloud service
+has been deployed and no hosted address is enabled by default. The normal development
+launch below still uses loopback explicitly.
+
+The selected host is AWS Lambda with a public HTTPS Function URL. A Linux deployment ZIP,
+CloudFormation template and pinned Mangum adapter are included; the ZIP passes checks in
+AWS's Python 3.12 Lambda runtime image. See [Lambda rollout](docs/lambda-deployment.md).
+A non-root container definition remains available for local development. See [hosting and remaining release work](docs/hosted-service.md).
+The Linux container passes local smoke tests at 512 MiB/0.25 CPU. Cloud provisioning,
+AWS validation and Plugin Hub packaging/review are still pending.
+
 ## Run locally
 
 Requires **Python 3.10+**, **JDK 17** (`java` and `javac` on PATH), and network access to
@@ -109,7 +124,7 @@ Java source targets Java 11; the development runtime uses JDK 17. Gradle is prov
 
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\python -m pip install -e ".[api,api-test]"
+.\.venv\Scripts\python -m pip install -e ".[api,api-test,lambda]"
 .\.venv\Scripts\python -m uvicorn beginner_companion.api.app:app --host 127.0.0.1 --port 8765
 ```
 
@@ -143,7 +158,7 @@ For a console-only example of the Java/Python boundary:
 .\.venv\Scripts\python scripts/verify_bridge.py
 ```
 
-Current coverage: **57 Python tests and 26 Java tests**, plus a real Java → HTTP → Python
+Current coverage: **64 Python tests and 32 Java tests**, plus a real Java → HTTP → Python
 → Java verification script. Tests cover threshold boundaries, unknown progress, matching,
 recency, persistence, character isolation, stale responses, task selection, overlay guards
 and scroll preservation. The bridge script starts/stops its own loopback service.
@@ -156,7 +171,7 @@ beginner_companion/
   api/             FastAPI endpoints and strict wire models
   domain/          Catalogue, requirement evaluation, next steps and ranking
 plugin/            RuneLite UI, observations, overlay and local persistence
-bridge-java/       Shared HTTP client and standalone caller
+bridge-java/       Shared response parser/transport contract and standalone caller
 contracts/         JSON schemas and fictional request/response fixtures
 tests/             Python domain/API tests
 scripts/           End-to-end verification and publication audit
@@ -177,15 +192,17 @@ plugin. It performs no automatic gameplay, movement or game input.
 - Investment bands are qualitative; they are not measured completion-time forecasts.
 
 Next: beginner playtesting, broader curated follow-up relationships, live diary playtesting,
-and a reviewed distribution approach. See [roadmap](docs/beginner-companion-plan.md) and
+AWS hosted-service validation and Plugin Hub packaging/review. See [roadmap](docs/beginner-companion-plan.md) and
 [delivery options](docs/delivery-options.md).
 
 ## Privacy and licensing
 
-Only fictional fixtures are committed. Character keys, saved goals and history stay in the
-ignored `data/private/` directory. Character names/account hashes are not sent to Python;
+Only fictional fixtures are committed. Development character keys, saved goals and history
+stay in the ignored `data/private/` directory; normal plugin launches use RuneLite's local
+`beginner-companion/character-goals.json` instead. Character names/account hashes are not sent to Python;
 requests contain game observations, preferences, random session/revision identifiers and
 up to fifty completion goal IDs/timestamps and up to one hundred goal feedback kinds/timestamps.
+Hosted connections require opt-in and expose the connection IP to the provider.
 Feedback never sends account identity or changes preference answers. This is a local-data design, not anonymisation
 of all gameplay observations. Logs, credentials, account exports and build caches are ignored.
 

@@ -34,18 +34,18 @@ public class RecommendationFeedbackPanelTest {
             sent.set(request);
             response.add("session_id", request.get("session_id")); response.add("revision", request.get("revision"));
             byte[] bytes = response.toString().getBytes(StandardCharsets.UTF_8);
-            try { exchange.sendResponseHeaders(200, bytes.length); exchange.getResponseBody().write(bytes); }
+            try { exchange.getResponseHeaders().set("Content-Type", "application/json"); exchange.sendResponseHeaders(200, bytes.length); exchange.getResponseBody().write(bytes); }
             finally { exchange.close(); }
         });
         server.start();
         Path folder = Files.createTempDirectory("companion-feedback"); Path state = folder.resolve("goals.json");
         Map<String, GoalSelection> choices = new LinkedHashMap<>();
         choices.put("fresh", GoalSelection.empty().pin("wear_rune_platebody", "Wear a rune platebody").task("defence_40", "Defence"));
-        new GoalSelectionStore(state).save(choices);
+        TestPanels.store(state).save(choices);
         AtomicReference<CompanionPanel> ref = new AtomicReference<>();
         URI endpoint = URI.create("http://127.0.0.1:" + server.getAddress().getPort() + "/v1/goals/evaluate");
         try {
-            edt(() -> { ref.set(new CompanionPanel(endpoint, new GoalSelectionStore(state))); ref.get().setPreferences(new String[]{"combat"}, 3); ref.get().evaluate(); });
+            edt(() -> { ref.set(TestPanels.create(endpoint, TestPanels.store(state))); ref.get().setPreferences(new String[]{"combat"}, 3); ref.get().evaluate(); });
             ready(ref);
             edt(() -> { ref.get().selectGoal("wear_rune_platebody"); assertTrue(click(ref.get(), "▸ Recommendation feedback")); assertTrue(click(ref.get(), "Not interested")); });
             await(() -> ref.get().selectionsReady() && sent.get().getAsJsonObject("recommendation_feedback").has("wear_rune_platebody")
@@ -70,7 +70,7 @@ public class RecommendationFeedbackPanelTest {
                 assertTrue(ref.get().visibleText().contains("Paused by your feedback"));
                 ref.get().selectDemo(1); assertTrue(ref.get().selectedGoals().feedback.isEmpty());
                 ref.get().selectDemo(0); assertEquals("maybe_later", ref.get().selectedGoals().feedback.get("wear_rune_platebody").kind);
-                ref.get().close(); ref.set(new CompanionPanel(endpoint, new GoalSelectionStore(state)));
+                ref.get().close(); ref.set(TestPanels.create(endpoint, TestPanels.store(state)));
             });
             await(() -> ref.get().selectionsReady());
             edt(() -> {
@@ -83,7 +83,7 @@ public class RecommendationFeedbackPanelTest {
                 && "Connected to Python".equals(ref.get().connectionText()));
             edt(() -> assertTrue(click(ref.get(), "Reset feedback for this goal")));
             await(() -> ref.get().selectionsReady() && ref.get().selectedGoals().feedback.isEmpty() && "Connected to Python".equals(ref.get().connectionText()));
-            assertTrue(new GoalSelectionStore(state).load().get("fresh").feedback.isEmpty());
+            assertTrue(TestPanels.store(state).load().get("fresh").feedback.isEmpty());
         } finally {
             if (ref.get() != null) edt(() -> ref.get().close());
             server.stop(0); Files.deleteIfExists(state); Files.deleteIfExists(folder);

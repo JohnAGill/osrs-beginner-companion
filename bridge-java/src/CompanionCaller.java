@@ -29,10 +29,18 @@ public final class CompanionCaller {
                 throw new IllegalArgumentException("Service URL must be http://127.0.0.1:<port>.");
             }
             HttpClient client = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(2)).build();
+            PlannerClient.Transport transport = (endpoint, payload) -> client.sendAsync(
+                HttpRequest.newBuilder(endpoint).timeout(Duration.ofSeconds(5)).header("Content-Type", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(payload, StandardCharsets.UTF_8)).build(),
+                HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8)).thenApply(response -> {
+                    if (response.statusCode() != 200) throw new IllegalStateException("HTTP " + response.statusCode() + ": " + response.body());
+                    return response.body();
+                });
+            Gson gson = new Gson();
             String body = Files.readString(Path.of(args[0]), StandardCharsets.UTF_8);
             // Blocking only at this console boundary. UI callers use the returned future.
             if ("all".equals(JsonParser.parseString(body).getAsJsonObject().get("goal_id").getAsString())) {
-                PlannerClient.GoalsResult browser = PlannerClient.evaluateGoals(client, base.resolve("/v1/goals/evaluate"), body).join();
+                PlannerClient.GoalsResult browser = PlannerClient.evaluateGoals(transport, gson, base.resolve("/v1/goals/evaluate"), body).join();
                 for (PlannerClient.GoalResult goal : browser.goals) {
                     System.out.printf("%s: %s (%d/%d milestones, %d unknown)%n", goal.goal.id,
                         goal.status, goal.progress.satisfied, goal.progress.total, goal.progress.unknown);
@@ -45,7 +53,7 @@ public final class CompanionCaller {
                 }
                 return;
             }
-            Result result = PlannerClient.evaluate(client, base.resolve("/v1/evaluate"), body).join();
+            Result result = PlannerClient.evaluate(transport, gson, base.resolve("/v1/evaluate"), body).join();
             System.out.println("Python evaluation: " + result.goal_id + " (" + result.dataset_version + ")");
             for (Requirement row : result.requirements) {
                 System.out.printf("%s: %s (observed=%s, required=%s)%n",

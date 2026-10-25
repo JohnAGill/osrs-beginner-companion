@@ -16,6 +16,9 @@ import net.runelite.client.eventbus.Subscribe;
 import com.google.inject.Provides;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.ui.overlay.OverlayManager;
+import net.runelite.client.events.ConfigChanged;
+import com.google.gson.Gson;
+import okhttp3.OkHttpClient;
 
 @PluginDescriptor(name = "Beginner Companion", description = "Explore beginner goals with live character progress or demo accounts", tags = {"goals", "beginner", "demo"})
 public class CompanionPlugin extends Plugin {
@@ -23,6 +26,8 @@ public class CompanionPlugin extends Plugin {
     @Inject private Client client;
     @Inject private CompanionConfig config;
     @Inject private OverlayManager overlayManager;
+    @Inject private OkHttpClient httpClient;
+    @Inject private Gson gson;
     private FocusOverlay focusOverlay;
     private final LiveSnapshotReader liveReader = new LiveSnapshotReader();
     private boolean dirty = true;
@@ -37,7 +42,11 @@ public class CompanionPlugin extends Plugin {
     @Override protected void startUp() throws Exception {
         focusOverlay = new FocusOverlay(this, client, config);
         onEdt(() -> {
-            panel = new CompanionPanel();
+            String savedPath = System.getProperty("companion.stateFile");
+            java.nio.file.Path state = savedPath == null
+                ? net.runelite.client.RuneLite.RUNELITE_DIR.toPath().resolve("beginner-companion/character-goals.json")
+                : java.nio.file.Path.of(savedPath);
+            panel = new CompanionPanel(new PlannerTransport(httpClient), gson, serviceSettings(), new GoalSelectionStore(state, gson));
             panel.setFocusListener(focusOverlay::update);
             panel.enableLiveMode();
             BufferedImage icon = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
@@ -55,6 +64,17 @@ public class CompanionPlugin extends Plugin {
     }
 
     @Subscribe public void onStatChanged(StatChanged event) { dirty = true; }
+    private ServiceSettings serviceSettings() {
+        String local = System.getProperty("companion.devServiceUrl");
+        return local == null ? ServiceSettings.hosted(config.serviceUrl(), config.shareProgress()) : ServiceSettings.development(local);
+    }
+
+    @Subscribe public void onConfigChanged(ConfigChanged event) {
+        if (!"beginnercompanion".equals(event.getGroup())
+            || !("shareProgress".equals(event.getKey()) || "serviceUrl".equals(event.getKey()))) return;
+        ServiceSettings settings = serviceSettings();
+        SwingUtilities.invokeLater(() -> { if (panel != null) panel.configureService(settings); });
+    }
     @Subscribe public void onVarbitChanged(VarbitChanged event) { dirty = true; }
     @Subscribe public void onItemContainerChanged(ItemContainerChanged event) { dirty = true; }
     @Subscribe public void onGameStateChanged(GameStateChanged event) {

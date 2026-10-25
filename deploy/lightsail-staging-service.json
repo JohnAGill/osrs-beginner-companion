@@ -1,0 +1,9 @@
+{
+  "serviceName": "beginner-companion",
+  "power": "nano",
+  "scale": 1,
+  "tags": [
+    {"key": "application", "value": "beginner-companion"},
+    {"key": "environment", "value": "staging"}
+  ]
+}
