@@ -28,7 +28,8 @@ def goal_evaluation(payload: GoalsRequest):
     account = payload.account.model_dump()
     recommendations = recommend(catalog, evaluate_goals(catalog, account),
                                 payload.preferences.model_dump(), account,
-                                [event.model_dump() for event in payload.completion_history])
+                                [event.model_dump() for event in payload.completion_history],
+                                feedback={key: value.model_dump() for key, value in payload.recommendation_feedback.items()})
     return GoalsResponse(dataset_version=catalog['version'], session_id=payload.session_id,
                          revision=payload.revision,
                          **recommendations,

@@ -77,6 +77,8 @@
         }
       ],
       "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
         "rank": 1,
         "recommended": false,
         "availability": "available",
@@ -155,6 +157,8 @@
         }
       ],
       "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
         "rank": 2,
         "recommended": false,
         "availability": "available",
@@ -222,6 +226,8 @@
         }
       ],
       "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
         "rank": 3,
         "recommended": false,
         "availability": "available",
@@ -289,6 +295,8 @@
         }
       ],
       "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
         "rank": 4,
         "recommended": false,
         "availability": "available",
@@ -356,6 +364,8 @@
         }
       ],
       "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
         "rank": 5,
         "recommended": false,
         "availability": "available",
@@ -423,6 +433,8 @@
         }
       ],
       "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
         "rank": 6,
         "recommended": false,
         "availability": "available",
@@ -490,6 +502,8 @@
         }
       ],
       "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
         "rank": 7,
         "recommended": false,
         "availability": "available",
@@ -557,6 +571,8 @@
         }
       ],
       "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
         "rank": 8,
         "recommended": false,
         "availability": "available",
@@ -624,6 +640,8 @@
         }
       ],
       "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
         "rank": 9,
         "recommended": false,
         "availability": "available",
@@ -691,6 +709,8 @@
         }
       ],
       "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
         "rank": 10,
         "recommended": false,
         "availability": "available",
@@ -758,6 +778,8 @@
         }
       ],
       "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
         "rank": 11,
         "recommended": false,
         "availability": "available",
@@ -825,6 +847,8 @@
         }
       ],
       "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
         "rank": 12,
         "recommended": false,
         "availability": "available",
@@ -892,6 +916,8 @@
         }
       ],
       "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
         "rank": 13,
         "recommended": false,
         "availability": "available",
@@ -1124,6 +1150,8 @@
         }
       ],
       "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
         "rank": 14,
         "recommended": false,
         "availability": "membership_unknown",
@@ -1208,6 +1236,8 @@
         }
       ],
       "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
         "rank": 15,
         "recommended": false,
         "availability": "membership_unknown",

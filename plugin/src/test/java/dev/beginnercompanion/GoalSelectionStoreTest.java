@@ -85,4 +85,24 @@ public class GoalSelectionStoreTest {
         Files.writeString(path, "{\"version\":1,\"accounts\":{\"fresh\":{\"saved_goals\":{\"rune\":\"Rune\"},\"focus_goal_id\":\"rune\"}}}");
         assertNull(new GoalSelectionStore(path).load().get("fresh").taskId);
     }
+
+    @Test public void feedbackPersistsPerCharacterAndResetsWithoutChangingOtherChoices() throws Exception {
+        Path path = temp.getRoot().toPath().resolve("feedback.json");
+        GoalSelection original = GoalSelection.empty().pin("rune", "Rune").task("defence_40", "Defence")
+            .feedback("rune", "not_interested", 100).feedback("cloak", "maybe_later", 200)
+            .feedback("quest", "too_much_work", 300);
+        Map<String, GoalSelection> accounts = new LinkedHashMap<>();
+        accounts.put("one", original); accounts.put("two", GoalSelection.empty());
+        new GoalSelectionStore(path).save(accounts);
+        Map<String, GoalSelection> restored = new GoalSelectionStore(path).load();
+        assertEquals(original.feedback, restored.get("one").feedback);
+        assertTrue(restored.get("two").feedback.isEmpty());
+        assertEquals(2, original.resetFeedback("rune").feedback.size());
+        GoalSelection reset = original.resetFeedback(null);
+        assertTrue(reset.feedback.isEmpty()); assertEquals("rune", reset.focus); assertEquals("defence_40", reset.taskId);
+        assertSame(original.history, reset.history);
+        assertEquals(original.feedback, original.unpin().save("other", "Other").remove("other").withHistory(original.history).feedback);
+        assertThrows(UnsupportedOperationException.class, () -> original.feedback.clear());
+        assertThrows(IllegalArgumentException.class, () -> original.feedback("x", "invalid", 1));
+    }
 }

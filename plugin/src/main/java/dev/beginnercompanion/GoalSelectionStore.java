@@ -12,7 +12,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/** Local demo choices only. The panel calls this on a dedicated, serial I/O worker. */
+/** Local character/demo state. The panel calls this on a dedicated, serial I/O worker. */
 final class GoalSelectionStore {
     private final Path path;
 
@@ -55,7 +55,17 @@ final class GoalSelectionStore {
                     }
                     history = new CompletionHistory(readIds(data, "completed"), readIds(data, "incomplete"), events);
                 }
-                accounts.put(entry.getKey(), new GoalSelection(saved, focus.isJsonNull() ? null : focus.getAsString(), taskId, taskTitle, history));
+                Map<String, GoalFeedback> feedback = new LinkedHashMap<>();
+                if (account.has("recommendation_feedback")) {
+                    for (Map.Entry<String, JsonElement> item : account.getAsJsonObject("recommendation_feedback").entrySet()) {
+                        JsonObject value = item.getValue().getAsJsonObject();
+                        JsonElement time = value.get("recordedAt");
+                        if (!time.isJsonPrimitive() || !time.getAsJsonPrimitive().isNumber()
+                            || !time.getAsString().matches("[0-9]{1,12}")) throw new IllegalArgumentException("Invalid feedback time");
+                        feedback.put(item.getKey(), new GoalFeedback(optionalString(value, "kind"), time.getAsLong()));
+                    }
+                }
+                accounts.put(entry.getKey(), new GoalSelection(saved, focus.isJsonNull() ? null : focus.getAsString(), taskId, taskTitle, history, feedback));
             }
             return accounts;
         } catch (java.nio.file.NoSuchFileException missing) {
@@ -79,6 +89,7 @@ final class GoalSelectionStore {
             account.addProperty("current_task_id", entry.getValue().taskId);
             account.addProperty("current_task_title", entry.getValue().taskTitle);
             account.add("completion_history", new GsonBuilder().create().toJsonTree(entry.getValue().history));
+            account.add("recommendation_feedback", new GsonBuilder().create().toJsonTree(entry.getValue().feedback));
             entries.add(entry.getKey(), account);
         }
         Files.createDirectories(path.getParent());

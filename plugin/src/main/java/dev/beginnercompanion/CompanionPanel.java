@@ -39,6 +39,7 @@ public class CompanionPanel extends PluginPanel {
     private final JLabel connection = new JLabel("Not checked");
     private final JPanel rows = column();
     private final JPanel selectionHeader = column();
+    private final JPanel feedbackManager = column();
     private final JTabbedPane tabs = new JTabbedPane() {
         @Override public java.awt.Dimension getPreferredSize() {
             Component selected = getSelectedComponent();
@@ -67,6 +68,7 @@ public class CompanionPanel extends PluginPanel {
     private LiveSnapshotReader.Snapshot liveAccount;
     private boolean liveRefreshQueued;
     private long retryAfter;
+    private long feedbackCheckedAt;
     private final JTextArea sourceLabel = text("Demo mode: fictional accounts only.", false);
     private int revision;
     private boolean closed;
@@ -161,12 +163,13 @@ public class CompanionPanel extends PluginPanel {
             for (java.util.Map.Entry<String, com.google.gson.JsonElement> quest : liveAccount.account.getAsJsonObject("quest_progress").entrySet()) {
                 report.append(quest.getKey().replace('_', ' ')).append(": ").append(quest.getValue().getAsString().replace('_', ' ')).append("\n");
             }
-            report.append("\nDiary tasks and cloak reward claims are not yet verified.\nPast equipment use is unknown unless observed during this plugin session.");
+            report.append("\nEasy Ardougne diary tasks and cloak reward claims are read from game variables. Inconsistent or unavailable readings stay unknown.\nPast equipment use is unknown unless observed during this plugin session.");
             JTextArea data = new JTextArea(report.toString(), 24, 38);
             data.setEditable(false);
             JOptionPane.showMessageDialog(this, new JScrollPane(data), "Live character observations", JOptionPane.INFORMATION_MESSAGE);
         });
         setup.add(characterData);
+        setup.add(disclosure("feedback-settings", "Recommendation feedback", feedbackManager, false));
         content.add(disclosure("setup", "Settings", setup, false));
         tabs.addTab("Focus", selectionHeader);
         tabs.addTab("Explore", exploreTab);
@@ -222,7 +225,9 @@ public class CompanionPanel extends PluginPanel {
         if (changed) {
             if (pending != null) { liveRefreshQueued = true; progressFresh = false; publishFocus(); }
             else if (System.currentTimeMillis() >= retryAfter) evaluate();
-        } else if (snapshot == null && pending == null && System.currentTimeMillis() >= retryAfter) evaluate();
+        } else if (pending == null && System.currentTimeMillis() >= retryAfter && (snapshot == null
+            || currentSelection().feedback.values().stream().anyMatch(value -> value.expiresAt() > feedbackCheckedAt
+                && value.expiresAt() <= System.currentTimeMillis() / 1000))) evaluate();
     }
     private GoalSelection currentSelection() { return selections.getOrDefault(demoId(), GoalSelection.empty()); }
 
@@ -247,6 +252,7 @@ public class CompanionPanel extends PluginPanel {
         java.util.Map<String, GoalSelection> updated = new java.util.LinkedHashMap<>(selections);
         String accountKey = demoId();
         boolean newCompletions = !currentSelection().history.events.equals(next.history.events);
+        boolean feedbackChanged = !currentSelection().feedback.equals(next.feedback);
         updated.put(accountKey, next);
         saving = true; selectionError = null; render();
         CompletableFuture.runAsync(() -> {
@@ -260,7 +266,12 @@ public class CompanionPanel extends PluginPanel {
             render();
             if (failure == null) {
                 recordHistory();
-                if (newCompletions && accountKey.equals(demoId())) {
+                if (feedbackChanged && accountKey.equals(demoId())) {
+                    revision++;
+                    if (pending != null) pending.cancel(true);
+                    pending = null; liveRefreshQueued = false;
+                    evaluate();
+                } else if (newCompletions && accountKey.equals(demoId())) {
                     if (pending != null && isLive()) liveRefreshQueued = true;
                     else evaluate();
                 }
@@ -321,6 +332,7 @@ public class CompanionPanel extends PluginPanel {
                 JButton open = button("Open focus", () -> selectGoal(chosen.focus));
                 open.setEnabled(focus != null); selectionHeader.add(open);
                 selectionHeader.add(selectionButton("Unpin focus", () -> changeSelection(currentSelection().unpin())));
+                if (focus != null) addFeedback(selectionHeader, focus);
             }
             if (saving) selectionHeader.add(text("Saving your choices...", false));
             if (selectionError != null) selectionHeader.add(text(selectionError, false));
@@ -492,6 +504,7 @@ public class CompanionPanel extends PluginPanel {
         publishFocus();
         characterData.setEnabled(isLive() && liveAccount != null && !closed);
         renderSelectionHeader();
+        renderFeedbackManager();
         rows.removeAll();
         if (tabs.getSelectedIndex() == 0) {
             if (snapshot == null) selectionHeader.add(text(resultMessage, false));
@@ -512,8 +525,10 @@ public class CompanionPanel extends PluginPanel {
             else {
                 section("Explore goals");
                 rows.add(text(snapshot.recommendation_summary, false));
+                if (!currentSelection().feedback.isEmpty()) rows.add(text("Saved feedback may hide or pause goals. Reset it in Settings → Recommendation feedback.", false));
                 int matches = 0;
                 for (PlannerClient.GoalResult result : snapshot.goals) {
+                    if ("not_interested".equals(result.recommendation.feedback_status)) continue;
                     String query = goalSearch.getText().strip().toLowerCase(java.util.Locale.ROOT);
                     if (!(result.goal.title + " " + result.goal.summary).toLowerCase(java.util.Locale.ROOT).contains(query)
                         || (goalAccess.getSelectedIndex() == 1 && result.goal.members_only)
@@ -525,7 +540,9 @@ public class CompanionPanel extends PluginPanel {
                     rows.add(text(result.goal.summary, false));
                     rows.add(text(state(result.status) + "\n" + progress(result), false));
                     addRemainingInvestment(rows, result, false);
+                    if (!result.recommendation.feedback_reason.isEmpty()) rows.add(text(result.recommendation.feedback_reason, false));
                     rows.add(button("View goal", () -> selectGoal(result.goal.id)));
+                    addFeedback(rows, result);
 
                 }
                 if (matches == 0) rows.add(text("No matching goals. Try another search or access filter.", false));
@@ -544,6 +561,7 @@ public class CompanionPanel extends PluginPanel {
             rows.add(text(state(detail.status) + "\n" + progress(detail), false));
             addRemainingInvestment(rows, detail, true);
             addSelectionActions(detail.goal.id, detail.goal.title);
+            addFeedback(rows, detail);
             rows.add(text("Milestone counts are checks, not an estimate of effort.", false));
             addNextSteps(rows, detail);
             JPanel overview = column();
@@ -585,6 +603,42 @@ public class CompanionPanel extends PluginPanel {
             details.add(text(remaining.commitment_reason, false));
             target.add(disclosure(result.goal.id + ":remaining", "Work remaining details", details, false));
         }
+    }
+
+    private void addFeedback(JPanel target, PlannerClient.GoalResult goal) {
+        JPanel options = column();
+        options.add(text("Not interested hides this goal until reset. Maybe later pauses recommendations for 24 hours. Too much work pauses them for seven days and favours confirmed short alternatives.", false));
+        if (!goal.recommendation.feedback_reason.isEmpty()) options.add(text(goal.recommendation.feedback_reason, true));
+        String[] labels = {"Not interested", "Maybe later", "Too much work right now"};
+        String[] kinds = {"not_interested", "maybe_later", "too_much_work"};
+        for (int i = 0; i < labels.length; i++) {
+            String kind = kinds[i];
+            options.add(selectionButton(labels[i], () -> changeSelection(currentSelection().feedback(goal.goal.id, kind, System.currentTimeMillis() / 1000))));
+        }
+        if (currentSelection().feedback.containsKey(goal.goal.id)) {
+            options.add(selectionButton("Reset feedback for this goal", () -> changeSelection(currentSelection().resetFeedback(goal.goal.id))));
+        }
+        target.add(disclosure(goal.goal.id + ":feedback", "Recommendation feedback", options, false));
+    }
+
+    private void renderFeedbackManager() {
+        feedbackManager.removeAll();
+        GoalSelection chosen = currentSelection();
+        feedbackManager.add(text("Feedback is saved for this character. Resetting it keeps preference answers, goals, tasks and history.", false));
+        if (chosen.feedback.isEmpty()) feedbackManager.add(text("No recommendation feedback saved.", false));
+        chosen.feedback.forEach((id, value) -> {
+            PlannerClient.GoalResult goal = findGoal(id);
+            feedbackManager.add(text(goal == null ? id.replace('_', ' ') : goal.goal.title, true));
+            long expires = value.expiresAt();
+            String status = "not_interested".equals(value.kind) ? "Not interested — until reset"
+                : value.kind.replace('_', ' ') + (expires <= System.currentTimeMillis() / 1000 ? " — expired; updates on refresh" : " — until " + java.time.Instant.ofEpochSecond(expires).atZone(java.time.ZoneId.systemDefault()).toLocalDateTime().withSecond(0).withNano(0));
+            feedbackManager.add(text(status, false));
+            feedbackManager.add(selectionButton("Reset this feedback", () -> changeSelection(currentSelection().resetFeedback(id))));
+        });
+        JButton reset = selectionButton("Reset all feedback", () -> changeSelection(currentSelection().resetFeedback(null)));
+        reset.setEnabled(reset.isEnabled() && !chosen.feedback.isEmpty());
+        feedbackManager.add(reset);
+        feedbackManager.revalidate(); feedbackManager.repaint();
     }
 
     private void addNextSteps(JPanel target, PlannerClient.GoalResult result) {
@@ -670,6 +724,7 @@ public class CompanionPanel extends PluginPanel {
     void evaluate() {
         if (closed || pending != null || (isLive() && liveAccount == null)) return;
         int requestedRevision = ++revision;
+        long requestedAt = System.currentTimeMillis() / 1000;
         try {
             String name = demoId();
             JsonObject request;
@@ -704,6 +759,12 @@ public class CompanionPanel extends PluginPanel {
                     history.add(completion);
                 });
             request.add("completion_history", history);
+            JsonObject feedback = new JsonObject();
+            currentSelection().feedback.forEach((id, value) -> {
+                JsonObject item = new JsonObject(); item.addProperty("kind", value.kind); item.addProperty("recorded_at", value.recordedAt);
+                feedback.add(id, item);
+            });
+            request.add("recommendation_feedback", feedback);
             check.setEnabled(false); progressFresh = false;
             resultMessage = "Checking Python...";
             connection.setText("Checking Python...");
@@ -715,7 +776,8 @@ public class CompanionPanel extends PluginPanel {
                 pending = null; check.setEnabled(true);
                 if (liveRefreshQueued && isLive()) { liveRefreshQueued = false; evaluate(); return; }
                 if (failure != null) { showFailure(failure); return; }
-                snapshot = result; progressFresh = true; retryAfter = 0; connection.setText("Connected to Python"); render(); recordHistory();
+                snapshot = result; progressFresh = true; retryAfter = 0; feedbackCheckedAt = requestedAt;
+                connection.setText("Connected to Python"); render(); recordHistory();
             }));
         } catch (Exception failure) {
             pending = null; check.setEnabled(true); showFailure(failure);

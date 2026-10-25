@@ -264,6 +264,20 @@
     "Recommendation": {
       "additionalProperties": false,
       "properties": {
+        "feedback_status": {
+          "enum": [
+            "none",
+            "not_interested",
+            "maybe_later",
+            "too_much_work"
+          ],
+          "title": "Feedback Status",
+          "type": "string"
+        },
+        "feedback_reason": {
+          "title": "Feedback Reason",
+          "type": "string"
+        },
         "rank": {
           "title": "Rank",
           "type": "integer"
@@ -298,6 +312,8 @@
         }
       },
       "required": [
+        "feedback_status",
+        "feedback_reason",
         "rank",
         "recommended",
         "availability",

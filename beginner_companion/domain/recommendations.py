@@ -22,7 +22,7 @@ COMMITMENT_LABELS = {'short': 'a short activity', 'few_sessions': 'a project ove
                      'long': 'a longer ambition'}
 
 
-def recommend(catalog, evaluated, preferences, account, completion_history=(), *, now=None):
+def recommend(catalog, evaluated, preferences, account, completion_history=(), *, now=None, feedback=None):
     """Return a new ordered result; membership/completion take priority over fit.
 
     Six points per selected interest match; exact commitment +3, otherwise minus the
@@ -44,7 +44,16 @@ def recommend(catalog, evaluated, preferences, account, completion_history=(), *
         source, timestamp = event['goal_id'], event['completed_at']
         if source in completed_ids and 0 <= now - timestamp <= 30 * 86400:
             recent[source] = max(recent.get(source, 0), timestamp)
-    personalised = bool(selected) or commitment != 'any' or bool(recent)
+    active_feedback = {}
+    for goal_id, value in (feedback or {}).items():
+        age = now - value['recorded_at']
+        if goal_id not in titles or age < 0:
+            continue
+        kind = value['kind']
+        if kind == 'not_interested' or (kind == 'maybe_later' and age < 86400) or (kind == 'too_much_work' and age < 7 * 86400):
+            active_feedback[goal_id] = kind
+    smaller_requested = 'too_much_work' in active_feedback.values()
+    personalised = bool(selected) or commitment != 'any' or bool(recent) or bool(active_feedback)
     scored = []
     for index, row in enumerate(rows):
         goal = row['goal']
@@ -84,6 +93,18 @@ def recommend(catalog, evaluated, preferences, account, completion_history=(), *
                 considerations.append('Remaining commitment is not scored: ' + remaining['commitment_reason'])
             elif band == 'blocked':
                 considerations.append(remaining['commitment_reason'])
+        feedback_status = active_feedback.get(goal['id'], 'none')
+        feedback_reason = {
+            'none': '',
+            'not_interested': 'Hidden from Explore and recommendations until you reset Not interested.',
+            'maybe_later': 'Paused from recommendations for 24 hours after your feedback.',
+            'too_much_work': 'Paused from recommendations for seven days; confirmed short alternatives get a small boost.',
+        }[feedback_status]
+        if feedback_reason:
+            considerations.append(feedback_reason)
+        elif smaller_requested and row['remaining_investment']['commitment_band'] == 'short' and (not selected or matched):
+            score += 3
+            reasons.append('You recently asked for less work; this has confirmed short remaining work. Your preference answers are unchanged.')
         if personalised and not reasons:
             reasons.append('An alternative to explore outside your selected preferences.')
 
@@ -101,24 +122,27 @@ def recommend(catalog, evaluated, preferences, account, completion_history=(), *
         if row['status'] == 'unknown':
             considerations.append('Completion is unknown; check progress before choosing this goal.')
         row['recommendation'] = dict(rank=0, recommended=False, availability=availability,
+                                     feedback_status=feedback_status, feedback_reason=feedback_reason,
                                      reasons=reasons, considerations=considerations)
-        scored.append((tier, -score, index, row))
+        scored.append((tier, feedback_status != 'none', -score, index, row))
 
-    scored.sort(key=lambda item: item[:3])
+    scored.sort(key=lambda item: item[:4])
     recommended_id = None
-    for rank, (tier, negative_score, _, row) in enumerate(scored, 1):
+    for rank, (tier, suppressed, negative_score, _, row) in enumerate(scored, 1):
         row['recommendation']['rank'] = rank
-        if rank == 1 and personalised and tier == 0 and negative_score < 0:
+        if rank == 1 and personalised and tier == 0 and not suppressed and negative_score < 0:
             row['recommendation']['recommended'] = True
             recommended_id = row['goal']['id']
     if all(row['status'] == 'completed' for row in rows):
         summary = 'All catalogue goals are completed on this character. No new goal to recommend.'
+    elif active_feedback and not any(g['recommendation']['availability'] == 'available' and g['recommendation']['feedback_status'] == 'none' for g in rows):
+        summary = 'No available goal is eligible after your feedback. Reset feedback to reconsider paused or hidden goals.'
     elif not personalised:
         summary = 'A mix to explore. Answer the optional questions for a personalised suggestion.'
     elif recommended_id:
-        title = next(row['goal']['title'] for _, _, _, row in scored if row['goal']['id'] == recommended_id)
+        title = next(row['goal']['title'] for _, _, _, _, row in scored if row['goal']['id'] == recommended_id)
         summary = 'Best fit among the current goals: ' + title + '. You can still choose any goal.'
     else:
         summary = 'No available unfinished goal directly matches these preferences or recent completions. Explore the alternatives below.'
-    return dict(goals=[row for _, _, _, row in scored], recommended_goal_id=recommended_id,
+    return dict(goals=[row for _, _, _, _, row in scored], recommended_goal_id=recommended_id,
                 recommendation_summary=summary)

@@ -39,6 +39,10 @@ See [screenshot generation](docs/screenshots.md).
   The movable overlay keeps it visible while the sidebar is closed.
 - **Adapt:** suggestions combine interest/commitment answers with curated follow-ups to
   recently observed completions. Each recommendation explains its fit; nothing is auto-selected.
+- **Give feedback:** Not interested hides a goal until reset; Maybe later pauses its
+  recommendations for 24 hours; Too much work right now pauses them for seven days and
+  gives confirmed short, interest-matching alternatives a small boost. Feedback is saved
+  per character. Reset individual choices or all feedback in **Settings → Recommendation feedback**.
 - **Remember:** goals, tasks and completion history are stored locally per character.
   Initial completed observations establish a baseline, rather than a false recent history.
 
@@ -130,7 +134,7 @@ For a console-only example of the Java/Python boundary:
 .\.venv\Scripts\python scripts/verify_bridge.py
 ```
 
-Current coverage: **45 Python tests and 20 Java tests**, plus a real Java → HTTP → Python
+Current coverage: **50 Python tests and 25 Java tests**, plus a real Java → HTTP → Python
 → Java verification script. Tests cover threshold boundaries, unknown progress, matching,
 recency, persistence, character isolation, stale responses, task selection, overlay guards
 and scroll preservation. The bridge script starts/stops its own loopback service.
@@ -157,13 +161,13 @@ This is an independent **development prototype**, not a published or approved Pl
 plugin. It performs no automatic gameplay, movement or game input.
 
 - Live tracking reads skill levels/XP, seven relevant quests, quest points and membership.
-- Diary task/reward-claim mappings remain unverified and therefore unknown.
+- Easy Ardougne diary tasks and cloak reward claims use source-verified game variables; inconsistent readings remain unknown. See [tracking evidence](docs/diary-tracking.md).
 - Rune platebody use is remembered only if observed during the plugin session.
 - The Python service currently runs locally; hosted/packaged delivery remains future work.
 - Preference answers last for the plugin session. Saved goals, tasks and history persist.
 - Investment bands are qualitative; they are not measured completion-time forecasts.
 
-Next: beginner playtesting, broader curated follow-up relationships, verified diary data,
+Next: beginner playtesting, broader curated follow-up relationships, live diary playtesting,
 and a reviewed distribution approach. See [roadmap](docs/beginner-companion-plan.md) and
 [delivery options](docs/delivery-options.md).
 
@@ -172,7 +176,8 @@ and a reviewed distribution approach. See [roadmap](docs/beginner-companion-plan
 Only fictional fixtures are committed. Character keys, saved goals and history stay in the
 ignored `data/private/` directory. Character names/account hashes are not sent to Python;
 requests contain game observations, preferences, random session/revision identifiers and
-up to fifty completion goal IDs/timestamps. This is a local-data design, not anonymisation
+up to fifty completion goal IDs/timestamps and up to one hundred goal feedback kinds/timestamps.
+Feedback never sends account identity or changes preference answers. This is a local-data design, not anonymisation
 of all gameplay observations. Logs, credentials, account exports and build caches are ignored.
 
 Original code is **MIT licensed**. The wiki-derived catalogue and generated response fixtures

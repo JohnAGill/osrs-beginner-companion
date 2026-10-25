@@ -46,7 +46,8 @@ The plugin keeps saved goals, tasks and completion observations per local charac
 The key is a hash used for separation, not a guarantee of anonymisation. A character name
 can be displayed locally; neither that name nor the account hash/key is sent to Python.
 Requests do contain skill/quest observations, preferences and recent completion goal IDs
-with observation timestamps. The service currently listens on loopback only.
+with observation timestamps. Recommendation requests also include saved per-goal feedback
+kinds and timestamps, without character identity. The service currently listens on loopback only.
 
 Screenshots are real UI renders with fictional data. They include no game login, credentials,
 real character name, account export, gameplay capture or personal desktop background.

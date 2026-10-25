@@ -17,7 +17,7 @@ public class LiveSnapshotReaderTest {
         assertFalse(snapshot.account.get("members").getAsBoolean());
         assertEquals(0, snapshot.account.get("quest_points").getAsInt());
         assertEquals("not_started", snapshot.account.getAsJsonObject("quest_progress").get("dragon_slayer_i").getAsString());
-        assertFalse(snapshot.account.has("ardougne_easy_tasks"));
+        assertEquals(10, snapshot.account.getAsJsonObject("ardougne_easy_tasks").size());
         assertFalse(snapshot.account.getAsJsonObject("milestones").has("rune_platebody_equipped"));
         assertFalse(snapshot.account.toString().contains("Synthetic Player"));
         assertFalse(snapshot.account.toString().contains(snapshot.localKey));
@@ -48,11 +48,45 @@ public class LiveSnapshotReaderTest {
         assertEquals(LiveSnapshotReader.localKey(42), LiveSnapshotReader.localKey(42));
     }
 
+    @Test public void diaryBitsTrackEachTaskAndIgnoreOtherTiers() {
+        String[] ids = {"essence_mine", "cake", "silk", "altar", "trawler", "training_camp",
+            "rusty_sword", "wilderness_lever", "hunter_shop", "pet_check"};
+        int[] bits = {0, 1, 2, 4, 5, 6, 7, 9, 11, 12};
+        Fake game = new Fake(); LiveSnapshotReader reader = new LiveSnapshotReader();
+        for (int i = 0; i < bits.length; i++) {
+            game.diaryFlags = (1 << bits[i]) | (1 << 3) | (1 << 8) | (1 << 10);
+            game.diaryCount = 1;
+            JsonObject tasks = reader.read(game.client()).account.getAsJsonObject("ardougne_easy_tasks");
+            for (int j = 0; j < ids.length; j++) assertEquals(ids[j], i == j, tasks.get(ids[j]).getAsBoolean());
+        }
+    }
+
+    @Test public void diaryCompletionAndRewardClaimAreSeparateAndCharacterScoped() {
+        Fake game = new Fake(); LiveSnapshotReader reader = new LiveSnapshotReader();
+        game.diaryFlags = 0x1af7; game.diaryCount = 10; game.diaryComplete = 1;
+        assertFalse(reader.read(game.client()).account.getAsJsonObject("milestones").get("ardougne_cloak_1_claimed").getAsBoolean());
+        game.diaryReward = 1;
+        assertTrue(reader.read(game.client()).account.getAsJsonObject("milestones").get("ardougne_cloak_1_claimed").getAsBoolean());
+        game.hash = 43; game.diaryFlags = 0; game.diaryCount = 0; game.diaryComplete = 0; game.diaryReward = 0;
+        assertFalse(reader.read(game.client()).account.getAsJsonObject("milestones").get("ardougne_cloak_1_claimed").getAsBoolean());
+    }
+
+    @Test public void inconsistentOrUnavailableDiaryRemainsUnknown() {
+        Fake game = new Fake(); LiveSnapshotReader reader = new LiveSnapshotReader();
+        game.diaryCount = 1;
+        assertFalse(reader.read(game.client()).account.has("ardougne_easy_tasks"));
+        game.diaryCount = 0; game.diaryReward = 1;
+        assertFalse(reader.read(game.client()).account.getAsJsonObject("milestones").has("ardougne_cloak_1_claimed"));
+        game.diaryReward = 0; game.diaryUnavailable = true;
+        assertFalse(reader.read(game.client()).account.has("ardougne_easy_tasks"));
+    }
+
     private static final class Fake {
         GameState state = GameState.LOGGED_IN;
         long hash = 42;
         int level = 1, xp = 0, qp = 0, memberDays = 0, questState = 1;
-        boolean onClientThread = true, wearing;
+        int diaryFlags, diaryCount, diaryComplete, diaryReward;
+        boolean onClientThread = true, wearing, diaryUnavailable;
         Client client() {
             Player player = proxy(Player.class, (method, args) -> method.equals("getName") ? "Synthetic Player" : null);
             ItemContainer equipment = proxy(ItemContainer.class, (method, args) -> method.equals("getItems") ? new Item[]{new Item(wearing ? 1127 : -1, 1)} : null);
@@ -64,7 +98,17 @@ public class LiveSnapshotReaderTest {
                     case "getAccountHash": return hash;
                     case "getRealSkillLevel": return level;
                     case "getSkillExperience": return xp;
-                    case "getVarpValue": return (int) args[0] == VarPlayer.QUEST_POINTS ? qp : memberDays;
+                    case "getVarpValue":
+                        if ((int) args[0] == 1196) return diaryFlags;
+                        return (int) args[0] == VarPlayer.QUEST_POINTS ? qp : memberDays;
+                    case "getVarbitValue":
+                        if (diaryUnavailable) throw new IllegalStateException("Not ready");
+                        switch ((int) args[0]) {
+                            case 6291: return diaryCount;
+                            case 4458: return diaryComplete;
+                            case 4499: return diaryReward;
+                            default: throw new AssertionError("Unexpected varbit");
+                        }
                     case "getIntStack": return new int[]{questState};
                     case "getItemContainer": return equipment;
                     case "runScript": return null;

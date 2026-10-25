@@ -130,6 +130,32 @@
       "title": "GoalAccount",
       "type": "object"
     },
+    "GoalFeedback": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "not_interested",
+            "maybe_later",
+            "too_much_work"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "recorded_at": {
+          "maximum": 253402300799,
+          "minimum": 0,
+          "title": "Recorded At",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind",
+        "recorded_at"
+      ],
+      "title": "GoalFeedback",
+      "type": "object"
+    },
     "GoalFlags": {
       "additionalProperties": false,
       "properties": {
@@ -668,6 +694,16 @@
       "maxItems": 50,
       "title": "Completion History",
       "type": "array"
+    },
+    "recommendation_feedback": {
+      "maxProperties": 100,
+      "patternProperties": {
+        "^[a-z0-9_]{1,128}$": {
+          "$ref": "#/$defs/GoalFeedback"
+        }
+      },
+      "title": "Recommendation Feedback",
+      "type": "object"
     }
   },
   "required": [

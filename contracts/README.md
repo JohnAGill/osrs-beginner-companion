@@ -200,3 +200,23 @@ at most 50% fits `few_sessions`; otherwise the full training band is retained. M
 conflicting XP prevents a reduced training fit. These thresholds are explainable heuristics,
 not validated duration forecasts or a general XP-to-time model. Quest stages are never
 inferred from `in_progress`. Access restrictions and completed-goal exclusions remain first.
+
+
+## Recommendation feedback
+
+Optional `recommendation_feedback` maps up to 100 goal IDs to `{kind, recorded_at}` with
+Unix seconds. Kinds: `not_interested`, `maybe_later`, `too_much_work`. Unknown IDs and
+future-dated entries do not affect ranking. Not interested remains until removed; Maybe
+later expires at 24 hours; Too much work expires at seven days. Expired entries are ignored.
+
+Active feedback excludes that goal from the best recommendation but does not remove its
+evaluation or change completion, saved goals, focus, tasks or preference answers. Each
+recommendation returns `feedback_status` and `feedback_reason`. The client hides Not
+interested goals in Explore, retains them in Saved/Focus, and offers individual/global reset.
+If no available goal remains eligible, the response explains how to reset feedback.
+
+While Too much work is active, otherwise eligible goals with confirmed `short` remaining
+work gain one +3 boost, gated by explicit interests. Unknown work never receives it. The
+boost does not stack across multiple feedback entries or override membership restrictions.
+The client saves feedback locally per character and refreshes ranking after a successful
+save. Live observations also trigger refresh when an expiry crosses; demos refresh on demand.

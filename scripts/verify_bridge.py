@@ -86,6 +86,22 @@ def run():
                     assert 'Recommendation: ' + expected in result.stdout, result.stdout
                     assert 'remaining work fits your preference' in result.stdout, result.stdout
                 print('PASS Java remaining-work commitment recommendations')
+                for kind in ['not_interested', 'maybe_later', 'too_much_work']:
+                    history_request['recommendation_feedback'] = {'wear_rune_platebody': {'kind': kind, 'recorded_at': int(time.time())}}
+                    fixture.write_text(json.dumps(history_request), encoding='utf-8')
+                    result = subprocess.run(command + [str(fixture), url], capture_output=True, text=True, timeout=15)
+                    assert result.returncode == 0, result.stderr
+                    assert 'Recommendation: wear_rune_platebody' not in result.stdout, result.stdout
+                    expected_note = {'not_interested': 'Hidden from Explore', 'maybe_later': 'Paused from recommendations for 24 hours',
+                                     'too_much_work': 'Paused from recommendations for seven days'}[kind]
+                    assert expected_note in result.stdout, result.stdout
+                    if kind == 'too_much_work':
+                        assert 'Recommendation: attack_40' in result.stdout, result.stdout
+                history_request['recommendation_feedback'] = {}
+                fixture.write_text(json.dumps(history_request), encoding='utf-8')
+                result = subprocess.run(command + [str(fixture), url], capture_output=True, text=True, timeout=15)
+                assert result.returncode == 0 and 'Recommendation: wear_rune_platebody' in result.stdout, result.stdout
+                print('PASS Java recommendation feedback and reset')
                 request = json.loads((ROOT / 'contracts/fixtures/missing.request.json').read_text())
                 for changes, expected in [({'protocol_version': 2}, 'version_mismatch'),
                                           ({'goal_id': 'other'}, 'unknown_goal'),

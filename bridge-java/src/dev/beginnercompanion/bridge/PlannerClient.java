@@ -66,6 +66,7 @@ public final class PlannerClient {
         public int rank;
         public boolean recommended;
         public String availability;
+        public String feedback_status, feedback_reason;
         public String[] reasons, considerations;
     }
 
@@ -104,6 +105,8 @@ public final class PlannerClient {
                     || !java.util.Arrays.asList("completed", "access_blocked", "unknown", "final_step", "prerequisites", "training", "quest", "diary")
                         .contains(row.remaining_investment.state)
                     || row.recommendation.reasons == null || row.recommendation.considerations == null
+                    || row.recommendation.feedback_reason == null
+                    || !java.util.Arrays.asList("none", "not_interested", "maybe_later", "too_much_work").contains(row.recommendation.feedback_status)
                     || !java.util.Arrays.asList("available", "members_required", "membership_unknown", "completed")
                         .contains(row.recommendation.availability)
                     || !java.util.Arrays.asList("completed", "incomplete", "unknown").contains(row.status)) {

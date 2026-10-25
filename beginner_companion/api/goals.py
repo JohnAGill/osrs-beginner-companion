@@ -80,6 +80,11 @@ class CompletionEvent(WireModel):
     completed_at: StrictInt = Field(ge=0, le=253402300799)
 
 
+class GoalFeedback(WireModel):
+    kind: Literal['not_interested', 'maybe_later', 'too_much_work']
+    recorded_at: StrictInt = Field(ge=0, le=253402300799)
+
+
 class GoalsRequest(EvaluationRequest):
     # No selected goal needed: one snapshot evaluates the entire small catalogue.
     goal_id: Literal['all'] = 'all'
@@ -87,6 +92,7 @@ class GoalsRequest(EvaluationRequest):
     preferences: Preferences = Field(default_factory=Preferences)
     source: Literal['demo', 'live'] = 'demo'
     completion_history: list[CompletionEvent] = Field(default_factory=list, max_length=50)
+    recommendation_feedback: dict[Annotated[str, Field(pattern=r'^[a-z0-9_]{1,128}$')], GoalFeedback] = Field(default_factory=dict, max_length=100)
 
 
 class GoalDescription(WireModel):
@@ -120,6 +126,8 @@ class GoalProgress(WireModel):
 
 
 class Recommendation(WireModel):
+    feedback_status: Literal['none', 'not_interested', 'maybe_later', 'too_much_work']
+    feedback_reason: str
     rank: int
     recommended: bool
     availability: Literal['available', 'members_required', 'membership_unknown', 'completed']

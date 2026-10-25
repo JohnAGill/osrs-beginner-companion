@@ -51,8 +51,9 @@ cancel stale HTTP results and disable live edits until a fresh character is avai
 Returning to a character restores its saved goals without importing any demo choices.
 No live skill/quest snapshot is persisted by this feature.
 
-Ardougne task flags and cloak reward-claim history remain **unknown**, since their mappings
-have not been verified. The rune platebody milestone becomes true if wearing item 1127 is
+All ten easy Ardougne task flags and the separate cloak reward claim are read from
+source-verified game variables. Inconsistent or unavailable readings remain **unknown**;
+see [mapping evidence and validation](../docs/diary-tracking.md). The rune platebody milestone becomes true if wearing item 1127 is
 observed, and is remembered per character for this plugin session (including after taking
 it off). Past equipment use is unknown until observed; that history is not persisted across
 plugin restarts. No false 'not completed' result is inferred from an empty equipment slot.
@@ -178,5 +179,5 @@ at a time; changing the selected demo cancels/invalidates the previous request. 
 callbacks check the current revision and closed state before updating the panel. Disabling
 the plugin cancels pending work, shuts down its executor and removes its toolbar entry.
 
-Later milestones can add verified diary/reward mappings and refine the overlay presentation. Public Plugin Hub packaging
+Later milestones can expand diary coverage and refine the overlay presentation. Public Plugin Hub packaging
 and a bundled Python process are outside this development build.

@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 import net.runelite.api.*;
+import net.runelite.api.gameval.VarPlayerID;
+import net.runelite.api.gameval.VarbitID;
 
 /** Called only on RuneLite's client thread after logged-in game ticks. */
 final class LiveSnapshotReader {
@@ -60,8 +62,34 @@ final class LiveSnapshotReader {
         JsonObject milestones = new JsonObject();
         if (observedWearing.contains(key)) milestones.addProperty("rune_platebody_equipped", true);
         account.add("milestones", milestones);
-        // Diary task and reward-claim mappings are not yet verified: leave them unknown.
+        readArdougneDiary(client, account, milestones);
         return new Snapshot(key, client.getLocalPlayer().getName(), account);
+    }
+
+    // Mapping provenance and bit positions: docs/diary-tracking.md.
+    private static final String[] EASY_TASKS = {"essence_mine", "cake", "silk", "altar",
+        "trawler", "training_camp", "rusty_sword", "wilderness_lever", "hunter_shop", "pet_check"};
+    private static final int[] EASY_BITS = {0, 1, 2, 4, 5, 6, 7, 9, 11, 12};
+
+    private static void readArdougneDiary(Client client, JsonObject account, JsonObject milestones) {
+        try {
+            int flags = client.getVarpValue(VarPlayerID.ARDOUNGE_ACHIEVEMENT_DIARY);
+            int count = client.getVarbitValue(VarbitID.ARDOUGNE_EASY_COUNT);
+            int complete = client.getVarbitValue(VarbitID.ARDOUGNE_DIARY_EASY_COMPLETE);
+            int reward = client.getVarbitValue(VarbitID.ARDOUGNE_EASY_REWARD);
+            JsonObject tasks = new JsonObject();
+            int observed = 0;
+            for (int i = 0; i < EASY_TASKS.length; i++) {
+                boolean done = (flags & (1 << EASY_BITS[i])) != 0;
+                tasks.addProperty(EASY_TASKS[i], done);
+                if (done) observed++;
+            }
+            // Reject inconsistent/transitional observations rather than invent progress.
+            if (count != observed || complete != (observed == 10 ? 1 : 0)
+                || reward < 0 || reward > 1 || (reward == 1 && complete != 1)) return;
+            account.add("ardougne_easy_tasks", tasks);
+            milestones.addProperty("ardougne_cloak_1_claimed", reward == 1);
+        } catch (RuntimeException notYetReady) { /* Leave unknown and retry next snapshot. */ }
     }
 
     static String localKey(long hash) {
