@@ -4,15 +4,23 @@ import time
 
 # Curated relationships describe optional follow-ups, not prerequisites or a route.
 FOLLOW_UPS = {
+    'woodcutting_12': {'woodcutting_15': 'Build on canoe preparation with another gathering option.'},
+    'magic_37': {'magic_45': 'Consider a members teleport to Camelot for wider travel.'},
+    'tree_gnome_village': {'the_grand_tree': 'Add glider travel and departures from the Stronghold spirit tree; this is an optional follow-up, not a prerequisite.'},
+    'woodcutting_15': {'woodcutting_30': 'Try another gathering milestone with willow trees.'},
+    'ranged_20': {'ranged_30': 'Continue ranged equipment progression towards maple bows.'},
+    'sheep_shearer': {'crafting_5': 'Build on wool spinning with an introduction to jewellery crafting.'},
+    'dorics_quest': {'mining_30': 'Build on the Mining introduction with a resource milestone.'},
+    'mining_30': {'smithing_30': 'Consider turning gathered resources into steel bars; buying supplies is also an option.'},
     'attack_20': {'attack_40': 'Continue melee equipment progression towards rune weapons.'},
-    'magic_25': {'magic_37': 'Build on your first teleport with another travel option.'},
+    'magic_25': {'magic_33': 'Explore a utility spell as an alternative to another teleport.', 'magic_37': 'Build on your first teleport with another travel option.'},
     'cooks_assistant': {'cooking_25': 'Build on the Cooking introduction with a food milestone.'},
     'the_restless_ghost': {'prayer_43': 'Build on the Prayer introduction with a longer combat utility goal.'},
     'rune_mysteries': {'ardougne_cloak_1': 'That quest contributes a prerequisite for the diary project.'},
     'plague_city': {'ardougne_cloak_1': 'That quest contributes a prerequisite for the diary project.'},
     'prince_ali_rescue': {'wear_rune_platebody': 'Consider a longer questing ambition after a standalone quest.'},
     'fishing_30': {'cooking_25': 'Pair your gathering milestone with preparing food.'},
-    'cooking_25': {'fishing_30': 'Consider gathering the fish you can now cook.'},
+    'cooking_25': {'cooking_40': 'Explore another cooking milestone with lobsters.', 'fishing_30': 'Consider gathering the fish you can now cook.'},
 }
 
 INTERESTS = {'combat': 'combat', 'quests': 'quests and stories',

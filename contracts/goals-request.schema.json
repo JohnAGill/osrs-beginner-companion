@@ -182,6 +182,18 @@
           ],
           "default": null,
           "title": "Ardougne Cloak 1 Claimed"
+        },
+        "chronicle_obtained": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Chronicle Obtained"
         }
       },
       "title": "GoalFlags",
@@ -265,6 +277,50 @@
             "unknown"
           ],
           "title": "The Restless Ghost",
+          "type": "string"
+        },
+        "sheep_shearer": {
+          "default": "unknown",
+          "enum": [
+            "not_started",
+            "in_progress",
+            "completed",
+            "unknown"
+          ],
+          "title": "Sheep Shearer",
+          "type": "string"
+        },
+        "dorics_quest": {
+          "default": "unknown",
+          "enum": [
+            "not_started",
+            "in_progress",
+            "completed",
+            "unknown"
+          ],
+          "title": "Dorics Quest",
+          "type": "string"
+        },
+        "tree_gnome_village": {
+          "default": "unknown",
+          "enum": [
+            "not_started",
+            "in_progress",
+            "completed",
+            "unknown"
+          ],
+          "title": "Tree Gnome Village",
+          "type": "string"
+        },
+        "the_grand_tree": {
+          "default": "unknown",
+          "enum": [
+            "not_started",
+            "in_progress",
+            "completed",
+            "unknown"
+          ],
+          "title": "The Grand Tree",
           "type": "string"
         }
       },

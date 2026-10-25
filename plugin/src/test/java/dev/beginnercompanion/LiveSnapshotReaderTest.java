@@ -12,7 +12,11 @@ public class LiveSnapshotReaderTest {
         LiveSnapshotReader reader = new LiveSnapshotReader();
         LiveSnapshotReader.Snapshot snapshot = reader.read(game.client());
         assertEquals(24, snapshot.account.getAsJsonObject("skill_levels").size());
-        assertEquals(7, snapshot.account.getAsJsonObject("quest_progress").size());
+        assertEquals(11, snapshot.account.getAsJsonObject("quest_progress").size());
+        assertEquals("not_started", snapshot.account.getAsJsonObject("quest_progress").get("tree_gnome_village").getAsString());
+        assertEquals("not_started", snapshot.account.getAsJsonObject("quest_progress").get("the_grand_tree").getAsString());
+        assertEquals("not_started", snapshot.account.getAsJsonObject("quest_progress").get("sheep_shearer").getAsString());
+        assertEquals("not_started", snapshot.account.getAsJsonObject("quest_progress").get("dorics_quest").getAsString());
         assertEquals("not_started", snapshot.account.getAsJsonObject("quest_progress").get("cooks_assistant").getAsString());
         assertFalse(snapshot.account.get("members").getAsBoolean());
         assertEquals(0, snapshot.account.get("quest_points").getAsInt());
@@ -81,15 +85,29 @@ public class LiveSnapshotReaderTest {
         assertFalse(reader.read(game.client()).account.has("ardougne_easy_tasks"));
     }
 
+    @Test public void chronicleObservationDoesNotInventBankOwnershipOrCharges() {
+        Fake game = new Fake(); LiveSnapshotReader reader = new LiveSnapshotReader();
+        assertFalse(reader.read(game.client()).account.getAsJsonObject("milestones").has("chronicle_obtained"));
+        game.chronicleInInventory = true;
+        assertTrue(reader.read(game.client()).account.getAsJsonObject("milestones").get("chronicle_obtained").getAsBoolean());
+        game.chronicleInInventory = false;
+        assertTrue(reader.read(game.client()).account.getAsJsonObject("milestones").get("chronicle_obtained").getAsBoolean());
+        game.hash = 43;
+        assertFalse(reader.read(game.client()).account.getAsJsonObject("milestones").has("chronicle_obtained"));
+        game.chronicleEquipped = true;
+        assertTrue(reader.read(game.client()).account.getAsJsonObject("milestones").get("chronicle_obtained").getAsBoolean());
+        assertFalse(new LiveSnapshotReader().read(new Fake().client()).account.getAsJsonObject("milestones").has("chronicle_obtained"));
+    }
+
     private static final class Fake {
         GameState state = GameState.LOGGED_IN;
         long hash = 42;
         int level = 1, xp = 0, qp = 0, memberDays = 0, questState = 1;
         int diaryFlags, diaryCount, diaryComplete, diaryReward;
-        boolean onClientThread = true, wearing, diaryUnavailable;
+        boolean onClientThread = true, wearing, diaryUnavailable, chronicleInInventory, chronicleEquipped;
         Client client() {
             Player player = proxy(Player.class, (method, args) -> method.equals("getName") ? "Synthetic Player" : null);
-            ItemContainer equipment = proxy(ItemContainer.class, (method, args) -> method.equals("getItems") ? new Item[]{new Item(wearing ? 1127 : -1, 1)} : null);
+            ItemContainer equipment = proxy(ItemContainer.class, (method, args) -> method.equals("getItems") ? new Item[]{new Item(wearing ? 1127 : chronicleEquipped ? 13660 : -1, 1)} : null);
             return proxy(Client.class, (method, args) -> {
                 switch (method) {
                     case "isClientThread": return onClientThread;
@@ -110,7 +128,10 @@ public class LiveSnapshotReaderTest {
                             default: throw new AssertionError("Unexpected varbit");
                         }
                     case "getIntStack": return new int[]{questState};
-                    case "getItemContainer": return equipment;
+                    case "getItemContainer":
+                        if (args[0] == InventoryID.INVENTORY) return proxy(ItemContainer.class,
+                            (m, a) -> m.equals("getItems") ? new Item[]{new Item(chronicleInInventory ? 13660 : -1, 1)} : null);
+                        return equipment;
                     case "runScript": return null;
                     default: throw new AssertionError("Unexpected client access: " + method);
                 }

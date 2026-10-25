@@ -1,6 +1,6 @@
 {
   "protocol_version": 1,
-  "dataset_version": "beginner-goals-3",
+  "dataset_version": "beginner-goals-5",
   "session_id": "demo-session",
   "revision": 1,
   "goals": [
@@ -8,7 +8,7 @@
       "goal": {
         "id": "ardougne_cloak_1",
         "title": "Unlock Ardougne cloak 1",
-        "summary": "An exploration and utility goal for members.",
+        "summary": "An exploration and travel utility goal for members.",
         "members_only": true,
         "benefits": [
           "Unlimited teleports to the Ardougne Monastery, near an altar.",
@@ -251,9 +251,93 @@
     },
     {
       "goal": {
+        "id": "tree_gnome_village",
+        "title": "Unlock spirit tree travel",
+        "summary": "A members quest goal that opens a network of travel destinations.",
+        "members_only": true,
+        "benefits": [
+          "Complete Tree Gnome Village to use spirit tree transportation.",
+          "Travel between unlocked trees, including the Grand Exchange and the battlefield south of West Ardougne."
+        ],
+        "investment": "A quest project with travel, supplies and a combat encounter. No minimum skill level is required; combat preparation may add substantial effort.",
+        "preparation": [
+          "Speak to King Bolren in the Tree Gnome Village maze. Bring six normal logs, combat equipment and food; review the quest before setting out.",
+          "You must defeat a level 112 Khazard warlord. Combat levels are preparation advice, not a checked hard requirement; this plugin does not assess readiness.",
+          "Some spirit trees have additional unlocks. The Gnome Stronghold tree needs The Grand Tree to depart from it, and other destinations have their own requirements. This goal does not unlock every tree."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Tree_Gnome_Village",
+          "https://oldschool.runescape.wiki/w/Spirit_tree_protection"
+        ],
+        "reviewed": "2026-10-25"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "membership",
+          "label": "Membership for these activities",
+          "status": "satisfied",
+          "observed": true,
+          "required": true,
+          "note": "",
+          "category": "eligibility",
+          "children": []
+        },
+        {
+          "id": "tree_gnome_village",
+          "label": "Complete Tree Gnome Village",
+          "status": "missing",
+          "observed": "not_started",
+          "required": "completed",
+          "note": "Speak to King Bolren in the Tree Gnome Village maze. Review supplies and preparation for the level 112 Khazard warlord before attempting the quest.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
+        "rank": 2,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [
+          "Matches your interest in exploration.",
+          "Its remaining work fits your preference for a project over a few sessions. Quest completion still remains. Being in progress does not establish how many stages are left."
+        ],
+        "considerations": [
+          "Remaining commitment is qualitative, not a promised number of sessions or hours."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "tree_gnome_village",
+          "title": "Complete Tree Gnome Village",
+          "reason": "Speak to King Bolren in the Tree Gnome Village maze. Review supplies and preparation for the level 112 Khazard warlord before attempting the quest.",
+          "kind": "activity"
+        }
+      ],
+      "remaining_investment": {
+        "commitment_band": "few_sessions",
+        "commitment_reason": "Quest completion still remains. Being in progress does not establish how many stages are left.",
+        "state": "quest",
+        "summary": "Quest work remains",
+        "details": [
+          "Complete Tree Gnome Village: not started; quest preparation and completion remain."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
+    },
+    {
+      "goal": {
         "id": "magic_37",
         "title": "Reach 37 Magic for Falador Teleport",
-        "summary": "Build a wider set of standard spellbook travel options.",
+        "summary": "Expand your free-to-play travel options with a standard spellbook teleport.",
         "members_only": false,
         "benefits": [
           "Meet the Magic level requirement for Falador Teleport."
@@ -291,7 +375,7 @@
       "recommendation": {
         "feedback_status": "none",
         "feedback_reason": "",
-        "rank": 2,
+        "rank": 3,
         "recommended": false,
         "availability": "available",
         "reasons": [
@@ -316,6 +400,462 @@
         "summary": "Training remains",
         "details": [
           "Magic: base level 25 toward 37. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
+    },
+    {
+      "goal": {
+        "id": "magic_33",
+        "title": "Reach 33 Magic for Telekinetic Grab",
+        "summary": "Discover a utility spell beyond combat and teleports.",
+        "members_only": false,
+        "benefits": [
+          "Meet the Magic level for Telekinetic Grab on the standard spellbook."
+        ],
+        "investment": "A focused training project from a new account. Current XP reduces the work remaining; supplies, methods and travel affect effort.",
+        "preparation": [
+          "Train with spells you can currently cast. Check rune supplies before setting out; combat is one option rather than a required route.",
+          "Telekinetic Grab uses one air rune and one law rune to collect suitable ground items from a distance. The level does not make dangerous item locations safe.",
+          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Telekinetic_Grab"
+        ],
+        "reviewed": "2026-10-25"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "magic_33",
+          "label": "Reach 33 Magic",
+          "status": "missing",
+          "observed": 25,
+          "required": 33,
+          "note": "Train with spells you can currently cast. Check rune supplies before setting out; combat is one option rather than a required route.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
+        "rank": 4,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [
+          "Matches your interest in exploration."
+        ],
+        "considerations": [
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "magic_33",
+          "title": "Reach 33 Magic",
+          "reason": "Recorded level: 25/33. Train with spells you can currently cast. Check rune supplies before setting out; combat is one option rather than a required route.",
+          "kind": "activity"
+        }
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Magic: base level 25 toward 33. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
+    },
+    {
+      "goal": {
+        "id": "agility_30",
+        "title": "Reach 30 Agility for Varrock rooftops",
+        "summary": "Explore members movement training and a city rooftop course.",
+        "members_only": true,
+        "benefits": [
+          "Meet the Agility requirement for the Varrock Rooftop Course."
+        ],
+        "investment": "A focused training project from a new account. Current XP reduces the work remaining; supplies, methods and travel affect effort.",
+        "preparation": [
+          "Try an Agility course available at your current level, such as Draynor Village rooftops. Move to another course when you want variety.",
+          "Bring food where obstacles can cause damage. Rooftop marks of grace can contribute towards graceful equipment, but this goal does not track marks or an outfit purchase.",
+          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Agility"
+        ],
+        "reviewed": "2026-10-25"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "membership",
+          "label": "Membership for these activities",
+          "status": "satisfied",
+          "observed": true,
+          "required": true,
+          "note": "",
+          "category": "eligibility",
+          "children": []
+        },
+        {
+          "id": "agility_30",
+          "label": "Reach 30 Agility",
+          "status": "missing",
+          "observed": 1,
+          "required": 30,
+          "note": "Try an Agility course available at your current level, such as Draynor Village rooftops. Move to another course when you want variety.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
+        "rank": 5,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [
+          "Matches your interest in exploration."
+        ],
+        "considerations": [
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "agility_30",
+          "title": "Reach 30 Agility",
+          "reason": "Recorded level: 1/30. Try an Agility course available at your current level, such as Draynor Village rooftops. Move to another course when you want variety.",
+          "kind": "activity"
+        }
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Agility: base level 1 toward 30. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
+    },
+    {
+      "goal": {
+        "id": "thieving_20",
+        "title": "Reach 20 Thieving for silk stalls",
+        "summary": "Try a members skill with stalls and pickpocketing.",
+        "members_only": true,
+        "benefits": [
+          "Meet the Thieving level to steal from silk stalls."
+        ],
+        "investment": "A focused training project from a new account. Current XP reduces the work remaining; supplies, methods and travel affect effort.",
+        "preparation": [
+          "Try pickpocketing men or women, or stalls available at your current level. Bring food and check for nearby guards.",
+          "Stealing silk is separate from selling it for the easy Ardougne diary. You can obtain diary silk without this level; after stealing, the merchant temporarily refuses to trade.",
+          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Thieving"
+        ],
+        "reviewed": "2026-10-25"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "membership",
+          "label": "Membership for these activities",
+          "status": "satisfied",
+          "observed": true,
+          "required": true,
+          "note": "",
+          "category": "eligibility",
+          "children": []
+        },
+        {
+          "id": "thieving_20",
+          "label": "Reach 20 Thieving",
+          "status": "missing",
+          "observed": 5,
+          "required": 20,
+          "note": "Try pickpocketing men or women, or stalls available at your current level. Bring food and check for nearby guards.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
+        "rank": 6,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [
+          "Matches your interest in exploration."
+        ],
+        "considerations": [
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "thieving_20",
+          "title": "Reach 20 Thieving",
+          "reason": "Recorded level: 5/20. Try pickpocketing men or women, or stalls available at your current level. Bring food and check for nearby guards.",
+          "kind": "activity"
+        }
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Thieving: base level 5 toward 20. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
+    },
+    {
+      "goal": {
+        "id": "woodcutting_12",
+        "title": "Reach 12 Woodcutting for basic canoes",
+        "summary": "A low-level free-to-play travel option along the river.",
+        "members_only": false,
+        "benefits": [
+          "Meet the Woodcutting level to shape a log canoe at a canoe station."
+        ],
+        "investment": "A focused skill project. Current XP reduces the training remaining; methods, supplies and travel affect the effort.",
+        "preparation": [
+          "Bring an axe and train on trees you can cut. At level 12, try a log canoe at a canoe station and use the destination menu to see its range.",
+          "Canoes are single-use: bring an axe to shape another for the return journey. Higher-tier canoes have greater range; this goal does not unlock every destination or the Wilderness route.",
+          "Completion tracks your base level, not using the unlocked activity or owning its supplies. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Canoes"
+        ],
+        "reviewed": "2026-10-25"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "woodcutting_12",
+          "label": "Reach 12 Woodcutting",
+          "status": "missing",
+          "observed": 1,
+          "required": 12,
+          "note": "Bring an axe and train on trees you can cut. At level 12, try a log canoe at a canoe station and use the destination menu to see its range.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
+        "rank": 7,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [
+          "Matches your interest in exploration."
+        ],
+        "considerations": [
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "woodcutting_12",
+          "title": "Reach 12 Woodcutting",
+          "reason": "Recorded level: 1/12. Bring an axe and train on trees you can cut. At level 12, try a log canoe at a canoe station and use the destination menu to see its range.",
+          "kind": "activity"
+        }
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Woodcutting: base level 1 toward 12. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
+    },
+    {
+      "goal": {
+        "id": "magic_31",
+        "title": "Reach 31 Magic for Lumbridge Teleport",
+        "summary": "A free-to-play travel spell back to Lumbridge castle.",
+        "members_only": false,
+        "benefits": [
+          "Meet the Magic level for the standard Lumbridge Teleport spell."
+        ],
+        "investment": "A focused skill project. Current XP reduces the training remaining; methods, supplies and travel affect the effort.",
+        "preparation": [
+          "Train Magic using spells and supplies you can afford. Casting Lumbridge Teleport needs the standard spellbook, three air runes, one earth rune and one law rune.",
+          "The free Lumbridge Home Teleport already works without runes or a Magic level, but has a cooldown and can be interrupted. This goal is for the separate standard spell, not a requirement to visit Lumbridge.",
+          "Completion tracks your base level, not using the unlocked activity or owning its supplies. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Lumbridge_teleport"
+        ],
+        "reviewed": "2026-10-25"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "magic_31",
+          "label": "Reach 31 Magic",
+          "status": "missing",
+          "observed": 25,
+          "required": 31,
+          "note": "Train Magic using spells and supplies you can afford. Casting Lumbridge Teleport needs the standard spellbook, three air runes, one earth rune and one law rune.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
+        "rank": 8,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [
+          "Matches your interest in exploration."
+        ],
+        "considerations": [
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "magic_31",
+          "title": "Reach 31 Magic",
+          "reason": "Recorded level: 25/31. Train Magic using spells and supplies you can afford. Casting Lumbridge Teleport needs the standard spellbook, three air runes, one earth rune and one law rune.",
+          "kind": "activity"
+        }
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Magic: base level 25 toward 31. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
+    },
+    {
+      "goal": {
+        "id": "magic_45",
+        "title": "Reach 45 Magic for Camelot Teleport",
+        "summary": "A members travel spell to Camelot, near Seers' Village.",
+        "members_only": true,
+        "benefits": [
+          "Meet the Magic level for the standard Camelot Teleport spell."
+        ],
+        "investment": "A focused skill project. Current XP reduces the training remaining; methods, supplies and travel affect the effort.",
+        "preparation": [
+          "Continue Magic training with a method that fits your budget. Casting Camelot Teleport needs the standard spellbook, five air runes and one law rune.",
+          "Members can use a purchased Camelot teleport tablet without this Magic level. The spell normally arrives at Camelot; the Seers' bank destination needs the hard Kandarin diary.",
+          "Completion tracks your base level, not using the unlocked activity or owning its supplies. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Camelot_Teleport"
+        ],
+        "reviewed": "2026-10-25"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "membership",
+          "label": "Membership for these activities",
+          "status": "satisfied",
+          "observed": true,
+          "required": true,
+          "note": "",
+          "category": "eligibility",
+          "children": []
+        },
+        {
+          "id": "magic_45",
+          "label": "Reach 45 Magic",
+          "status": "missing",
+          "observed": 25,
+          "required": 45,
+          "note": "Continue Magic training with a method that fits your budget. Casting Camelot Teleport needs the standard spellbook, five air runes and one law rune.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
+        "rank": 9,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [
+          "Matches your interest in exploration."
+        ],
+        "considerations": [
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "magic_45",
+          "title": "Reach 45 Magic",
+          "reason": "Recorded level: 25/45. Continue Magic training with a method that fits your budget. Casting Camelot Teleport needs the standard spellbook, five air runes and one law rune.",
+          "kind": "activity"
+        }
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Magic: base level 25 toward 45. Exact XP remaining is not available from level alone."
         ],
         "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
       }
@@ -362,7 +902,7 @@
       "recommendation": {
         "feedback_status": "none",
         "feedback_reason": "",
-        "rank": 3,
+        "rank": 10,
         "recommended": false,
         "availability": "available",
         "reasons": [
@@ -388,6 +928,178 @@
         "summary": "Quest underway; stages remain",
         "details": [
           "Complete The Restless Ghost: in progress; remaining quest stages are not tracked."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
+    },
+    {
+      "goal": {
+        "id": "chronicle",
+        "title": "Obtain a Chronicle for Varrock travel",
+        "summary": "An early free-to-play travel tool without a Magic level requirement.",
+        "members_only": false,
+        "benefits": [
+          "A charged Chronicle teleports outside the Champions' Guild, south of Varrock."
+        ],
+        "investment": "A small purchase and a trip to Draynor. The book costs 300 coins at Diango; teleport cards have a base shop price of 150 coins each.",
+        "preparation": [
+          "Visit Diango in Draynor Village market for the Chronicle and teleport cards. Use the cards on the book before trying to teleport; each teleport consumes a charge.",
+          "This goal completes when the book is observed in your inventory or equipment. Charges, bank ownership and a successful teleport are not tracked. A completed purchase goal does not mean the book is still charged.",
+          "The destination is outside Varrock, not the Grand Exchange. Nearby dark wizards can threaten low-level players. The Chronicle cannot teleport from the Wilderness."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Chronicle"
+        ],
+        "reviewed": "2026-10-25"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "obtain_chronicle",
+          "label": "Obtain a Chronicle",
+          "status": "missing",
+          "observed": false,
+          "required": true,
+          "note": "Check your bank first. If needed, visit Diango in Draynor Village, buy a Chronicle and teleport cards, then charge the book. Carry the book for the plugin to observe ownership.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
+        "rank": 11,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [
+          "Matches your interest in exploration."
+        ],
+        "considerations": [
+          "Its remaining work is a smaller commitment than you selected. Only the final tracked step remains. Supplies, item ownership and travel are not measured.",
+          "Remaining commitment is qualitative, not a promised number of sessions or hours."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "obtain_chronicle",
+          "title": "Visit Diango for a Chronicle",
+          "reason": "Check your bank first. If needed, visit Diango in Draynor Village, buy a Chronicle and teleport cards, then charge the book. Carry the book for the plugin to observe ownership.",
+          "kind": "activity"
+        }
+      ],
+      "remaining_investment": {
+        "commitment_band": "short",
+        "commitment_reason": "Only the final tracked step remains. Supplies, item ownership and travel are not measured.",
+        "state": "final_step",
+        "summary": "Final tracked step remains",
+        "details": [
+          "Obtain a Chronicle: recorded unfinished."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
+    },
+    {
+      "goal": {
+        "id": "the_grand_tree",
+        "title": "Unlock gnome glider travel",
+        "summary": "A broader members travel network through a quest adventure.",
+        "members_only": true,
+        "benefits": [
+          "Complete The Grand Tree to unlock the gnome glider transportation system.",
+          "Use the Gnome Stronghold spirit tree for departures once Tree Gnome Village is also complete."
+        ],
+        "investment": "A longer quest ambition involving Agility, travel and a combat encounter. Current skill and quest progress reduce the remaining work.",
+        "preparation": [
+          "Speak to King Narnode Shareen in the Grand Tree. The quest needs 25 Agility to finish, but not to start; a suitable boost can satisfy the Agility obstacle.",
+          "Prepare to defeat a level 172 black demon. Ranged or Magic safespots are possible, but combat supplies and readiness still need a separate review.",
+          "Tree Gnome Village is not a prerequisite for this quest or for gliders. It is a separate unlock if you want to combine both travel networks. Individual glider destinations can have extra requirements."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/The_Grand_Tree"
+        ],
+        "reviewed": "2026-10-25"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "membership",
+          "label": "Membership for these activities",
+          "status": "satisfied",
+          "observed": true,
+          "required": true,
+          "note": "",
+          "category": "eligibility",
+          "children": []
+        },
+        {
+          "id": "agility_25",
+          "label": "Prepare 25 Agility for The Grand Tree",
+          "status": "missing",
+          "observed": 1,
+          "required": 25,
+          "note": "Required to finish, not to start. A suitable boost can satisfy the obstacle; this reading shows base level only.",
+          "category": "context",
+          "children": []
+        },
+        {
+          "id": "the_grand_tree",
+          "label": "Complete The Grand Tree",
+          "status": "missing",
+          "observed": "not_started",
+          "required": "completed",
+          "note": "Speak to King Narnode Shareen in the Grand Tree. You can start before 25 Agility; review the obstacle requirement and preparation for the level 172 black demon.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
+        "rank": 12,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [
+          "Matches your interest in exploration."
+        ],
+        "considerations": [
+          "Its remaining work is a larger commitment than you selected. Multiple kinds of work still remain, including tracked prerequisites. The goal has not reduced to a final activity.",
+          "Remaining commitment is qualitative, not a promised number of sessions or hours."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "agility_25",
+          "title": "Prepare 25 Agility for The Grand Tree",
+          "reason": "Recorded level: 1/25. Required to finish, not to start. A suitable boost can satisfy the obstacle; this reading shows base level only.",
+          "kind": "activity"
+        },
+        {
+          "id": "the_grand_tree",
+          "title": "Complete The Grand Tree",
+          "reason": "Speak to King Narnode Shareen in the Grand Tree. You can start before 25 Agility; review the obstacle requirement and preparation for the level 172 black demon.",
+          "kind": "activity"
+        }
+      ],
+      "remaining_investment": {
+        "commitment_band": "long",
+        "commitment_reason": "Multiple kinds of work still remain, including tracked prerequisites. The goal has not reduced to a final activity.",
+        "state": "prerequisites",
+        "summary": "Agility preparation and quest work remain",
+        "details": [
+          "Agility: base level 1 toward 25. Exact XP remaining is not available from level alone. A suitable boost can satisfy the obstacle instead of training to this base level. This is not required to start the quest.",
+          "Complete The Grand Tree: not started; quest preparation and completion remain."
         ],
         "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
       }
@@ -434,7 +1146,7 @@
       "recommendation": {
         "feedback_status": "none",
         "feedback_reason": "",
-        "rank": 4,
+        "rank": 13,
         "recommended": false,
         "availability": "available",
         "reasons": [
@@ -506,7 +1218,7 @@
       "recommendation": {
         "feedback_status": "none",
         "feedback_reason": "",
-        "rank": 5,
+        "rank": 14,
         "recommended": false,
         "availability": "available",
         "reasons": [
@@ -578,7 +1290,7 @@
       "recommendation": {
         "feedback_status": "none",
         "feedback_reason": "",
-        "rank": 6,
+        "rank": 15,
         "recommended": false,
         "availability": "available",
         "reasons": [
@@ -650,7 +1362,7 @@
       "recommendation": {
         "feedback_status": "none",
         "feedback_reason": "",
-        "rank": 7,
+        "rank": 16,
         "recommended": false,
         "availability": "available",
         "reasons": [
@@ -722,7 +1434,7 @@
       "recommendation": {
         "feedback_status": "none",
         "feedback_reason": "",
-        "rank": 8,
+        "rank": 17,
         "recommended": false,
         "availability": "available",
         "reasons": [
@@ -748,6 +1460,510 @@
         "summary": "Training remains",
         "details": [
           "Mining: base level 15 toward 30. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
+    },
+    {
+      "goal": {
+        "id": "woodcutting_15",
+        "title": "Reach 15 Woodcutting for oak trees",
+        "summary": "A first gathering milestone close to Lumbridge.",
+        "members_only": false,
+        "benefits": [
+          "Meet the Woodcutting level for oak trees."
+        ],
+        "investment": "A small introductory training goal. Current XP reduces the work remaining; supplies, methods and travel affect effort.",
+        "preparation": [
+          "Bring an axe and cut regular trees available at level 1. Oaks near Lumbridge provide an optional next activity.",
+          "Choose whether to bank your logs for later use or focus on training. You can carry an axe without meeting its Attack requirement to wield it.",
+          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Free-to-play_Woodcutting_training"
+        ],
+        "reviewed": "2026-10-25"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "woodcutting_15",
+          "label": "Reach 15 Woodcutting",
+          "status": "missing",
+          "observed": 1,
+          "required": 15,
+          "note": "Bring an axe and cut regular trees available at level 1. Oaks near Lumbridge provide an optional next activity.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
+        "rank": 18,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [
+          "An alternative to explore outside your selected preferences."
+        ],
+        "considerations": [
+          "Its main activities do not directly match your selected interests.",
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "woodcutting_15",
+          "title": "Reach 15 Woodcutting",
+          "reason": "Recorded level: 1/15. Bring an axe and cut regular trees available at level 1. Oaks near Lumbridge provide an optional next activity.",
+          "kind": "activity"
+        }
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Woodcutting: base level 1 toward 15. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
+    },
+    {
+      "goal": {
+        "id": "woodcutting_30",
+        "title": "Reach 30 Woodcutting for willow trees",
+        "summary": "Try another resource after your first Woodcutting milestone.",
+        "members_only": false,
+        "benefits": [
+          "Meet the Woodcutting level for willow trees."
+        ],
+        "investment": "A focused training project from a new account. Current XP reduces the work remaining; supplies, methods and travel affect effort.",
+        "preparation": [
+          "Cut trees available at your current level with an axe. Regular trees and then oaks are options; no fixed training route is required.",
+          "Choose a location that suits your combat level. The willows near Draynor bank have nearby aggressive dark wizards; other locations are available.",
+          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Free-to-play_Woodcutting_training"
+        ],
+        "reviewed": "2026-10-25"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "woodcutting_30",
+          "label": "Reach 30 Woodcutting",
+          "status": "missing",
+          "observed": 1,
+          "required": 30,
+          "note": "Cut trees available at your current level with an axe. Regular trees and then oaks are options; no fixed training route is required.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
+        "rank": 19,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [
+          "An alternative to explore outside your selected preferences."
+        ],
+        "considerations": [
+          "Its main activities do not directly match your selected interests.",
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "woodcutting_30",
+          "title": "Reach 30 Woodcutting",
+          "reason": "Recorded level: 1/30. Cut trees available at your current level with an axe. Regular trees and then oaks are options; no fixed training route is required.",
+          "kind": "activity"
+        }
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Woodcutting: base level 1 toward 30. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
+    },
+    {
+      "goal": {
+        "id": "crafting_5",
+        "title": "Reach 5 Crafting for gold rings",
+        "summary": "Discover how gathering and production skills connect.",
+        "members_only": false,
+        "benefits": [
+          "Meet the Crafting level to make plain gold rings."
+        ],
+        "investment": "A small introductory training goal. Current XP reduces the work remaining; supplies, methods and travel affect effort.",
+        "preparation": [
+          "Try spinning wool at a spinning wheel or making leather items using tanned cowhide, a needle and thread.",
+          "Making a gold ring needs a gold bar, ring mould and furnace. Buying a bar avoids needing the Smithing level to smelt gold ore. Plain gold rings do not provide a teleport or enchanted effect.",
+          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Crafting/Experience_table"
+        ],
+        "reviewed": "2026-10-25"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "crafting_5",
+          "label": "Reach 5 Crafting",
+          "status": "missing",
+          "observed": 1,
+          "required": 5,
+          "note": "Try spinning wool at a spinning wheel or making leather items using tanned cowhide, a needle and thread.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
+        "rank": 20,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [
+          "An alternative to explore outside your selected preferences."
+        ],
+        "considerations": [
+          "Its main activities do not directly match your selected interests.",
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "crafting_5",
+          "title": "Reach 5 Crafting",
+          "reason": "Recorded level: 1/5. Try spinning wool at a spinning wheel or making leather items using tanned cowhide, a needle and thread.",
+          "kind": "activity"
+        }
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Crafting: base level 1 toward 5. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
+    },
+    {
+      "goal": {
+        "id": "smithing_30",
+        "title": "Reach 30 Smithing for steel bars",
+        "summary": "Turn mined resources into a new tier of metal.",
+        "members_only": false,
+        "benefits": [
+          "Meet the Smithing level to smelt steel bars."
+        ],
+        "investment": "A focused training project from a new account. Current XP reduces the work remaining; supplies, methods and travel affect effort.",
+        "preparation": [
+          "Smelt or smith items available at your current level. Furnaces make bars; anvils use bars and a hammer to make equipment.",
+          "At a normal furnace, each steel bar needs one iron ore and two coal. You can buy resources; reaching this level does not mean you can smith every steel item.",
+          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Steel_bar"
+        ],
+        "reviewed": "2026-10-25"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "smithing_30",
+          "label": "Reach 30 Smithing",
+          "status": "missing",
+          "observed": 1,
+          "required": 30,
+          "note": "Smelt or smith items available at your current level. Furnaces make bars; anvils use bars and a hammer to make equipment.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
+        "rank": 21,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [
+          "An alternative to explore outside your selected preferences."
+        ],
+        "considerations": [
+          "Its main activities do not directly match your selected interests.",
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "smithing_30",
+          "title": "Reach 30 Smithing",
+          "reason": "Recorded level: 1/30. Smelt or smith items available at your current level. Furnaces make bars; anvils use bars and a hammer to make equipment.",
+          "kind": "activity"
+        }
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Smithing: base level 1 toward 30. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
+    },
+    {
+      "goal": {
+        "id": "ranged_20",
+        "title": "Reach 20 Ranged for willow bows",
+        "summary": "Explore a combat style beyond melee.",
+        "members_only": false,
+        "benefits": [
+          "Meet the Ranged requirement to wield willow bows."
+        ],
+        "investment": "A focused training project from a new account. Current XP reduces the work remaining; supplies, methods and travel affect effort.",
+        "preparation": [
+          "Use a bow and compatible arrows against enemies you can handle. Check your attack style so you train the skill you intended.",
+          "Bring food and review enemy aggression. You still need to obtain a bow and suitable arrows; the plugin does not assess combat readiness.",
+          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Bow"
+        ],
+        "reviewed": "2026-10-25"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "ranged_20",
+          "label": "Reach 20 Ranged",
+          "status": "missing",
+          "observed": 1,
+          "required": 20,
+          "note": "Use a bow and compatible arrows against enemies you can handle. Check your attack style so you train the skill you intended.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
+        "rank": 22,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [
+          "An alternative to explore outside your selected preferences."
+        ],
+        "considerations": [
+          "Its main activities do not directly match your selected interests.",
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "ranged_20",
+          "title": "Reach 20 Ranged",
+          "reason": "Recorded level: 1/20. Use a bow and compatible arrows against enemies you can handle. Check your attack style so you train the skill you intended.",
+          "kind": "activity"
+        }
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Ranged: base level 1 toward 20. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
+    },
+    {
+      "goal": {
+        "id": "ranged_30",
+        "title": "Reach 30 Ranged for maple bows",
+        "summary": "A further free-to-play ranged equipment milestone.",
+        "members_only": false,
+        "benefits": [
+          "Meet the Ranged requirement to wield maple bows."
+        ],
+        "investment": "A focused training project from a new account. Current XP reduces the work remaining; supplies, methods and travel affect effort.",
+        "preparation": [
+          "Train Ranged with equipment you can currently use and enemies you can handle; no particular monster is required.",
+          "Maple bows are free-to-play equipment. Obtaining the bow and compatible arrows is separate from reaching the level.",
+          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Bow"
+        ],
+        "reviewed": "2026-10-25"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "ranged_30",
+          "label": "Reach 30 Ranged",
+          "status": "missing",
+          "observed": 1,
+          "required": 30,
+          "note": "Train Ranged with equipment you can currently use and enemies you can handle; no particular monster is required.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
+        "rank": 23,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [
+          "An alternative to explore outside your selected preferences."
+        ],
+        "considerations": [
+          "Its main activities do not directly match your selected interests.",
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "ranged_30",
+          "title": "Reach 30 Ranged",
+          "reason": "Recorded level: 1/30. Train Ranged with equipment you can currently use and enemies you can handle; no particular monster is required.",
+          "kind": "activity"
+        }
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Ranged: base level 1 toward 30. Exact XP remaining is not available from level alone."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
+    },
+    {
+      "goal": {
+        "id": "cooking_40",
+        "title": "Reach 40 Cooking for lobsters",
+        "summary": "Build on early food preparation with another food option.",
+        "members_only": false,
+        "benefits": [
+          "Meet the Cooking level to cook raw lobster."
+        ],
+        "investment": "A focused training project from a new account. Current XP reduces the work remaining; supplies, methods and travel affect effort.",
+        "preparation": [
+          "Cook food available at your current level on a range or fire. Gathering raw food and buying it are both options.",
+          "Raw lobster can be bought without having the Fishing level to catch it. Lobsters can still burn at the minimum Cooking level; supplies and successful cooking are not tracked.",
+          "Completion tracks your base skill level, not owning supplies, equipping an item or performing the unlocked activity. Temporary boosts do not complete this level milestone."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Lobster"
+        ],
+        "reviewed": "2026-10-25"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "cooking_40",
+          "label": "Reach 40 Cooking",
+          "status": "missing",
+          "observed": 20,
+          "required": 40,
+          "note": "Cook food available at your current level on a range or fire. Gathering raw food and buying it are both options.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
+        "rank": 24,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [
+          "An alternative to explore outside your selected preferences."
+        ],
+        "considerations": [
+          "Its main activities do not directly match your selected interests.",
+          "Remaining commitment is not scored: Current consistent XP is needed to rate the remaining training; base level alone is insufficient."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "cooking_40",
+          "title": "Reach 40 Cooking",
+          "reason": "Recorded level: 20/40. Cook food available at your current level on a range or fire. Gathering raw food and buying it are both options.",
+          "kind": "activity"
+        }
+      ],
+      "remaining_investment": {
+        "commitment_band": "unknown",
+        "commitment_reason": "Current consistent XP is needed to rate the remaining training; base level alone is insufficient.",
+        "state": "training",
+        "summary": "Training remains",
+        "details": [
+          "Cooking: base level 20 toward 40. Exact XP remaining is not available from level alone."
         ],
         "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
       }
@@ -827,7 +2043,7 @@
       "recommendation": {
         "feedback_status": "none",
         "feedback_reason": "",
-        "rank": 9,
+        "rank": 25,
         "recommended": false,
         "availability": "available",
         "reasons": [
@@ -863,6 +2079,150 @@
           "Complete Dragon Slayer I: not started; quest preparation and completion remain.",
           "Quest points: 24 / 32 for quest entry. Choose quests in any order.",
           "Equip a rune platebody: recorded unfinished."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
+    },
+    {
+      "goal": {
+        "id": "sheep_shearer",
+        "title": "Complete Sheep Shearer",
+        "summary": "Explore wool gathering and spinning around Lumbridge.",
+        "members_only": false,
+        "benefits": [
+          "Receive Crafting XP while learning a local production activity."
+        ],
+        "investment": "A short introductory quest. Gathering supplies yourself adds an activity; obtaining them elsewhere is also an option.",
+        "preparation": [
+          "Speak to Fred the Farmer north of Lumbridge. No prior quests or minimum skill levels are required.",
+          "Fred needs 20 unnoted balls of wool. Shear sheep and spin wool at the Lumbridge castle spinning wheel, or obtain the balls elsewhere. Rams can be attacked and cannot be sheared."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Sheep_Shearer"
+        ],
+        "reviewed": "2026-10-25"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "sheep_shearer",
+          "label": "Complete Sheep Shearer",
+          "status": "missing",
+          "observed": "not_started",
+          "required": "completed",
+          "note": "Speak to Fred the Farmer north of Lumbridge. No prior quests or minimum skill levels are required.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
+        "rank": 26,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [
+          "An alternative to explore outside your selected preferences."
+        ],
+        "considerations": [
+          "Its main activities do not directly match your selected interests.",
+          "Its remaining work is a smaller commitment than you selected. Quest completion still remains. Being in progress does not establish how many stages are left.",
+          "Remaining commitment is qualitative, not a promised number of sessions or hours."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "sheep_shearer",
+          "title": "Complete Sheep Shearer",
+          "reason": "Speak to Fred the Farmer north of Lumbridge. No prior quests or minimum skill levels are required.",
+          "kind": "activity"
+        }
+      ],
+      "remaining_investment": {
+        "commitment_band": "short",
+        "commitment_reason": "Quest completion still remains. Being in progress does not establish how many stages are left.",
+        "state": "quest",
+        "summary": "Quest work remains",
+        "details": [
+          "Complete Sheep Shearer: not started; quest preparation and completion remain."
+        ],
+        "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
+      }
+    },
+    {
+      "goal": {
+        "id": "dorics_quest",
+        "title": "Complete Doric's Quest",
+        "summary": "Discover Mining supplies and a smithy near Falador.",
+        "members_only": false,
+        "benefits": [
+          "Receive Mining XP and permission to use Doric's anvils."
+        ],
+        "investment": "A short introductory quest. Gathering supplies yourself adds an activity; obtaining them elsewhere is also an option.",
+        "preparation": [
+          "Speak to Doric at his house north of Falador. No prior quests or minimum skill levels are required.",
+          "Bring six clay (not soft clay), four copper ore and two iron ore, all unnoted. Level 15 Mining is needed only if you choose to mine the iron yourself; obtaining it elsewhere avoids that training requirement."
+        ],
+        "sources": [
+          "https://oldschool.runescape.wiki/w/Doric%27s_Quest"
+        ],
+        "reviewed": "2026-10-25"
+      },
+      "status": "incomplete",
+      "progress": {
+        "satisfied": 0,
+        "missing": 1,
+        "unknown": 0,
+        "total": 1
+      },
+      "requirements": [
+        {
+          "id": "dorics_quest",
+          "label": "Complete Doric's Quest",
+          "status": "missing",
+          "observed": "not_started",
+          "required": "completed",
+          "note": "Speak to Doric at his house north of Falador. No prior quests or minimum skill levels are required.",
+          "category": "milestone",
+          "children": []
+        }
+      ],
+      "recommendation": {
+        "feedback_status": "none",
+        "feedback_reason": "",
+        "rank": 27,
+        "recommended": false,
+        "availability": "available",
+        "reasons": [
+          "An alternative to explore outside your selected preferences."
+        ],
+        "considerations": [
+          "Its main activities do not directly match your selected interests.",
+          "Its remaining work is a smaller commitment than you selected. Quest completion still remains. Being in progress does not establish how many stages are left.",
+          "Remaining commitment is qualitative, not a promised number of sessions or hours."
+        ]
+      },
+      "next_steps": [
+        {
+          "id": "dorics_quest",
+          "title": "Complete Doric's Quest",
+          "reason": "Speak to Doric at his house north of Falador. No prior quests or minimum skill levels are required.",
+          "kind": "activity"
+        }
+      ],
+      "remaining_investment": {
+        "commitment_band": "short",
+        "commitment_reason": "Quest completion still remains. Being in progress does not establish how many stages are left.",
+        "state": "quest",
+        "summary": "Quest work remains",
+        "details": [
+          "Complete Doric's Quest: not started; quest preparation and completion remain."
         ],
         "caveat": "Tracked work only, not a time or cost estimate or a combat-readiness assessment. Supplies, travel and preparation may add effort."
       }
@@ -909,7 +2269,7 @@
       "recommendation": {
         "feedback_status": "none",
         "feedback_reason": "",
-        "rank": 10,
+        "rank": 28,
         "recommended": false,
         "availability": "completed",
         "reasons": [
@@ -983,7 +2343,7 @@
       "recommendation": {
         "feedback_status": "none",
         "feedback_reason": "",
-        "rank": 11,
+        "rank": 29,
         "recommended": false,
         "availability": "completed",
         "reasons": [
@@ -1009,7 +2369,7 @@
       "goal": {
         "id": "magic_25",
         "title": "Reach 25 Magic for Varrock Teleport",
-        "summary": "A useful first teleport milestone.",
+        "summary": "A useful first spell-based travel milestone.",
         "members_only": false,
         "benefits": [
           "Meet the Magic level requirement for the standard Varrock Teleport spell."
@@ -1047,7 +2407,7 @@
       "recommendation": {
         "feedback_status": "none",
         "feedback_reason": "",
-        "rank": 12,
+        "rank": 30,
         "recommended": false,
         "availability": "completed",
         "reasons": [
@@ -1073,7 +2433,7 @@
       "goal": {
         "id": "prince_ali_rescue",
         "title": "Complete Prince Ali Rescue",
-        "summary": "A standalone quest with a small everyday travel benefit.",
+        "summary": "Remove the Al Kharid toll for easier free-to-play travel.",
         "members_only": false,
         "benefits": [
           "Pass the Lumbridge–Al Kharid toll gate without paying its 10-coin fee.",
@@ -1113,7 +2473,7 @@
       "recommendation": {
         "feedback_status": "none",
         "feedback_reason": "",
-        "rank": 13,
+        "rank": 31,
         "recommended": false,
         "availability": "completed",
         "reasons": [
@@ -1178,7 +2538,7 @@
       "recommendation": {
         "feedback_status": "none",
         "feedback_reason": "",
-        "rank": 14,
+        "rank": 32,
         "recommended": false,
         "availability": "completed",
         "reasons": [
@@ -1243,7 +2603,7 @@
       "recommendation": {
         "feedback_status": "none",
         "feedback_reason": "",
-        "rank": 15,
+        "rank": 33,
         "recommended": false,
         "availability": "completed",
         "reasons": [

@@ -41,6 +41,11 @@ def suggest_steps(result):
         option('prince_ali_rescue', 'Continue Prince Ali Rescue' if state == 'in_progress' else 'Try Prince Ali Rescue',
                'Use your quest journal to choose your next activity.' if state == 'in_progress' else
                'No prior quests or minimum skill levels are required. Speak to Hassan in Al Kharid palace; review supplies and guard preparation first.')
+    elif goal == 'chronicle':
+        option('obtain_chronicle', 'Visit Diango for a Chronicle', rows['obtain_chronicle']['note'])
+        if rows['obtain_chronicle']['status'] == 'unknown':
+            steps[-1]['title'] = 'Check for a Chronicle before buying one'
+            steps[-1]['reason'] = rows['obtain_chronicle']['note'] + ' Ownership is unverified; an empty inventory does not prove you lack one.'
     elif goal == 'ardougne_cloak_1':
         if not done('membership'):
             option('membership', 'Keep this as a future members goal', 'These activities require membership. You can keep the goal saved and choose a free-to-play focus for now.')
@@ -68,7 +73,7 @@ def suggest_steps(result):
                    'These activities require membership. Keep this saved and choose a free-to-play focus for now.')
             return steps
         for row in result['requirements']:
-            if row['category'] != 'milestone':
+            if row['category'] != 'milestone' and not (goal == 'the_grand_tree' and row['id'] == 'agility_25'):
                 continue
             title = row['label']
             if row['observed'] == 'in_progress':

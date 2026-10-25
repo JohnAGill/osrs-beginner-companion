@@ -29,7 +29,7 @@ class RecommendationFeedbackTests(unittest.TestCase):
                 self.assertFalse(goal['recommendation']['recommended'])
                 self.assertEqual(goal['recommendation']['feedback_status'], kind)
                 self.assertTrue(goal['recommendation']['feedback_reason'])
-                self.assertEqual(len(result['goals']), 15)
+                self.assertEqual(len(result['goals']), 33)
 
     def test_expiry_boundaries_future_dates_and_unknown_ids(self):
         baseline = self.result()

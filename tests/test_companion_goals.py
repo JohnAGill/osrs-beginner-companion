@@ -20,7 +20,7 @@ class GoalDomainTests(unittest.TestCase):
 
     def test_complete_and_unknown(self):
         completed = self.results(demo('complete')['account'])
-        self.assertEqual(len(completed), 15)
+        self.assertEqual(len(completed), 33)
         for row in completed.values():
             self.assertEqual(row['status'], 'completed')
             self.assertEqual(row['progress']['satisfied'], row['progress']['total'])
@@ -86,7 +86,7 @@ class GoalApiTests(unittest.TestCase):
         with TestClient(app) as client:
             catalog = client.get('/v1/catalog')
             self.assertEqual(catalog.status_code, 200)
-            self.assertEqual(len(catalog.json()['goals']), 15)
+            self.assertEqual(len(catalog.json()['goals']), 33)
             for name in ('fresh', 'partial', 'complete', 'unclaimed', 'unknown'):
                 response = client.post('/v1/goals/evaluate', json=demo(name))
                 self.assertEqual(response.status_code, 200, response.text)

@@ -8,13 +8,18 @@
     "quest_points": 40,
     "skill_levels": {
       "defence": 40,
-      "thieving": 5,
+      "thieving": 20,
       "attack": 40,
-      "magic": 37,
+      "magic": 45,
       "prayer": 43,
       "fishing": 30,
-      "cooking": 25,
-      "mining": 30
+      "cooking": 40,
+      "mining": 30,
+      "woodcutting": 30,
+      "crafting": 5,
+      "smithing": 30,
+      "ranged": 30,
+      "agility": 30
     },
     "quest_progress": {
       "dragon_slayer_i": "completed",
@@ -23,7 +28,11 @@
       "biohazard": "completed",
       "rune_mysteries": "completed",
       "cooks_assistant": "completed",
-      "the_restless_ghost": "completed"
+      "the_restless_ghost": "completed",
+      "sheep_shearer": "completed",
+      "dorics_quest": "completed",
+      "tree_gnome_village": "completed",
+      "the_grand_tree": "completed"
     },
     "ardougne_easy_tasks": {
       "essence_mine": true,
@@ -39,7 +48,8 @@
     },
     "milestones": {
       "rune_platebody_equipped": true,
-      "ardougne_cloak_1_claimed": true
+      "ardougne_cloak_1_claimed": true,
+      "chronicle_obtained": true
     }
   }
 }

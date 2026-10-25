@@ -15,7 +15,7 @@ and explainable recommendations beyond a conventional web application.
 <tr><th>Focus: goal and current task</th><th>Explore: searchable goals</th><th>Details: optional next steps</th></tr>
 <tr>
 <td valign="top"><img src="docs/images/focus.png" width="242" alt="Focus tab with a rune platebody goal and Defence training task"></td>
-<td valign="top"><img src="docs/images/explore.png" width="242" alt="Explore tab filtered to free-to-play teleport goals"></td>
+<td valign="top"><img src="docs/images/explore.png" width="242" alt="Explore tab filtered to free-to-play travel goals"></td>
 <td valign="top"><img src="docs/images/goal-detail.png" width="242" alt="Goal detail showing independent suggested next steps"></td>
 </tr>
 </table>
@@ -29,7 +29,7 @@ See [screenshot generation](docs/screenshots.md).
 
 ## What it does
 
-- **Choose:** explore 15 curated quest, combat, travel and skilling goals. Search by title
+- **Choose:** explore 33 curated quest, combat, travel and skilling goals. Search by title
   or summary and filter by free-to-play/member access.
 - **Understand:** inspect benefits, investment guidance, requirements and source links.
   Missing observations stay unknown; milestone counts are not time estimates.
@@ -47,7 +47,16 @@ See [screenshot generation](docs/screenshots.md).
   Initial completed observations establish a baseline, rather than a false recent history.
 
 The catalogue includes rune platebody progression, Ardougne cloak 1, early quests such as
-Cook's Assistant and Rune Mysteries, Magic teleport milestones, and early gathering/food goals.
+Cook's Assistant, Sheep Shearer and Doric's Quest, Magic teleport and Telekinetic Grab
+milestones, ranged equipment progression, and gathering/production goals. Members can also
+explore Agility and Thieving milestones. Each goal describes the unlock, supplies and
+preparation separately from the tracked completion condition.
+
+Search **travel** in Explore for the Chronicle, canoes, spell teleports, spirit trees,
+gnome gliders, the Al Kharid toll unlock and Ardougne cloak. Spell levels are distinct
+from supplies and actual casts; the Chronicle goal tracks observed book ownership, not
+charges or a successful teleport. Quest travel networks describe additional destination
+restrictions and combat preparation.
 
 ## Architecture
 
@@ -134,7 +143,7 @@ For a console-only example of the Java/Python boundary:
 .\.venv\Scripts\python scripts/verify_bridge.py
 ```
 
-Current coverage: **50 Python tests and 25 Java tests**, plus a real Java → HTTP → Python
+Current coverage: **57 Python tests and 26 Java tests**, plus a real Java → HTTP → Python
 → Java verification script. Tests cover threshold boundaries, unknown progress, matching,
 recency, persistence, character isolation, stale responses, task selection, overlay guards
 and scroll preservation. The bridge script starts/stops its own loopback service.
@@ -160,7 +169,7 @@ LICENSES/          Upstream licences and notices
 This is an independent **development prototype**, not a published or approved Plugin Hub
 plugin. It performs no automatic gameplay, movement or game input.
 
-- Live tracking reads skill levels/XP, seven relevant quests, quest points and membership.
+- Live tracking reads skill levels/XP, eleven relevant quests, quest points and membership.
 - Easy Ardougne diary tasks and cloak reward claims use source-verified game variables; inconsistent readings remain unknown. See [tracking evidence](docs/diary-tracking.md).
 - Rune platebody use is remembered only if observed during the plugin session.
 - The Python service currently runs locally; hosted/packaged delivery remains future work.

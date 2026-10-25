@@ -13,6 +13,7 @@ import net.runelite.api.gameval.VarbitID;
 /** Called only on RuneLite's client thread after logged-in game ticks. */
 final class LiveSnapshotReader {
     private final Set<String> observedWearing = new HashSet<>();
+    private final Set<String> observedChronicle = new HashSet<>();
 
     static final class Snapshot {
         final String localKey, name;
@@ -46,7 +47,7 @@ final class LiveSnapshotReader {
         if (membership >= 0) account.addProperty("members", membership > 0);
         JsonObject quests = new JsonObject();
         for (Quest quest : new Quest[]{Quest.DRAGON_SLAYER_I, Quest.PRINCE_ALI_RESCUE,
-            Quest.PLAGUE_CITY, Quest.BIOHAZARD, Quest.RUNE_MYSTERIES, Quest.COOKS_ASSISTANT, Quest.THE_RESTLESS_GHOST}) {
+            Quest.PLAGUE_CITY, Quest.BIOHAZARD, Quest.RUNE_MYSTERIES, Quest.COOKS_ASSISTANT, Quest.THE_RESTLESS_GHOST, Quest.SHEEP_SHEARER, Quest.DORICS_QUEST, Quest.TREE_GNOME_VILLAGE, Quest.THE_GRAND_TREE}) {
             String observed = "unknown";
             try {
                 QuestState state = quest.getState(client);
@@ -58,8 +59,14 @@ final class LiveSnapshotReader {
         ItemContainer equipment = client.getItemContainer(InventoryID.EQUIPMENT);
         if (equipment != null) for (Item item : equipment.getItems()) {
             if (item.getId() == 1127) observedWearing.add(key);
+            if (item.getId() == 13660) observedChronicle.add(key);
+        }
+        ItemContainer inventory = client.getItemContainer(InventoryID.INVENTORY);
+        if (inventory != null) for (Item item : inventory.getItems()) {
+            if (item.getId() == 13660) observedChronicle.add(key);
         }
         JsonObject milestones = new JsonObject();
+        if (observedChronicle.contains(key)) milestones.addProperty("chronicle_obtained", true);
         if (observedWearing.contains(key)) milestones.addProperty("rune_platebody_equipped", true);
         account.add("milestones", milestones);
         readArdougneDiary(client, account, milestones);

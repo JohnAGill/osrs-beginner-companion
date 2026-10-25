@@ -27,7 +27,8 @@ class ExpandedCatalogTests(unittest.TestCase):
             self.assertTrue(all(step['kind'] == 'check' for step in unknown['next_steps']))
 
     def test_new_quests_track_continuation_and_membership(self):
-        for quest in ['cooks_assistant', 'the_restless_ghost', 'rune_mysteries', 'plague_city']:
+        for quest in ['cooks_assistant', 'the_restless_ghost', 'rune_mysteries', 'plague_city',
+                      'sheep_shearer', 'dorics_quest']:
             with self.subTest(quest=quest):
                 account = {'members': True, 'quest_progress': {quest: 'in_progress'}}
                 row = self.evaluate(account)[quest]
@@ -38,8 +39,30 @@ class ExpandedCatalogTests(unittest.TestCase):
         blocked = self.evaluate({'members': False, 'quest_progress': {'plague_city': 'not_started'}})['plague_city']
         self.assertEqual([s['id'] for s in blocked['next_steps']], ['membership'])
 
+    def test_members_training_is_gated_and_f2p_options_remain_actionable(self):
+        account = {'members': False, 'skill_levels': {'agility': 1, 'thieving': 1,
+                   'woodcutting': 1, 'crafting': 1, 'smithing': 1, 'ranged': 1}}
+        results = self.evaluate(account)
+        for goal in ['agility_30', 'thieving_20']:
+            self.assertEqual(results[goal]['remaining_investment']['state'], 'access_blocked')
+            self.assertEqual([s['id'] for s in results[goal]['next_steps']], ['membership'])
+        for goal in ['woodcutting_15', 'woodcutting_30', 'crafting_5', 'smithing_30', 'ranged_20', 'ranged_30']:
+            self.assertEqual(results[goal]['next_steps'][0]['kind'], 'activity')
+        account['members'] = True
+        for goal in ['agility_30', 'thieving_20']:
+            self.assertEqual(self.evaluate(account)[goal]['next_steps'][0]['kind'], 'activity')
+
+    def test_introductory_quests_do_not_require_gathering_levels(self):
+        account = {'members': False, 'skill_levels': {'mining': 1, 'crafting': 1},
+                   'quest_progress': {'sheep_shearer': 'not_started', 'dorics_quest': 'not_started'}}
+        for goal in ['sheep_shearer', 'dorics_quest']:
+            row = self.evaluate(account)[goal]
+            self.assertEqual([r['id'] for r in row['requirements']], [goal])
+            self.assertEqual(row['remaining_investment']['state'], 'quest')
+            self.assertEqual(row['next_steps'][0]['kind'], 'activity')
+
     def test_all_goals_have_content_and_fresh_accounts_have_options(self):
-        self.assertEqual(len(self.catalog['goals']), 15)
+        self.assertEqual(len(self.catalog['goals']), 33)
         for goal in self.catalog['goals']:
             for key in ['benefits', 'investment', 'preparation', 'sources', 'reviewed', 'matching']:
                 self.assertTrue(goal[key], (goal['id'], key))

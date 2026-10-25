@@ -35,7 +35,7 @@ companion automatically reads a snapshot and sends it to the local Python servic
 You can still select any demo account using the same dropdown.
 
 Live observations include all 24 base skill levels and XP, quest points, membership days
-(converted to membership status), and the five relevant quest states. Quest states use
+(converted to membership status), and the eleven relevant quest states. Quest states use
 RuneLite's Quest.getState on the game thread. Stat/var/equipment events mark the data dirty;
 the next game tick collects it, with a ten-tick periodic fallback. Identical data is not
 resent. Pending requests coalesce to the latest snapshot, and failed requests back off
@@ -57,6 +57,9 @@ see [mapping evidence and validation](../docs/diary-tracking.md). The rune plate
 observed, and is remembered per character for this plugin session (including after taking
 it off). Past equipment use is unknown until observed; that history is not persisted across
 plugin restarts. No false 'not completed' result is inferred from an empty equipment slot.
+Chronicle ownership becomes true when item 13660 is seen in inventory or equipment,
+and is remembered per character for this plugin session. An unseen book remains unknown:
+bank ownership, charges and successful teleport use are not inferred.
 Combat readiness and preparation advice are still not automatically verified.
 
 ## In-game focus overlay

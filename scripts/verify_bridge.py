@@ -51,9 +51,11 @@ def run():
                 result = subprocess.run(command + [str(ROOT / f'contracts/fixtures/goals-{name}.request.json'), url],
                                         capture_output=True, text=True, timeout=15)
                 assert result.returncode == 0, result.stderr
-                for goal in ('wear_rune_platebody', 'ardougne_cloak_1', 'prince_ali_rescue'):
+                for goal in ('wear_rune_platebody', 'ardougne_cloak_1', 'prince_ali_rescue',
+                             'chronicle', 'woodcutting_12', 'magic_31', 'magic_45',
+                             'tree_gnome_village', 'the_grand_tree'):
                     assert goal + ': ' in result.stdout, result.stdout
-                expected = {'fresh': 0, 'partial': 6, 'complete': 15, 'unclaimed': 13, 'unknown': 0}[name]
+                expected = {'fresh': 0, 'partial': 6, 'complete': 33, 'unclaimed': 31, 'unknown': 0}[name]
                 assert result.stdout.count(': completed') == expected, result.stdout
                 print(f'PASS Java goal catalogue: {name}')
             for name, expected in [('combat', 'wear_rune_platebody'), ('exploration', 'ardougne_cloak_1'),

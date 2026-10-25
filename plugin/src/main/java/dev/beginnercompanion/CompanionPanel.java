@@ -163,7 +163,7 @@ public class CompanionPanel extends PluginPanel {
             for (java.util.Map.Entry<String, com.google.gson.JsonElement> quest : liveAccount.account.getAsJsonObject("quest_progress").entrySet()) {
                 report.append(quest.getKey().replace('_', ' ')).append(": ").append(quest.getValue().getAsString().replace('_', ' ')).append("\n");
             }
-            report.append("\nEasy Ardougne diary tasks and cloak reward claims are read from game variables. Inconsistent or unavailable readings stay unknown.\nPast equipment use is unknown unless observed during this plugin session.");
+            report.append("\nEasy Ardougne diary tasks and cloak reward claims are read from game variables. Inconsistent or unavailable readings stay unknown.\nPast equipment use and Chronicle ownership are unknown unless observed during this plugin session. Chronicle charges and bank contents are not read.");
             JTextArea data = new JTextArea(report.toString(), 24, 38);
             data.setEditable(false);
             JOptionPane.showMessageDialog(this, new JScrollPane(data), "Live character observations", JOptionPane.INFORMATION_MESSAGE);

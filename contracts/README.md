@@ -84,10 +84,10 @@ start background services or change the RuneLite installation.
 
 The original /v1/evaluate bridge contract remains unchanged. The sidebar now uses:
 
-- GET /v1/catalog: descriptions of the three curated goals, benefits, investment,
+- GET /v1/catalog: descriptions of the 33 curated goals, benefits, investment,
   preparation, sources and review date (catalog-response.schema.json).
 - POST /v1/goals/evaluate: goals-request.schema.json -> goals-response.schema.json.
-  Returns all three goal descriptions, completion state, milestone counts and recursive
+  Returns all catalogue goal descriptions, completion state, milestone counts and recursive
   requirement status rows in one snapshot. Session/revision semantics remain the same.
 
 The extended account includes membership, quest points, Defence/Thieving levels, relevant
@@ -167,7 +167,7 @@ The goals request accepts source=live (default remains demo), all 24 optional sk
 fields, and skill_xp keyed by those skill IDs (strict integers, 0..200000000). Live requests
 use the same evaluation/recommendation logic. The response note identifies live observations
 instead of calling them fictional. Invalid/missing observations remain unknown.
-Only the seven quests relevant to the current catalogue are transmitted. Character names,
+Only the eleven quests relevant to the current catalogue are transmitted. Character names,
 account hashes, local storage keys and authentication data are not protocol fields.
 
 The Java plugin reads on RuneLite's client thread, refreshes from game events and coalesces
@@ -220,3 +220,32 @@ work gain one +3 boost, gated by explicit interests. Unknown work never receives
 boost does not stack across multiple feedback entries or override membership restrictions.
 The client saves feedback locally per character and refreshes ranking after a successful
 save. Live observations also trigger refresh when an expiry crosses; demos refresh on demand.
+
+## Catalogue revision 4
+
+`beginner-goals-4` adds twelve goals: Sheep Shearer, Doric's Quest, Woodcutting 15/30,
+Crafting 5, Smithing 30, Ranged 20/30, Magic 33, Cooking 40, Agility 30 and Thieving 20.
+The two new quest observations default to `unknown` for older callers. Existing goal and
+task IDs are retained so saved goals, feedback and history remain valid. Live readers
+include the new quests through RuneLite's Quest API; all new training goals use existing
+base-level and XP observations. Skill goals track the level, not ownership or use of
+the unlocked equipment/activity. Membership gates Agility and Thieving suggestions.
+
+## Catalogue revision 5: travel
+
+`beginner-goals-5` adds Woodcutting 12 for basic canoes, Magic 31/45 for Lumbridge and
+Camelot spells, `chronicle`, `tree_gnome_village` and `the_grand_tree`. Existing travel
+choices remain alongside them and can be found by searching `travel` in Explore.
+
+Optional quest states `tree_gnome_village` and `the_grand_tree` default to unknown.
+Optional `milestones.chronicle_obtained` means the book was observed, not that it has
+charges. Live readers send true only after seeing item 13660 in inventory/equipment and
+remember this per character for the session. Missing ownership stays unknown; no bank
+scan, charge estimate or full inventory is transmitted. Demo fixtures can explicitly
+represent a missing book.
+
+The Grand Tree's 25 Agility is context for a boostable obstacle, not a prerequisite
+to start the quest. Training and starting/continuing the quest remain independent options.
+Completing Tree Gnome Village is not required for gliders; each quest has its own
+completion observation. Membership gates the members goals, and combat preparation is
+advice rather than an inferred readiness check.

@@ -14,7 +14,12 @@
       "prayer": 15,
       "fishing": 20,
       "cooking": 20,
-      "mining": 15
+      "mining": 15,
+      "woodcutting": 1,
+      "crafting": 1,
+      "smithing": 1,
+      "ranged": 1,
+      "agility": 1
     },
     "quest_progress": {
       "dragon_slayer_i": "not_started",
@@ -23,7 +28,11 @@
       "biohazard": "in_progress",
       "rune_mysteries": "completed",
       "cooks_assistant": "completed",
-      "the_restless_ghost": "in_progress"
+      "the_restless_ghost": "in_progress",
+      "sheep_shearer": "not_started",
+      "dorics_quest": "not_started",
+      "tree_gnome_village": "not_started",
+      "the_grand_tree": "not_started"
     },
     "ardougne_easy_tasks": {
       "essence_mine": true,
@@ -39,7 +48,8 @@
     },
     "milestones": {
       "rune_platebody_equipped": false,
-      "ardougne_cloak_1_claimed": false
+      "ardougne_cloak_1_claimed": false,
+      "chronicle_obtained": false
     }
   },
   "preferences": {

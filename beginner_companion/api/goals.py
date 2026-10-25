@@ -46,11 +46,16 @@ class GoalQuests(WireModel):
     rune_mysteries: QuestState = 'unknown'
     cooks_assistant: QuestState = 'unknown'
     the_restless_ghost: QuestState = 'unknown'
+    sheep_shearer: QuestState = 'unknown'
+    dorics_quest: QuestState = 'unknown'
+    tree_gnome_village: QuestState = 'unknown'
+    the_grand_tree: QuestState = 'unknown'
 
 
 class GoalFlags(WireModel):
     rune_platebody_equipped: bool | None = None
     ardougne_cloak_1_claimed: bool | None = None
+    chronicle_obtained: bool | None = None
 
 
 class GoalAccount(WireModel):

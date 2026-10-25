@@ -97,6 +97,8 @@ def remaining_investment(goal, result, account):
                 line += ' Exact XP remaining is not available from level alone.'
             if goal['id'] == 'ardougne_cloak_1' and row['id'] == 'thieving_5':
                 line += ' A suitable boost can also satisfy the diary skill requirement; this reading tracks base level only.'
+            if goal['id'] == 'the_grand_tree' and row['id'] == 'agility_25':
+                line += ' A suitable boost can satisfy the obstacle instead of training to this base level. This is not required to start the quest.'
             details.append(line)
             kinds.add('training')
         elif kind == 'quest':
@@ -128,6 +130,8 @@ def remaining_investment(goal, result, account):
             details.append('All easy tasks are recorded complete; check whether the reward still needs claiming from Two-pints.')
     elif 'training' in kinds and kinds & {'quest', 'quest_underway', 'entry'}:
         state, summary = 'prerequisites', 'Training and quest work remain'
+        if goal['id'] == 'the_grand_tree':
+            summary = 'Agility preparation and quest work remain'
     elif 'entry' in kinds:
         state, summary = 'prerequisites', 'Quest entry requirements remain'
     elif 'training' in kinds:

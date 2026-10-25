@@ -39,6 +39,19 @@ class CompletionRecommendationTests(unittest.TestCase):
         duplicate = [self.event('attack_20'), self.event('attack_20', 5)]
         self.assertEqual(self.result(duplicate), self.result([self.event('attack_20')]))
 
+    def test_expanded_catalogue_followups_are_optional_and_interest_gated(self):
+        account = {'members': True, 'skill_levels': {'woodcutting': 15, 'crafting': 1},
+                   'quest_progress': {'sheep_shearer': 'completed'}}
+        history = [self.event('woodcutting_15'), self.event('sheep_shearer')]
+        result = self.result(history, ['utility'], account=account)
+        for goal in ['woodcutting_30', 'crafting_5']:
+            row = next(g for g in result['goals'] if g['goal']['id'] == goal)
+            self.assertTrue(any('recently completing' in r for r in row['recommendation']['reasons']))
+        other = self.result(history, ['combat'], account=account)
+        for goal in ['woodcutting_30', 'crafting_5']:
+            row = next(g for g in other['goals'] if g['goal']['id'] == goal)
+            self.assertFalse(any('recently completing' in r for r in row['recommendation']['reasons']))
+
     def test_membership_completion_and_recency_order(self):
         blocked = self.result([self.event('plague_city')], members=False)
         cloak = next(g for g in blocked['goals'] if g['goal']['id'] == 'ardougne_cloak_1')

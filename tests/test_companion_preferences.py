@@ -28,7 +28,7 @@ class PreferenceMatchingTests(unittest.TestCase):
                 reasons = ' '.join(result['goals'][0]['recommendation']['reasons'])
                 self.assertIn('Matches your interest', reasons)
                 self.assertIn('fits your preference', reasons)
-                self.assertEqual(len(result['goals']), 15)
+                self.assertEqual(len(result['goals']), 33)
 
     def test_no_answers_no_fake_personalisation_and_stable_order(self):
         result = self.result()
